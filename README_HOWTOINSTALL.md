@@ -33,6 +33,7 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── prowlarr/config
   ├── sonarr/config
   ├── radarr/config
+  ├── cleanuparr/config
   ├── bazarr/
   └── seerr/
 
@@ -51,6 +52,7 @@ sudo mkdir -p \
   /app/prowlarr/config \
   /app/sonarr/config \
   /app/radarr/config \
+  /app/cleanuparr/config \
   /app/bazarr \
   /app/seerr \
 
@@ -199,6 +201,7 @@ Vérifie que tous les conteneurs sont en Running
 | Prowlarr      | http://ipduserveur:9696       |
 | qBittorrent   | http://ipduserveur:8080       |
 | FlareSolverr  | http://ipduserveur:8191       |
+| Cleanuparr    | http://ipduserveur:11011       |
 
 > ⚠️ qBittorrent, Prowlarr et FlareSolverr passent par **Gluetun**, donc leurs ports sont exposés via le conteneur VPN.
 
@@ -217,5 +220,6 @@ Suivre cette ordre de configuration :
 | FlareSolverr  |
 | qBittorrent   |
 | Seerr         |
+| Cleanuparr    |
 
 
