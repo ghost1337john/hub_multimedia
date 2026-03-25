@@ -1,3 +1,27 @@
+📝 Version
+v1.1.0 — 2026‑03‑25
+Ajout du module Cleanuparr
+
+Documentation complète ajoutée (installation + configuration + résolution SQLite Error 5)
+
+Mise à jour du README principal
+
+Amélioration de la cohérence globale du projet
+
+v1.0.0 — 2026‑02
+Ajout de Seerr
+
+Documentation dédiée + schéma visuel
+
+Intégration complète avec Radarr/Sonarr
+
+v0.9.0 — 2026‑01
+Version initiale du hub multimédia
+
+Radarr, Sonarr, Prowlarr, qBittorrent, Gluetun, Bazarr, FlareSolverr
+
+Documentation d’installation et de configuration
+
 # 🎬 Hub Multimédia Automatisé
 
 Ce projet met en place un écosystème multimédia complet, automatisé et sécurisé, basé sur Docker avec possibilité de le déployer via Portainer.
@@ -30,6 +54,19 @@ Permet aux utilisateurs de demander films et séries.
 
 ### 🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
+
+🧹 Cleanuparr — Nettoyage automatisé
+Nouveau module permettant :
+
+le nettoyage des téléchargements terminés
+
+la suppression des torrents importés
+
+la gestion des fichiers orphelins
+
+la synchronisation propre avec Radarr/Sonarr
+
+la résolution des conflits de DB SQLite
 
 ## 🔗 Flux de fonctionnement
 
