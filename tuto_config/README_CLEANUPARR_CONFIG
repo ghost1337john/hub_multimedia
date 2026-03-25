@@ -70,12 +70,3 @@ Tu peux lancer un nettoyage à la main :
 - Onglet **Status** : montre les fichiers supprimés, les torrents nettoyés, les erreurs éventuelles
 
 ---
-
-## ✅ Vérification finale
-
-- [ ] Les API sont bien connectées  
-- [ ] Les chemins de téléchargement sont accessibles  
-- [ ] Les options sont activées selon tes besoins  
-- [ ] Les logs montrent que le nettoyage fonctionne
-
----
