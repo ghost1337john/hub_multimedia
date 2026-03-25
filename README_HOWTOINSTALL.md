@@ -25,6 +25,7 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
+"Bien s'attribuer les droits sur le dossiers racines /app avec le bon GUID et UID"
 
 /app/
   ├── gluetun/config
@@ -45,6 +46,9 @@ sudo mkdir -p \
   /app/bazarr \
   /app/seerr \
 ```
+```
+sudo chown -R 1000:1000 /dapp
+```
 
 ### 📁 Points de montage du NAS par rapport au script 
 Organise tes points de montage sur ton serveur comme ceci :
@@ -56,7 +60,7 @@ Organise tes points de montage sur ton serveur comme ceci :
         └── downloads/
 
 ### 🔑 Fichier `.env`
-Crée un fichier `.env` à la racine du projet :
+Modifier le fichier `.env` à la racine du projet avec les informations récupérables :
 
 ```
 PUID=1000
@@ -68,7 +72,7 @@ MEDIA_DIR=/mnt/media
 OPENVPN_USER=
 OPENVPN_PASSWORD=
 WIREGUARD_PRIVATE_KEY=
-SERVER_COUNTRIES=France
+SERVER_COUNTRIES=
 ```
 
 ---
