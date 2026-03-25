@@ -51,12 +51,12 @@ Nouveau module permettant :
 - Mise à jour du README principal  
 - Amélioration de la cohérence globale du projet  
 
-### **v1.0.0 — 2026‑02**
+### **v1.0.0 — 2026‑03-24**
 - Ajout de Seerr  
 - Documentation dédiée + schéma visuel  
 - Intégration complète avec Radarr/Sonarr
 
-### **v0.9.0 — 2026‑01**
+### **v0.9.0 — 2026‑03-23**
 - Version initiale du hub multimédia  
 - Radarr, Sonarr, Prowlarr, qBittorrent, Gluetun, Bazarr, FlareSolverr  
 - Documentation d’installation et de configuration
