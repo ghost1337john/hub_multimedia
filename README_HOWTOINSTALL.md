@@ -26,6 +26,19 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
+mkdir -p \
+  /app/gluetun/config \
+  /app/qbittorrent/config \
+  /app/prowlarr/config \
+  /app/sonarr/config \
+  /app/radarr/config \
+  /app/bazarr \
+  /app/seerr \
+  ${MEDIA_DIR}/qbittorrent/downloads \
+  /data/films \
+  /data/series
+
+
 ```
 /app/
   ├── gluetun/config
@@ -45,7 +58,7 @@ Organise tes points de montage sur ton serveur comme ceci :
   ├── series
   └── qbittorrent/
         └── downloads/
-
+po
 ### 🔑 Fichier `.env`
 Crée un fichier `.env` à la racine du projet :
 
