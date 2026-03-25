@@ -33,20 +33,5 @@ Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
 ## 🔗 Flux de fonctionnement
 
-```text
-Utilisateur → Seerr
-        ↓
-Radarr / Sonarr
-        ↓
-    Prowlarr
-        ↓
-   FlareSolverr (si Cloudflare)
-        ↓
-   qBittorrent → Gluetun (VPN)
-        ↓
-Téléchargement → Tri → Sous‑titres (Bazarr)
-        ↓
-            Plex
-
 <img width="1426" height="5475" alt="User-Centric Media Download-2026-03-25-152838" src="https://github.com/user-attachments/assets/5af8e1f6-3cfd-4233-93e5-07bf50f34e83" />
 
