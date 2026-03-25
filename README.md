@@ -37,7 +37,6 @@ Nouveau module permettant :
 - la suppression des torrents importés  
 - la gestion des fichiers orphelins  
 - la synchronisation propre avec Radarr/Sonarr  
-- la résolution des conflits de DB SQLite
 
 ## 🔗 Flux de fonctionnement
 
