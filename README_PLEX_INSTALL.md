@@ -33,15 +33,13 @@ Tu peux l’adapter selon ton organisation.
 
 ---
 
-## 🛠️ 1. Créer les dossiers nécessaires
+## 🛠️ 1. Créer les dossiers nécessaires et monter les partages dans data via fstab
 
 À exécuter sur ton serveur :
 
 ```bash
 sudo mkdir -p /app/plex/config \
-             /media/films \
-             /media/series \
-             /media/musique
+             /data
 ```
 
 ---
