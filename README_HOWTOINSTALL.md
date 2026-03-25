@@ -135,7 +135,6 @@ Les services doivent apparaître en **Up**.
 
 ---
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
 ## 🐳 Installation via Portainer (sans ligne de commande)
 Cette méthode permet d’installer tout le hub multimédia directement depuis Portainer, sans utiliser Docker en ligne de commande.
