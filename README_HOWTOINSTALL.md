@@ -1,7 +1,3 @@
-Parfait J — je vois ton dépôt GitHub ouvert dans l’onglet actif   [github.com](https://github.com/ghost1337john/hub_multimedia/tree/Project), donc je te prépare une **section Installation + Prérequis** parfaitement adaptée à ton projet, prête à être ajoutée dans ton README.
-
-Voici la version **Markdown propre**, claire et professionnelle :
-
 ---
 
 ```markdown
