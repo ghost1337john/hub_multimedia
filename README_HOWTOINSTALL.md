@@ -36,6 +36,13 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── bazarr/
   └── seerr/
 
+#Afficher l'uid et le giud de l'utilisateur en cours
+```
+plex@SRV-PLEX:~$id
+uid=1000(plex) gid=1000(plex)
+groupes=1000(plex),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plu
+gdev),100(users),101(netdev)
+```
 ```
 sudo mkdir -p \
   /app/gluetun/config \
@@ -47,7 +54,7 @@ sudo mkdir -p \
   /app/seerr \
 ```
 ```
-sudo chown -R 1000:1000 /dapp
+sudo chown -R 1000:1000 /app
 ```
 
 ### 📁 Points de montage du NAS par rapport au script 
