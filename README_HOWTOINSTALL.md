@@ -4,7 +4,7 @@
 Avant d’installer ce hub multimédia, assure-toi de disposer des éléments suivants :
 
 ### 🔧 Matériel & système
-- Un serveur ou une machine virutelle capable de faire tourner Docker  
+- Un serveur ou une machine virtuelle capable de faire tourner Docker  
 - Linux recommandé (Debian, Ubuntu)
 - Accès administrateur (sudo) 
 - Config recommandée :
@@ -26,16 +26,6 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
-```
-mkdir -p \
-  /app/gluetun/config \
-  /app/qbittorrent/config \
-  /app/prowlarr/config \
-  /app/sonarr/config \
-  /app/radarr/config \
-  /app/bazarr \
-  /app/seerr \
-
 /app/
   ├── gluetun/config
   ├── qbittorrent/config
@@ -45,6 +35,17 @@ mkdir -p \
   ├── bazarr/
   └── seerr/
 
+```
+sudo mkdir -p \
+  /app/gluetun/config \
+  /app/qbittorrent/config \
+  /app/prowlarr/config \
+  /app/sonarr/config \
+  /app/radarr/config \
+  /app/bazarr \
+  /app/seerr \
+
+```
 ### 📁 Points de montage du NAS par rapport au script 
 Organise tes points de montage sur ton serveur comme ceci :
 
