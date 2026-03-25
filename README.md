@@ -35,13 +35,9 @@ Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 Nouveau module permettant :
 
 le nettoyage des téléchargements terminés
-
 la suppression des torrents importés
-
 la gestion des fichiers orphelins
-
 la synchronisation propre avec Radarr/Sonarr
-
 la résolution des conflits de DB SQLite
 
 ## 🔗 Flux de fonctionnement
@@ -65,4 +61,4 @@ la résolution des conflits de DB SQLite
 - Version initiale du hub multimédia  
 - Radarr, Sonarr, Prowlarr, qBittorrent, Gluetun, Bazarr, FlareSolverr  
 - Documentation d’installation et de configuration
-Si tu veux, je peux aussi :
+
