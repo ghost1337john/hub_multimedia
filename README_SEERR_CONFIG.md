@@ -156,4 +156,5 @@ Ton hub multimédia est maintenant complet et user‑friendly.
 
 ---
 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/8f803772-0fb0-481c-ac3f-5f753e919db9" />
 
