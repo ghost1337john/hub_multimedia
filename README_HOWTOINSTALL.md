@@ -26,6 +26,7 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
+```
 mkdir -p \
   /app/gluetun/config \
   /app/qbittorrent/config \
@@ -34,12 +35,7 @@ mkdir -p \
   /app/radarr/config \
   /app/bazarr \
   /app/seerr \
-  ${MEDIA_DIR}/qbittorrent/downloads \
-  /data/films \
-  /data/series
 
-
-```
 /app/
   ├── gluetun/config
   ├── qbittorrent/config
