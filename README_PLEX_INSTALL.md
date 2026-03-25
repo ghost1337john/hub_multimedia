@@ -1,6 +1,7 @@
 # 📺 Installer Plex en Docker sur Debian
 
 Cette section explique comment installer **Plex Media Server** sur une machine Debian en utilisant Docker et Docker Compose.
+
 Il est possible de faire la même chose en déployant un stack via la WebUI Portainer (Prendre exemple sur README_HOWTOINSTALL.md). 
 
 ---
