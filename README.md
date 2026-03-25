@@ -41,7 +41,7 @@ Nouveau module permettant :
 
 ## 🔗 Flux de fonctionnement
 
-<img width="528" height="2033" alt="Gemini_Generated_Image_cj3mpucj3mpucj3m" src="https://github.com/user-attachments/assets/417ff1c9-f132-47a4-b458-b98d0b8e2699" />
+EN CONSTRUCTION
 
 # 🗂️ Historique des versions
 
