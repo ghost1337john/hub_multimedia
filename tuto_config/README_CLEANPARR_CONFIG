@@ -1,0 +1,81 @@
+# 🧹 Cleanuparr — Configuration via Interface Web
+
+Cleanuparr dispose d’une interface web simple pour gérer le nettoyage automatique des torrents et fichiers orphelins.  
+Voici comment la configurer étape par étape.
+
+---
+
+## 🔐 Accès à l’interface
+
+1. Ouvre ton navigateur et accède à l’URL de Cleanuparr :  
+   `http://localhost:PORT` ou `http://IP_DU_SERVEUR:PORT`  
+   *(par défaut : 11011 ou celui défini dans ton `docker-compose.yml`)*
+
+2. Tu arrives sur le tableau de bord Cleanuparr.
+
+---
+
+## ⚙️ Configuration des services
+
+### 1. Onglet **Radarr**
+
+- **Name** : Radarr 
+- **URL** : `http://radarr:7878` *(ou l’IP locale si hors Docker)*  
+- **API Key** : récupère-la dans Radarr → Settings → General → Security  
+- **Activer** : coche la case pour activer le nettoyage Radarr
+
+### 2. Onglet **Sonarr**
+
+- **Name** : Sonarr
+- **URL** : `http://sonarr:8989`  
+- **API Key** : idem, dans Sonarr → Settings → General  
+- **Activer** : coche la case pour activer le nettoyage Sonarr
+
+### 3. Onglet **Download Clients**
+
+- **Name** : qBittorrent
+- **URL** : `http://qbittorrent:8080`  
+- **Identifiants** : `admin / password
+- **Activer** : coche la case pour supprimer les torrents importés
+
+---
+
+## 🧼 Options de nettoyage
+
+Dans l’onglet **Queue Cleaner** :
+
+- **Activer** : coche la case 
+
+Dans l’onglet **Download Cleaner** :
+
+- **Activer** : coche la case pour supprimer les torrents importés
+- Ajout deux catégories pour radarr et sonarr
+- Règles à 0 : Max Ratio, Min Seed Time, Max Seed Time
+- Privacy Type : Both 
+- Delete Sources Files : Activer 
+---
+
+## 🧪 Test manuel
+
+Tu peux lancer un nettoyage à la main :
+
+- Bouton **Dry Run** : simule le nettoyage sans rien supprimer  
+- Bouton **Run Now** : exécute le nettoyage immédiatement
+
+---
+
+## 📄 Logs & Résultats
+
+- Onglet **Logs** : affiche les actions effectuées  
+- Onglet **Status** : montre les fichiers supprimés, les torrents nettoyés, les erreurs éventuelles
+
+---
+
+## ✅ Vérification finale
+
+- [ ] Les API sont bien connectées  
+- [ ] Les chemins de téléchargement sont accessibles  
+- [ ] Les options sont activées selon tes besoins  
+- [ ] Les logs montrent que le nettoyage fonctionne
+
+---
