@@ -210,12 +210,12 @@ Suivre cette ordre de configuration :
 
 | Service       |
 |---------------|
-| Prowlarr      |
-| FlareSolverr  |
-| qBittorrent   |
 | Sonarr        | 
 | Radarr        |
 | Bazarr        |
+| Prowlarr      |
+| FlareSolverr  |
+| qBittorrent   |
 | Seerr         |
 
 
