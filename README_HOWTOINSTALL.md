@@ -13,6 +13,7 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
   - Stockage : 128 Go (selon la bibliothèque)
 - Un NAS qui stocke vos fichiers (Series/Films)
 - Les partages du NAS paramétrés en montage automatique via le FSTAB
+- Un compte ProtonVPN payant
 
 ### 📦 Logiciels nécessaires
 - **Docker**  
@@ -25,7 +26,6 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
-"Bien s'attribuer les droits sur le dossiers racines /app avec le bon GUID et UID"
 
 /app/
   ├── gluetun/config
@@ -36,13 +36,14 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── bazarr/
   └── seerr/
 
-#Afficher l'uid et le giud de l'utilisateur en cours
+#Afficher l'uid et le giud de l'utilisateur en cours :
 ```
 plex@SRV-PLEX:~$id
 uid=1000(plex) gid=1000(plex)
 groupes=1000(plex),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plu
 gdev),100(users),101(netdev)
 ```
+#Création des répertoires en une ligne de commande :
 ```
 sudo mkdir -p \
   /app/gluetun/config \
@@ -52,9 +53,13 @@ sudo mkdir -p \
   /app/radarr/config \
   /app/bazarr \
   /app/seerr \
+
+sudo mkdir /data
 ```
+#Attribution des droits sur les répertoires 
 ```
 sudo chown -R 1000:1000 /app
+sudo chown -R 1000:1000 /data
 ```
 
 ### 📁 Points de montage du NAS par rapport au script 
@@ -67,14 +72,21 @@ Organise tes points de montage sur ton serveur comme ceci :
         └── downloads/
 
 ### 🔑 Fichier `.env`
-Modifier le fichier `.env` à la racine du projet avec les informations récupérables :
+Créer le fichier `.env` à la racine du projet avec les informations de proton VPN récupérables comme suit :
+
+Pour OpenVPN, allez dans la section Compte et copiez votre nom d’utilisateur et votre mot de passe.
+REMARQUE : POUR QUE LE TRANSFERT DE PORT FONCTIONNE, VOUS DEVEZ AJOUTER «
++pmp » À LA FIN DE VOTRE NOM D’UTILISATEUR DANS LE FICHIER .env.
+
+<img width="1055" height="738" alt="image" src="https://github.com/user-attachments/assets/2b364b33-b5cc-4d03-8619-dd9c0b8f0363" />
+
 
 ```
 PUID=1000
 PGID=1000
 TZ=Europe/Paris
 
-MEDIA_DIR=/mnt/media
+MEDIA_DIR=/data
 
 OPENVPN_USER=
 OPENVPN_PASSWORD=
