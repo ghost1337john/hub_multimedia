@@ -1,6 +1,7 @@
 # 📺 Installer Plex en Docker sur Debian
 
 Cette section explique comment installer **Plex Media Server** sur une machine Debian en utilisant Docker et Docker Compose.
+Il est possible de faire la même chose en déployant un stack via la WebUI Portainer (Prendre exemple sur README_HOWTOINSTALL.md). 
 
 ---
 
@@ -33,7 +34,7 @@ Tu peux l’adapter selon ton organisation.
 
 ---
 
-## 🛠️ 1. Créer les dossiers nécessaires et monter les partages dans data via fstab
+## 🛠️ 1. Créer les dossiers nécessaires et monter les partages dans data via fstab si ce n'est pas déjà fait
 
 À exécuter sur ton serveur :
 
@@ -44,9 +45,10 @@ sudo mkdir -p /app/plex/config \
 
 ---
 
-## 🧾 2. Créer le fichier `docker-compose.yml`
+## 🧾 2. Créer le fichier `docker-compose.yml` dans un dossier de travail
 
 Voici un `docker-compose.yml` propre et fonctionnel :
+Récupérer son token plex ici : https://account.plex.tv/claim
 
 ```yaml
 version: "3.9"
@@ -60,11 +62,12 @@ services:
       - PGID=1000
       - TZ=Europe/Paris
       - VERSION=docker
+      - PLEX_CLAIM=<mettreletoken>
     volumes:
       - /app/plex/config:/config
-      - /media/films:/data/films
-      - /media/series:/data/series
-      - /media/musique:/data/musique
+      - /data/films:/movies
+      - /data/series:/series
+      - /data/musique:/music
     ports:
       - 32400:32400
     restart: unless-stopped
@@ -74,7 +77,7 @@ services:
 
 ## 🚀 3. Déployer Plex
 
-Dans le dossier où se trouve ton `docker-compose.yml` :
+Dans le dossier de travail où se trouve ton `docker-compose.yml` :
 
 ```bash
 docker compose up -d
@@ -101,9 +104,9 @@ Depuis l’interface Plex :
 1. Clique sur **Ajouter une bibliothèque**
 2. Choisis le type (Films, Séries, Musique…)
 3. Sélectionne le dossier correspondant :
-   - `/data/films`
-   - `/data/series`
-   - `/data/musique`
+   - `/movies`
+   - `/series`
+   - `/music`
 4. Valide
 
 Plex va scanner et organiser automatiquement tes contenus.
@@ -129,11 +132,3 @@ docker compose up -d
 
 ---
 
-Si tu veux, je peux aussi te générer :
-
-- une **version Portainer** (comme pour ton hub multimédia)  
-- une **version avec Traefik / HTTPS**  
-- une **version avec stockage sur NAS (NFS/SMB)**  
-- ou une **intégration Plex dans ton README existant**
-
-Tu veux pousser ça encore plus loin J ?
