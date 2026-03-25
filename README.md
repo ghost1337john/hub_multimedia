@@ -40,7 +40,7 @@ Nouveau module permettant :
 
 ## 🔗 Flux de fonctionnement
 
-EN CONSTRUCTION
+![hubproject](https://github.com/user-attachments/assets/ec1260c7-c988-418c-ad55-c519f6ffe0ce)
 
 # 🗂️ Historique des versions
 
