@@ -205,4 +205,17 @@ Vérifie que tous les conteneurs sont en Running
 ---
 ## 🌐 Configuration des différents services 
 
-Je vais générer d'autres fichiers tutoriels pour la configuration depuis les interfaces. 
+Je vais générer d'autres fichiers tutoriels pour la configuration depuis les WebUIs.
+Suivre cette ordre de configuration :
+
+| Service       |
+|---------------|
+| Prowlarr      |
+| FlareSolverr  |
+| qBittorrent   |
+| Sonarr        | 
+| Radarr        |
+| Bazarr        |
+| Seerr         |
+
+
