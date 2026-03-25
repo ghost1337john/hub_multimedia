@@ -47,26 +47,3 @@ Radarr / Sonarr
 Téléchargement → Tri → Sous‑titres (Bazarr)
         ↓
             Plex
-
-flowchart LR
-    %% STYLE MATERIAL DESIGN
-    classDef block fill:#ffffff,stroke:#90a4ae,stroke-width:2px,color:#37474f,rx:8px,ry:8px;
-    classDef highlight fill:#e3f2fd,stroke:#64b5f6,stroke-width:2px,color:#0d47a1,rx:8px,ry:8px;
-
-    A([👤 Utilisateur]):::block --> B([📬 Seerr]):::highlight
-    B --> C([📺 Sonarr]):::block
-    B --> D([🎬 Radarr]):::block
-
-    C --> E([🧭 Prowlarr]):::highlight
-    D --> E
-
-    E --> F([🛡️ FlareSolverr<br/>(Cloudflare)]):::block
-
-    F --> G([🔽 qBittorrent]):::highlight
-    G --> H([🔐 Gluetun VPN]):::block
-
-    H --> I([📥 Téléchargement]):::block
-    I --> J([🗂️ Tri & Organisation]):::block
-    J --> K([💬 Bazarr<br/>(Sous‑titres)]):::highlight
-
-    K --> L([🎞️ Plex<br/>(Bibliothèque)]):::block
