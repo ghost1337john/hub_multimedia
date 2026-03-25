@@ -31,14 +31,13 @@ Permet aux utilisateurs de demander films et séries.
 ### 🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
-🧹 Cleanuparr — Nettoyage automatisé
-Nouveau module permettant :
-
-le nettoyage des téléchargements terminés
-la suppression des torrents importés
-la gestion des fichiers orphelins
-la synchronisation propre avec Radarr/Sonarr
-la résolution des conflits de DB SQLite
+### 🧹 Cleanuparr — Nettoyage automatisé  
+Nouveau module permettant :  
+- le nettoyage des téléchargements terminés  
+- la suppression des torrents importés  
+- la gestion des fichiers orphelins  
+- la synchronisation propre avec Radarr/Sonarr  
+- la résolution des conflits de DB SQLite
 
 ## 🔗 Flux de fonctionnement
 
