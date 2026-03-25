@@ -1,11 +1,8 @@
----
 
 # 📺 Tutoriel de configuration de Sonarr (après installation)
 
 Sonarr est l’outil qui automatise la gestion de tes **séries TV** : recherche, téléchargement, renommage, tri, mise à jour…  
 Voici comment le configurer proprement après l’installation.
-
----
 
 # 1️⃣ Accéder à Sonarr
 
