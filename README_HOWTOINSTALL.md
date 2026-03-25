@@ -1,4 +1,4 @@
-```markdown
+
 ## 🛠️ Prérequis
 
 Avant d’installer ce hub multimédia, assure-toi de disposer des éléments suivants :
