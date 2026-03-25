@@ -41,7 +41,7 @@ Nouveau module permettant :
 
 ## 🔗 Flux de fonctionnement
 
-<img width="1426" height="5475" alt="User-Centric Media Download-2026-03-25-152838" src="https://github.com/user-attachments/assets/5af8e1f6-3cfd-4233-93e5-07bf50f34e83" />
+<img width="266" height="1024" alt="image" src="https://github.com/user-attachments/assets/48df5337-dee5-4fc5-9c82-bdc598a28201" />
 
 # 🗂️ Historique des versions
 
