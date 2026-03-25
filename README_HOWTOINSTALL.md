@@ -55,7 +55,7 @@ Organise tes points de montage sur ton serveur comme ceci :
   ├── series
   └── qbittorrent/
         └── downloads/
-po
+
 ### 🔑 Fichier `.env`
 Crée un fichier `.env` à la racine du projet :
 
