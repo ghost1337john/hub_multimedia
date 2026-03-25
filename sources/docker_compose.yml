@@ -178,3 +178,31 @@ services:
         restart: true
     network_mode: service:gluetun
     restart: unless-stopped
+
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    depends_on:
+      - radarr
+      - sonarr
+    restart: unless-stopped
+    ports:
+      - "11011:11011"
+    volumes:
+      - /app/cleanuparr/config:/config
+      # Mount your downloads directory if needed
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    environment:
+      - PORT=11011
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/Paris
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://192.168.1.2:11011/health"]
+      interval: 30s        # Check every 30 seconds
+      timeout: 10s         # Allow up to 10 seconds for response
+      start_period: 30s    # Wait 30 seconds before first check
+      retries: 3           # Mark unhealthy after 3 consecutive failures
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.14
