@@ -1,3 +1,10 @@
+networks:
+  network_hub_multimedia:
+    name: network_hub_multimedia
+    ipam:
+      config:
+        - subnet: 172.19.0.0/24
+
 services:
   gluetun:
     image: qmcgaw/gluetun:v3
@@ -6,6 +13,9 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.3
     ports:
       - 8080:8080/tcp # qbittorrent
       - 6881:6881 # qbittorrent torrent port
