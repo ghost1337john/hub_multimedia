@@ -49,7 +49,6 @@ sudo mkdir -p \
 ### 📁 Points de montage du NAS par rapport au script 
 Organise tes points de montage sur ton serveur comme ceci :
 
-
 /data/
   ├── films 
   ├── series
