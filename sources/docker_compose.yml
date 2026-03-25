@@ -97,6 +97,9 @@ services:
       - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
     ports:
       - 8989:8989
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.6
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -114,6 +117,10 @@ services:
       - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
     ports:
       - 7878:7878
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.5
+        
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -130,6 +137,9 @@ services:
       - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
     ports:
       - 6767:6767
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.2
 
   seerr:
     container_name: seerr
@@ -150,6 +160,9 @@ services:
       - /app/seerr/config:/app/config
     ports:
       - 5055:5055
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.4
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
