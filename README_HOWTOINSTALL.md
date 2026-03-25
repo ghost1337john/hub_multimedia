@@ -80,6 +80,14 @@ REMARQUE : POUR QUE LE TRANSFERT DE PORT FONCTIONNE, VOUS DEVEZ AJOUTER «
 
 <img width="1055" height="738" alt="image" src="https://github.com/user-attachments/assets/2b364b33-b5cc-4d03-8619-dd9c0b8f0363" />
 
+Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle configuration WireGuard.
+Sélectionnez Router, aucun filtrage, et « NAT‑PMP (Port Forwarding) ». Désélectionnez VPN
+Accelerator. Lorsque vous cliquez sur Create, une fenêtre affichera la configuration. Copiez la
+PrivateKey.
+
+<img width="1040" height="851" alt="image" src="https://github.com/user-attachments/assets/21c5f167-0c1d-4723-88b5-b6bbf737a88a" />
+
+Exemple de fichier avec les informations : 
 
 ```
 PUID=1000
@@ -88,17 +96,17 @@ TZ=Europe/Paris
 
 MEDIA_DIR=/data
 
-OPENVPN_USER=
-OPENVPN_PASSWORD=
-WIREGUARD_PRIVATE_KEY=
-SERVER_COUNTRIES=
+OPENVPN_USER=kokorasta695
+OPENVPN_PASSWORD=rgijo7r8g7r@
+WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
+SERVER_COUNTRIES=Spain,Portugal
 ```
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation avec docker
 
-### 1️⃣ Cloner le dépôt
+### 1️⃣ Cloner le dépôt sur votre linux dans un répertoire de travail (ex : /home/$user/docker) :
 
 ```bash
 git clone https://github.com/ghost1337john/hub_multimedia.git
