@@ -98,7 +98,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /app/sonarr/radarr:/config
+      - /app/radarr/config:/config
       - /data:/data
       - /data2:/data2
       - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
