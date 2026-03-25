@@ -106,14 +106,14 @@ SERVER_COUNTRIES=Spain,Portugal
 
 ## 🚀 Installation avec docker
 
-### 1️⃣ Cloner le dépôt sur votre linux dans un répertoire de travail (ex : /home/$user/docker) :
+### 1️⃣ Cloner le dépôt sur votre linux dans un répertoire de travail et placer vous dedans (ex : /home/$user/docker) 
 
 ```bash
 git clone https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia
+cd hub_multimedia/sources
 ```
 
-### 2️⃣ Configurer le fichier `.env`
+### 2️⃣ Configurer le fichier `.env` comme expliquer précédement 
 
 - Renseigne tes identifiants VPN
 - Vérifie les chemins de volumes
@@ -134,28 +134,76 @@ docker compose ps
 Les services doivent apparaître en **Up**.
 
 ---
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+## 🐳 Installation via Portainer (sans ligne de commande)
+Cette méthode permet d’installer tout le hub multimédia directement depuis Portainer, sans utiliser Docker en ligne de commande.
+
+🧭 1. Accéder à Portainer
+Ouvre ton navigateur
+
+Va sur l’adresse de ton Portainer :
+http://IP_DE_TON_SERVEUR:9000
+
+Connecte‑toi avec ton compte administrateur
+
+📁 2. Préparer les dossiers nécessaires
+
+Avant de déployer la stack, crée les dossiers des prérequis sur ton serveur.
+
+🧩 3. Créer la stack dans Portainer
+Dans le menu de gauche, clique sur Stacks
+
+Clique sur Add Stack
+
+Donne un nom à ta stack, par exemple :
+hub_multimedia
+
+Colle ton fichier docker-compose.yml dans le champ Web editor
+
+🔐 4. Ajouter le fichier .env
+Toujours dans la page de création de la stack :
+
+Descends jusqu’à la section Environment variables
+
+Clique sur Add an environment file
+
+Colle le contenu de ton .env
+
+Sauvegarde
+
+🚀 5. Déployer la stack
+Vérifie que ton docker-compose.yml et ton .env sont corrects
+
+Clique sur Deploy the stack
+
+Patiente quelques minutes pendant que Portainer télécharge et configure les conteneurs
+
+🔍 6. Vérifier que tout fonctionne
+Une fois la stack déployée :
+
+Retourne dans Stacks
+
+Clique sur hub_multimedia
+
+Vérifie que tous les conteneurs sont en Running
 
 ## 🌐 Accès aux services
 
 | Service       | URL locale                  |
 |---------------|-----------------------------|
-| Sonarr        | http://localhost:8989       |
-| Radarr        | http://localhost:7878       |
-| Bazarr        | http://localhost:6767       |
-| Seerr         | http://localhost:5055       |
-| Prowlarr      | http://localhost:9696       |
-| qBittorrent   | http://localhost:8080       |
-| FlareSolverr  | http://localhost:8191       |
+| Sonarr        | http://ipduserveur:8989       |
+| Radarr        | http://ipduserveur:7878       |
+| Bazarr        | http://ipduserveur:6767       |
+| Seerr         | http://ipduserveur:5055       |
+| Prowlarr      | http://ipduserveur:9696       |
+| qBittorrent   | http://ipduserveur:8080       |
+| FlareSolverr  | http://ipduserveur:8191       |
 
 > ⚠️ qBittorrent, Prowlarr et FlareSolverr passent par **Gluetun**, donc leurs ports sont exposés via le conteneur VPN.
 
 ---
+## 🌐 Configuration des différents services 
 
-Si tu veux, je peux aussi te générer :
-
-- une **section “Dépannage / Troubleshooting”**  
-- une **section “Mise à jour & maintenance”**  
-- un **diagramme Mermaid** pour ton README  
-- ou même une **optimisation avancée** (réseaux dédiés, labels Traefik, Watchtower, etc.)
-
-Tu veux pousser ton README encore plus loin J ?
+Je vais générer d'autres fichiers tutoriels pour la configuration depuis les interfaces. 
