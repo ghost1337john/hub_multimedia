@@ -4,40 +4,47 @@
 Avant d’installer ce hub multimédia, assure-toi de disposer des éléments suivants :
 
 ### 🔧 Matériel & système
-- Un serveur ou NAS capable de faire tourner Docker  
-- Linux recommandé (Debian, Ubuntu, Unraid, Proxmox, etc.)
-- Minimum conseillé :
-  - CPU : 2 cœurs
-  - RAM : 4 Go
-  - Stockage : 100 Go (selon ta bibliothèque)
+- Un serveur ou une machine virutelle capable de faire tourner Docker  
+- Linux recommandé (Debian, Ubuntu)
+- Accès administrateur (sudo) 
+- Config recommandée :
+  - CPU : 6 cœurs
+  - RAM : 12 Go
+  - Stockage : 128 Go (selon la bibliothèque)
+- Un NAS qui stocke vos fichiers (Series/Films)
+- Les partages du NAS paramétrés en montage automatique via le FSTAB
 
 ### 📦 Logiciels nécessaires
 - **Docker**  
 - **Docker Compose** (v2 ou supérieur)
-- Accès administrateur (sudo)
+- **Portainer** (Gestion des containers en WebUI)
 
 ### 🔐 VPN & réseau
 - Un compte **ProtonVPN** (compatible port forwarding)
 - Une clé **WireGuard** valide  
-- Ports ouverts sur ton réseau si tu veux accéder aux services depuis l’extérieur
 
 ### 📁 Arborescence recommandée
-Organise tes dossiers comme ceci :
+Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
 ```
 /app/
-  ├── gluetun/
-  ├── qbittorrent/
-  ├── prowlarr/
-  ├── sonarr/
-  ├── radarr/
+  ├── gluetun/config
+  ├── qbittorrent/config
+  ├── prowlarr/config
+  ├── sonarr/config
+  ├── radarr/config
   ├── bazarr/
   └── seerr/
 
-${MEDIA_DIR}/
+### 📁 Points de montage du NAS par rapport au script 
+Organise tes points de montage sur ton serveur comme ceci :
+
+```
+/data/
+  ├── films 
+  ├── series
   └── qbittorrent/
         └── downloads/
-```
 
 ### 🔑 Fichier `.env`
 Crée un fichier `.env` à la racine du projet :
