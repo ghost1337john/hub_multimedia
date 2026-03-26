@@ -1,187 +1,52 @@
-Sonarr : version 4.0.17.2952
+📺 Tutoriel de configuration de Sonarr (version simplifiée)
+Sonarr est un outil permettant d’automatiser la gestion de vos séries TV : ajout, suivi, organisation et import des épisodes.
+Ce guide présente uniquement les grandes étapes, sans entrer dans les détails techniques.
+Pour toute configuration avancée, merci de vous référer à la documentation officielle de Sonarr :
+👉 https://sonarr.tv/
 
-# 📺 Tutoriel de configuration de Sonarr (après installation)
+1️⃣ Accéder à Sonarr
+Après installation, Sonarr est accessible via :
+http://IP_DE_VOTRE_SERVEUR:8989
 
-Sonarr est l’outil qui automatise la gestion de tes **séries TV** : recherche, téléchargement, renommage, tri, mise à jour…  
-Voici comment le configurer proprement après l’installation.
+Lors de la première connexion, configurez simplement votre compte administrateur (nom d’utilisateur + mot de passe).
 
-# 1️⃣ Accéder à Sonarr
+2️⃣ Définir les dossiers principaux
+Sonarr doit connaître :
 
-Ouvre ton navigateur et va sur :
+Le dossier où se trouvent vos séries
 
-👉 **http://IP_DE_TON_SERVEUR:8989**
+Le dossier où arrivent vos téléchargements
 
-A la premiere connexion, il faudra configurer ton **UserAdmin** et **Password** avec Authentification type **Forms**
+Ces paramètres se configurent dans Settings → Media Management et Root Folders.
+Pour les chemins exacts, référez‑vous à votre propre structure ou à la documentation officielle.
 
----
+3️⃣ Ajouter un client de téléchargement
+Dans Settings → Download Clients, vous pouvez ajouter votre client (ex. qBittorrent).
 
-# 2️⃣ Configurer les dossiers
+Renseignez simplement les informations de connexion habituelles (adresse, port, identifiants).
+Les options avancées, catégories, gestion des téléchargements terminés, etc., sont expliquées en détail dans la documentation officielle.
 
-Avant toute chose, Sonarr doit savoir **où stocker tes séries** et **où récupérer les téléchargements**.
+4️⃣ Finaliser et tester
+Une fois les dossiers et le client configurés :
 
-### ➤ Dossier de la médiathèque
-Dans Sonarr :
+Cliquez sur Test pour vérifier la connexion
 
-1. Menu  → **Settings** → **Media Management**
-2. Active **Rename Episodes** et **Replace Illegal Characters**
-3. Active **Delete Empty Folders**
-4. Active **Unmonitor Deleted Episode**
-5. Clique sur **Add Root Folder** dans la catégorie **Root Folders**
-6. Choisis ton dossier séries, par exemple :  
-   **/data/series**
+Enregistrez avec Save
 
-### ➤ Dossier des téléchargements
+📚 Pour aller plus loin
+Ce guide volontairement simplifié ne couvre pas :
 
-Il a été configuré au moment du déploiement du container.
-Ce dossier est surveillé pour importer automatiquement les épisodes :
+Les réglages avancés de Media Management
 
-- **/data/qbittorrent/downloads**
+Les profils de qualité
 
-Il sera utilisé lors de la configuration du client torrent.
+Les indexers
 
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/26985f2d-2c9c-4407-b652-8b38dd3866cf" /><img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/f4a2fad6-ce5f-4f21-9f89-bd92351e0fd0" /><img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/29cc3156-902a-466a-8c30-8cb1f02a26bd" />
+Les catégories et automatisations
 
----
+Les options de nettoyage ou de renommage
 
-# 3️⃣ Ajouter un client torrent (qBittorrent)
+Les intégrations avec Radarr, Prowlarr, Bazarr, etc.
 
-1. Menu → **Settings**
-2. Onglet **Download Clients**
-3. Clique sur **+ Add**
-4. Choisis **qBittorrent**
-
-### ➤ Paramètres recommandés
-
-| Paramètre | Valeur |
-|----------|--------|
-| Name | qBittorrent |
-| Host | `qBittorrent` (Docker) ou `IP_DU_SERVEUR` |
-| Port | 8080 |
-| Username | admin (ou le tien) |
-| Password | ton mot de passe |
-| Category | sonarr |
-| Completed Download Handling | Remove Completed → Active
-
-### ➤ Test & Save
-- Clique sur **Test**  
-- Si OK → **Save**
-
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/7ed24951-cc0a-4536-b765-25f599eaa186" /><img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/e8206cb0-8d6e-4037-8188-7c23f9ca56f0" />
-
----
-
-# 4️⃣ Connecter Sonarr à Prowlarr
-
-C’est ce qui permet à Sonarr d’utiliser automatiquement tous tes indexers.
-
-### ➤ Étape 1 : Récupérer l’URL et la clé API de Sonarr
-Dans Sonarr :
-
-- Menu → **Settings → General**
-- Copie la **API Key**
-
-### ➤ Étape 2 : Dans Prowlarr
-1. Menu → **Settings**
-2. Onglet **Apps**
-3. **Add Application**
-4. Choisir **Sonarr**
-
-### ➤ Paramètres à renseigner
-
-| Paramètre | Valeur |
-|----------|--------|
-| Name | Sonarr |
-| Sync Level | Full Sync |
-| URL | `http://sonarr:8989` (Docker) ou `http://IP:8989` |
-| API Key | celle copiée dans Sonarr |
-
-Clique sur **Test**, puis **Save**.
-
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/5c4d9985-4db1-4d47-857e-b7effaebc576" />
-
----
-
-# 5️⃣ Configurer les profils de qualité dans Sonarr
-
-1. Menu → **Settings**
-2. Onglet **Profiles**
-3. Choisis ou ajout un **Quality profil** et modifier le à ta convenance :
-   - **HD-1080p**
-   - **HD-720p**
-   - **WEB-DL**
-   - etc
-  Tu peux personnaliser :
-   - les tailles max/min
-   - les priorités
-   - les formats acceptés
-4. Pour pouvoir supprimer un profil il faut activé l'affichage **Avancé** et afficher le profil puis **Delete*
-5. Choisis ou ajout un **Release profil** et modifier le à ta convenance puis **Enable Profile** : (exemple)
-   - Name : French Multi
-   - Must Contain : multi, french, truefrench, vf, vfi...
-
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/b8229123-8678-438c-a618-c49b01fe416d" />
-
----
-
-# 6️⃣ Configurer des customs formats (si besoin)
-
-1. Menu → **Settings**
-2. Onglet **Custom Formats**
-3. Choisis ou ajout un **Custom Format**
-4. Exemple pour s'assurer d'aller chercher un film contenant du français :
-   - Name : French
-   - Add Condition **Release Title**
-      - Name : FRENCH
-      - Regular Expression : FRENCH
-      - Required : Enable
-5. Retourne dans **Profiles** et selectionne un **Qualiity Profile** et tu verras que tu peux prioriser le **Custom Format** que tu as créé.
-
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/07940131-3792-45ff-828f-cb08aae956f2" />
-
----
-
-# 7️⃣ Ajouter une série (qui sera automatiser par la suite via des requêtes depuis Seer)
-
-1. Menu → **Series**
-2. **Add New Series**
-3. Tape le nom de la série
-4. Choisis :
-   - le dossier racine (`/data/series`)
-   - le profil de qualité
-   - ...
-5. Clique sur **Add**
-
-Sonarr va :
-- scanner ta médiathèque  
-- rechercher les épisodes manquants  
-- envoyer les requêtes à Prowlarr  
-- lancer les téléchargements via qBittorrent  
-
-<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/21508673-d30d-4708-a91a-d6e2d9744fea" />
-
----
-
-# 8️⃣ Vérifier le fonctionnement
-
-Pour tester :
-
-1. Ajoute une série
-2. Va dans la série → **Search → Season Search**
-3. Si des résultats apparaissent → tout fonctionne
-
----
-
-# 🎉 Configuration terminée
-
-Tu as maintenant un Sonarr :
-
-- connecté à Prowlarr  
-- lié à qBittorrent  
-- configuré pour importer automatiquement  
-- avec dossiers propres  
-- profils de qualité optimisés  
-
-Ton hub multimédia est opérationnel pour les séries.
-
----
-
+Pour une configuration complète, détaillée et toujours à jour, consultez :
+👉 https://wiki.servarr.com/sonarr
