@@ -61,7 +61,7 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 
 # 🗂️ Historique des versions
 
-### **v1.2.0 — 2026‑03‑26**
+### **v1.2.1 — 2026‑03‑26**
 - Ajout d’une note globale expliquant que les tutoriels sont volontairement simplifiés  
 - Réécriture complète des tutoriels : Sonarr, Radarr, Bazarr, Prowlarr, Seerr et CleanUpArr  
 - Harmonisation du style et de la structure de tous les fichiers du dossier `tuto_config`  
