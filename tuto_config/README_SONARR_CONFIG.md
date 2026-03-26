@@ -39,7 +39,7 @@ Ce dossier est surveillé pour importer automatiquement les épisodes :
 
 Il sera utilisé lors de la configuration du client torrent.
 
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/51aa7aaf-8b7f-486b-8480-49cb6cf3e895" /> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3cb902b5-596b-42e1-9ce9-3ff255c8d8f6" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/26985f2d-2c9c-4407-b652-8b38dd3866cf" />
 
 
 
