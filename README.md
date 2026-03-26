@@ -1,9 +1,11 @@
+> 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](english_docs/) folder.
+
 ⚠️ Disclaimer — Responsabilité
-L’auteur de ce projet ne peut être tenu responsable de l’usage qui en est fait.
-Chaque utilisateur est entièrement responsable de s’assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d’auteur.
+L'auteur de ce projet ne peut être tenu responsable de l'usage qui en est fait.
+Chaque utilisateur est entièrement responsable de s'assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d'auteur.
 
 Ce projet fournit uniquement une infrastructure technique destinée à la gestion de contenus obtenus légalement.
-Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est strictement interdite et se fait aux risques et périls de l’utilisateur.
+Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est strictement interdite et se fait aux risques et périls de l'utilisateur.
 
 # 🎬 Hub Multimédia Automatisé
 
