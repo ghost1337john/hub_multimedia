@@ -1,5 +1,11 @@
 # 🗂️ Historique des versions
 
+### **v1.5.0 — 2026‑03‑26**
+- Ajout du script d'installation automatique pour Windows (PowerShell + .bat)  
+- Ajout du docker-compose adapté Windows (sans `/dev/net/tun`, chemins Windows, Plex en port mapping)  
+- Ajout de la documentation Windows (`french_docs/` et `english_docs/`)  
+- Support de la conversion en `.exe` via ps2exe  
+
 ### **v1.4.4 — 2026‑03‑26**
 - Ajout dans la FAQ de la procédure pour vérifier la connexion VPN de Gluetun (logs, IP publique, API)  
 
