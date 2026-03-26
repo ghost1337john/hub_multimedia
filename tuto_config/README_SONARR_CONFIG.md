@@ -66,6 +66,8 @@ Il sera utilisé lors de la configuration du client torrent.
 - Clique sur **Test**  
 - Si OK → **Save**
 
+<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/7ed24951-cc0a-4536-b765-25f599eaa186" /><img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/e8206cb0-8d6e-4037-8188-7c23f9ca56f0" />
+
 ---
 
 # 4️⃣ Connecter Sonarr à Prowlarr
@@ -95,6 +97,8 @@ Dans Sonarr :
 
 Clique sur **Test**, puis **Save**.
 
+<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/5c4d9985-4db1-4d47-857e-b7effaebc576" />
+
 ---
 
 # 5️⃣ Configurer les profils de qualité dans Sonarr
@@ -115,6 +119,8 @@ Clique sur **Test**, puis **Save**.
    - Name : French Multi
    - Must Contain : multi, french, truefrench, vf, vfi...
 
+<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/b8229123-8678-438c-a618-c49b01fe416d" />
+
 ---
 
 # 6️⃣ Configurer des customs formats (si besoin)
@@ -129,6 +135,8 @@ Clique sur **Test**, puis **Save**.
       - Regular Expression : FRENCH
       - Required : Enable
 5. Retourne dans **Profiles** et selectionne un **Qualiity Profile** et tu verras que tu peux prioriser le **Custom Format** que tu as créé.
+
+<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/07940131-3792-45ff-828f-cb08aae956f2" />
 
 ---
 
@@ -148,6 +156,8 @@ Sonarr va :
 - rechercher les épisodes manquants  
 - envoyer les requêtes à Prowlarr  
 - lancer les téléchargements via qBittorrent  
+
+<img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/21508673-d30d-4708-a91a-d6e2d9744fea" />
 
 ---
 
