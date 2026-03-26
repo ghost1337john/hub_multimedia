@@ -67,6 +67,9 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 
 # 🗂️ Historique des versions
 
+### **v1.3.3 — 2026‑03‑26**
+- Ajout du README de la procédure de sauvegarde (`auto_deploy/README_SAVE_HUB.md`)  
+
 ### **v1.3.2 — 2026‑03‑26**
 - Ajout du README de l'autoscript (`auto_deploy/README_AUTOSCRIPT.md`)  
 - Ajout d'une mention de l'installation automatique en haut du `README_HOWTOINSTALL.md`  
