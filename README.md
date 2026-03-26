@@ -1,23 +1,36 @@
+⚠️ Disclaimer — Responsabilité
+L’auteur de ce projet ne peut être tenu responsable de l’usage qui en est fait.
+Chaque utilisateur est entièrement responsable de s’assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d’auteur.
+
+Ce projet fournit uniquement une infrastructure technique destinée à la gestion de contenus obtenus légalement.
+Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est strictement interdite et se fait aux risques et périls de l’utilisateur.
+
 # 🎬 Hub Multimédia Automatisé
 
-Ce projet met en place un écosystème multimédia complet, automatisé et sécurisé, basé sur Docker avec possibilité de le déployer via Portainer.
-Il gère le téléchargement, l’organisation, les sous‑titres, les demandes utilisateurs et la sécurité réseau via VPN.
+Ce projet est destiné exclusivement à la gestion de contenus multimédias.
+Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes de protection liés au droit d’auteur.
 
+🧩 Présentation
+Ce hub multimédia propose un écosystème complet, automatisé et sécurisé, basé sur Docker (ou Portainer).
+Il permet de gérer l’organisation, la récupération, les sous‑titres, les demandes utilisateurs et la sécurité réseau via VPN.
+
+L’objectif : offrir une infrastructure moderne sécurisée, propre et centralisée pour vos bibliothèques multimédias personnelles.
 ---
 
 ## 🧩 Services inclus
 
 ### 🔐 Gluetun — VPN + Firewall
-Gluetun assure la sécurité du réseau en encapsulant qBittorrent, Prowlarr et FlareSolverr dans un tunnel VPN.
+Assure la sécurité du réseau en encapsulant les services sensibles dans un tunnel VPN.
 
 ### 🧲 qBittorrent — Téléchargement sécurisé
-Client torrent fonctionnant **exclusivement via Gluetun**.
+Fonctionne uniquement via Gluetun pour garantir un trafic protégé.
+(L’usage doit respecter les lois en vigueur et se limiter à des contenus dont vous possédez les droits.)
 
 ### 🧭 Prowlarr — Gestionnaire d’indexers
 Centralise et synchronise les indexers pour Radarr et Sonarr.
 
 ### 📺 Sonarr — Séries automatisées
-Gère la recherche, le téléchargement et l’organisation des séries.
+Gère la recherche, l’importation et l’organisation de séries.
 
 ### 🎬 Radarr — Films automatisés
 Même fonctionnement que Sonarr, mais pour les films.
@@ -26,17 +39,21 @@ Même fonctionnement que Sonarr, mais pour les films.
 Télécharge et gère les sous‑titres pour Radarr et Sonarr.
 
 ### ⭐ Seerr — Interface de demandes utilisateurs
-Permet aux utilisateurs de demander films et séries.
+Permet aux utilisateurs de demander films et séries déjà présents ou à importer.
 
 ### 🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
 ### 🧹 Cleanuparr — Nettoyage automatisé  
 Nouveau module permettant :  
-- le nettoyage des téléchargements terminés  
+- le nettoyage des synchronisations terminées  
 - la suppression des torrents importés  
 - la gestion des fichiers orphelins  
-- la synchronisation propre avec Radarr/Sonarr  
+- la synchronisation propre avec Radarr/Sonarr
+
+# 📝 Note sur la configuration des services
+Afin de garder ce projet simple, évolutif et indépendant des préférences de chacun, je ne détaillerai pas la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.).
+Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut facilement trouver des guides complets en effectuant une recherche internet pour la configuration de chaque outil.
 
 ## 🔗 Flux de fonctionnement
 
@@ -44,9 +61,16 @@ Nouveau module permettant :
 
 # 🗂️ Historique des versions
 
+### **v1.2.0 — 2026‑03‑26**
+- Ajout du disclaimer légal concernant l’usage du projet
+- Mise à jour du README principal (clarification + conformité)
+- Actualisation de la documentation Sonarr (procédure, configuration, cohérence globale) 
+- Amélioration de la cohérence globale du projet
+- Ajustements mineurs sur la présentation des services  
+
 ### **v1.1.0 — 2026‑03‑25**
 - Ajout du module **Cleanuparr**  
-- Documentation complète ajoutée (installation + configuration + résolution SQLite Error 5)  
+- Documentation complète ajoutée (installation + configuration)  
 - Mise à jour du README principal  
 - Amélioration de la cohérence globale du projet  
 
