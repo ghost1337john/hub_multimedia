@@ -7,8 +7,9 @@ Pour toute configuration avancée, veuillez consulter la documentation officiell
 1️⃣ Accéder à Sonarr
 Une fois Sonarr installé, ouvrez l’interface via :
 
-Code
-http://IP_DE_VOTRE_SERVEUR:8989
+[Code
+http://IP_DE_VOTRE_SERVEUR:8989](http://IP_DE_VOTRE_SERVEUR:8989
+)
 Lors de la première ouverture, créez simplement votre compte administrateur.
 
 2️⃣ Définir les dossiers principaux
@@ -20,16 +21,16 @@ Les fichiers en cours de traitement
 
 Ces paramètres se configurent dans :
 
-Code
 Settings → Media Management
 Settings → Root Folders
+
 Les chemins exacts dépendent de votre propre organisation.
 
 3️⃣ Ajouter un client externe
 Dans :
 
-Code
 Settings → Download Clients
+
 …vous pouvez ajouter un service externe compatible (ex. qBittorrent).
 
 Renseignez uniquement les informations de connexion nécessaires (adresse, port, identifiants).
