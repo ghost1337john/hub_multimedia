@@ -1,5 +1,9 @@
 # 🗂️ Historique des versions
 
+### **v1.4.0 — 2026‑03‑26**
+- Ajout de la traduction complète du projet en anglais (dossier `en/`)  
+- 18 fichiers Markdown traduits : README, CHANGELOG, tutoriels, FAQ, scripts, diagramme  
+
 ### **v1.3.9 — 2026‑03‑26**
 - Mise à jour des recommandations matérielles dans `README_HOWTOINSTALL.md` : config minimale et recommandée, note sur le transcodage Plex  
 - Mise à jour des prérequis dans `auto_deploy/README_AUTOSCRIPT.md` : ajout des mêmes recommandations  
