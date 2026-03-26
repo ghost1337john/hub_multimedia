@@ -35,7 +35,9 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── radarr/config
   ├── cleanuparr/config
   ├── bazarr/
-  └── seerr/
+  ├── seerr/
+  ├── plex/config
+  └── tautulli/config
 
 #Afficher l'uid et le giud de l'utilisateur en cours :
 ```
@@ -55,6 +57,8 @@ sudo mkdir -p \
   /app/cleanuparr/config \
   /app/bazarr \
   /app/seerr \
+  /app/plex/config \
+  /app/tautulli/config \
 
 sudo mkdir /data
 ```
@@ -194,6 +198,7 @@ Vérifie que tous les conteneurs sont en Running
 
 | Service       | URL locale                  |
 |---------------|-----------------------------|
+| Plex          | http://ipduserveur:32400/web  |
 | Sonarr        | http://ipduserveur:8989       |
 | Radarr        | http://ipduserveur:7878       |
 | Bazarr        | http://ipduserveur:6767       |
@@ -201,6 +206,7 @@ Vérifie que tous les conteneurs sont en Running
 | Prowlarr      | http://ipduserveur:9696       |
 | qBittorrent   | http://ipduserveur:8080       |
 | FlareSolverr  | http://ipduserveur:8191       |
+| Tautulli      | http://ipduserveur:8181       |
 | Cleanuparr    | http://ipduserveur:11011       |
 
 > ⚠️ qBittorrent, Prowlarr et FlareSolverr passent par **Gluetun**, donc leurs ports sont exposés via le conteneur VPN.
@@ -213,6 +219,7 @@ Suivre cette ordre de configuration :
 
 | Service       |
 |---------------|
+| Plex          |
 | Sonarr        | 
 | Radarr        |
 | Bazarr        |
@@ -220,6 +227,7 @@ Suivre cette ordre de configuration :
 | FlareSolverr  |
 | qBittorrent   |
 | Seerr         |
+| Tautulli      |
 | Cleanuparr    |
 
 
