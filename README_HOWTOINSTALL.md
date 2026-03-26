@@ -55,8 +55,8 @@ sudo mkdir -p \
   /app/sonarr/config \
   /app/radarr/config \
   /app/cleanuparr/config \
-  /app/bazarr \
-  /app/seerr \
+  /app/bazarr/config \
+  /app/seerr/config \
   /app/plex/config \
   /app/tautulli/config \
 
