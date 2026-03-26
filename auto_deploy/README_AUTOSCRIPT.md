@@ -11,6 +11,18 @@ Ce script permet de déployer l'intégralité du hub multimédia sur un serveur 
 - Une connexion internet active
 - Un compte **ProtonVPN** avec une clé WireGuard valide
 - Les partages NAS montés dans `/data` et `/data2` (via fstab)
+- Config minimale :
+  - CPU : 4 cœurs
+  - RAM : 8 Go
+  - Stockage : 64 Go SSD
+- Config recommandée (confortable) :
+  - CPU : 6 cœurs
+  - RAM : 16 Go
+  - Stockage : 128 Go SSD
+
+> 💡 **Note sur Plex** : sans transcodage matériel (GPU), chaque flux transcodé peut consommer 1‑2 cœurs CPU.  
+> Avec du **Direct Play** (pas de transcodage), 4 cœurs / 8 Go suffisent.  
+> Avec **transcodage** pour 2‑3 utilisateurs simultanés, prévoir 6 cœurs / 16 Go ou un GPU compatible (Intel QuickSync, NVIDIA).
 
 ---
 

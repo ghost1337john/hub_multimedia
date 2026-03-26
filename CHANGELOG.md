@@ -1,5 +1,9 @@
 # 🗂️ Historique des versions
 
+### **v1.3.9 — 2026‑03‑26**
+- Mise à jour des recommandations matérielles dans `README_HOWTOINSTALL.md` : config minimale et recommandée, note sur le transcodage Plex  
+- Mise à jour des prérequis dans `auto_deploy/README_AUTOSCRIPT.md` : ajout des mêmes recommandations  
+
 ### **v1.3.8 — 2026‑03‑26**
 - Suppression de l'historique des versions du README principal, redirection vers `CHANGELOG.md`  
 - Ajout du tutoriel de configuration Plex (`tuto_config/README_PLEX_CONFIG.md`)  

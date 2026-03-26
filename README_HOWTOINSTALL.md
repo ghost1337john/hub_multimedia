@@ -12,10 +12,19 @@ Avant d’installer ce hub multimédia, assure-toi de disposer des éléments su
 - Un serveur ou une machine virtuelle capable de faire tourner Docker  
 - Linux recommandé (Debian, Ubuntu)
 - Accès administrateur (sudo) 
-- Config recommandée :
+- Config minimale :
+  - CPU : 4 cœurs
+  - RAM : 8 Go
+  - Stockage : 64 Go SSD
+- Config recommandée (confortable) :
   - CPU : 6 cœurs
-  - RAM : 12 Go
-  - Stockage : 128 Go (selon la bibliothèque)
+  - RAM : 16 Go
+  - Stockage : 128 Go SSD
+
+> 💡 **Note sur Plex** : sans transcodage matériel (GPU), chaque flux transcodé peut consommer 1‑2 cœurs CPU.  
+> Avec du **Direct Play** (pas de transcodage), 4 cœurs / 8 Go suffisent.  
+> Avec **transcodage** pour 2‑3 utilisateurs simultanés, prévoir 6 cœurs / 16 Go ou un GPU compatible (Intel QuickSync, NVIDIA).
+
 - Un NAS qui stocke vos fichiers (Series/Films)
 - Les partages du NAS paramétrés en montage automatique via le FSTAB
 - Un compte ProtonVPN payant
