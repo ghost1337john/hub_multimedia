@@ -1,5 +1,11 @@
 # 🗂️ Historique des versions
 
+### **v1.5.2 — 2026‑03‑27**
+- Refonte complète des README.md (racine, `french_docs/`, `english_docs/`) avec un style professionnel GreyWizard-Filter  
+- Ajout de badges (Docker, Plex, VPN, Licence), table des matières, et diagramme d'architecture  
+- Mise en forme améliorée : blocs disclaimer, descriptions enrichies des services, section prérequis et structure du projet  
+- Harmonisation du contenu entre les versions française et anglaise  
+
 ### **v1.5.1 — 2026‑03‑26**
 - Déplacement du projet Windows dans le dossier `windows_project_test/` (scripts + docs FR/EN)  
 - Génération de l'exécutable `install_hub_multimedia.exe` via ps2exe  
