@@ -63,7 +63,8 @@ mkdir -p \
   /app/flaresolverr/config \
   /app/cleanuparr/config \
   /app/tautulli/config \
-  /app/plex/config
+  /app/plex/config \
+  /app/portainer/config
 
 # --- 5. Création des dossiers de données ---
 echo "📁 Création des dossiers de données..."
@@ -125,4 +126,5 @@ echo " - qBittorrent   : http://$SERVER_IP:8080"
 echo " - FlareSolverr  : http://$SERVER_IP:8191"
 echo " - Tautulli      : http://$SERVER_IP:8181"
 echo " - Cleanuparr    : http://$SERVER_IP:11011"
+echo " - Portainer     : http://$SERVER_IP:9000"
 echo "-------------------------------------------"
