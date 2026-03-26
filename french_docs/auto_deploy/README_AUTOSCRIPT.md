@@ -10,6 +10,9 @@ Ce script permet de déployer l'intégralité du hub multimédia sur un serveur 
 - Un accès **root** ou **sudo**
 - Une connexion internet active
 - Un compte **ProtonVPN** avec une clé WireGuard valide
+
+Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle configuration WireGuard. Sélectionnez Router, aucun filtrage, et « NAT‑PMP (Port Forwarding) ». Désélectionnez VPN Accelerator. Lorsque vous cliquez sur Create, une fenêtre affichera la configuration. Copiez la PrivateKey.
+
 - Les partages NAS montés dans `/data` et `/data2` (via fstab)
 - Config minimale :
   - CPU : 4 cœurs

@@ -1,5 +1,9 @@
 # 🗂️ Version History
 
+### **v1.4.2 — 2026‑03‑26**
+- Added English documentation notice at the top of the main README  
+- Added WireGuard configuration instructions in the autoscript prerequisites (`french_docs/` and `english_docs/`)  
+
 ### **v1.4.1 — 2026‑03‑26**
 - Reorganized French documentation into the `french_docs/` folder  
 - 18 Markdown files copied into the mirrored `french_docs/` structure  

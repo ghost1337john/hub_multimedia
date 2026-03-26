@@ -10,6 +10,9 @@ This script allows you to deploy the entire multimedia hub on a **Debian 13 (Tri
 - **Root** or **sudo** access
 - An active internet connection
 - A **ProtonVPN** account with a valid WireGuard key
+
+For WireGuard, go to the Downloads section and create a new WireGuard configuration. Select Router, no filtering, and "NAT‑PMP (Port Forwarding)". Deselect VPN Accelerator. When you click Create, a window will display the configuration. Copy the PrivateKey.
+
 - NAS shares mounted in `/data` and `/data2` (via fstab)
 - Minimum configuration:
   - CPU: 4 cores
