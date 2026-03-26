@@ -19,6 +19,35 @@ Ces services passent par Gluetun (`network_mode: service:gluetun`). Si le VPN es
 - Vérifie que tu as ajouté `+pmp` à la fin de ton `OPENVPN_USER` dans le `.env`
 - Vérifie que `VPN_PORT_FORWARDING=on` est bien dans le docker-compose
 
+### Vérifier que Gluetun est bien connecté au VPN
+
+Pour confirmer que Gluetun a bien établi la connexion VPN, plusieurs méthodes :
+
+**1. Consulter les logs de Gluetun :**
+```bash
+docker logs gluetun
+```
+Cherche les lignes indiquant une connexion réussie :
+```
+INFO [vpn] connected to ...
+INFO [port forwarding] port forwarded is ...
+```
+Si tu vois des erreurs `AUTH` ou `TLS`, vérifie tes identifiants dans le `.env`.
+
+**2. Vérifier l'IP publique utilisée par le VPN :**
+```bash
+docker exec gluetun wget -qO- https://ipinfo.io
+```
+L'IP affichée doit être différente de ton IP réelle et correspondre au pays configuré dans `SERVER_COUNTRIES`.
+
+**3. Vérifier l'état via l'API intégrée de Gluetun (port 8000) :**
+```bash
+curl http://localhost:8000/v1/openvpn/status
+```
+Réponse attendue : `{"status":"running"}`
+
+> 💡 Si la connexion VPN est down, tous les services qui passent par Gluetun (qBittorrent, Prowlarr, FlareSolverr) seront inaccessibles.
+
 ---
 
 ## 📺 Plex

@@ -1,5 +1,8 @@
 # 🗂️ Version History
 
+### **v1.4.4 — 2026‑03‑26**
+- Added FAQ entry for verifying Gluetun VPN connection (logs, public IP, API)  
+
 ### **v1.4.3 — 2026‑03‑26**
 - Added instructions on how to retrieve PUID and PGID in installation guides and autoscript (`french_docs/` and `english_docs/`)  
 
