@@ -66,12 +66,25 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 <img width="1104" height="976" alt="Gemini_Generated_Image_6wk7c16wk7c16wk7" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
 
 # 🗂️ Historique des versions
+
+### **v1.3.2 — 2026‑03‑26**
+- Ajout du README de l'autoscript (`auto_deploy/README_AUTOSCRIPT.md`)  
+- Ajout d'une mention de l'installation automatique en haut du `README_HOWTOINSTALL.md`  
+
+### **v1.3.1 — 2026‑03‑26**
+- Ajout du volume config pour **FlareSolverr** dans le docker‑compose  
+- Mise à jour du `README_HOWTOINSTALL.md` : ajout de Plex, Tautulli et FlareSolverr dans l'arborescence, le mkdir et le tableau des accès  
+- Suppression du fichier `README_PLEX_INSTALL.md` (redondant)  
+- Renommage du dossier `test/` en `auto_deploy/`  
+- Réécriture complète du script de déploiement (`autoscript_install_hub_on_debian.sh`) pour Debian 13  
+- Réécriture du script de sauvegarde (`save_hub.sh`) : sauvegarde des configs des 11 containers, rotation automatique, vérification root  
+
 ### **v1.3.0 — 2026‑03‑26**
 - Ajout du container **Plex** dans le docker‑compose et le README principal  
 - Ajout du container **Tautulli** dans le docker‑compose  
 - Ajout du tutoriel de configuration Tautulli (`tuto_config/README_TAUTULLI_CONFIG.md`)  
 - Intégration de Plex dans la liste des services du README  
-- Mise à jour de l'historique des versions  
+
 ### **v1.2.2 — 2026‑03‑26**
 - Ajout du module **Tautulli** dans le README principal  
 - Description du service et rôle dans l’écosystème Plex  
