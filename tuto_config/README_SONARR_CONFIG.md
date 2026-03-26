@@ -1,3 +1,4 @@
+Sonarr : version 4.0.17.2952
 
 # 📺 Tutoriel de configuration de Sonarr (après installation)
 
@@ -19,12 +20,14 @@ Avant toute chose, Sonarr doit savoir **où stocker tes séries** et **où récu
 ### ➤ Dossier de la médiathèque
 Dans Sonarr :
 
-1. Menu → **Series**
-2. Clique sur **Add Root Folder**
+1. Menu → **Media Management** 
+2. Clique sur **Add Root Folder** dans la catégorie **Root Folders**
 3. Choisis ton dossier séries, par exemple :  
    **/data/series**
 
 ### ➤ Dossier des téléchargements
+
+Il a été configuré au moment du déploiement du container.
 Ce dossier est surveillé pour importer automatiquement les épisodes :
 
 - **/data/qbittorrent/downloads**
