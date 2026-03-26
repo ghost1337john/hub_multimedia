@@ -222,3 +222,18 @@ services:
     networks:
       network_hub_multimedia:
         ipv4_address: 172.19.0.15
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - VERSION=docker
+    volumes:
+      - /app/plex/config:/config
+      - /data:/movies
+      - /data2:/series
