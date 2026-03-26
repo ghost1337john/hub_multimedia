@@ -67,6 +67,10 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 
 # 🗂️ Historique des versions
 
+### **v1.3.4 — 2026‑03‑26**
+- Ajout des healthchecks manquants dans le docker‑compose : Prowlarr, Sonarr, Radarr, Bazarr, Tautulli et Plex  
+- Ajout des variables `PUID` et `PGID` dans le fichier `sources/.env`  
+
 ### **v1.3.3 — 2026‑03‑26**
 - Ajout du README de la procédure de sauvegarde (`auto_deploy/README_SAVE_HUB.md`)  
 
