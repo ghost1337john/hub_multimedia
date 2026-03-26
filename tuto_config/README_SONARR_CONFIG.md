@@ -11,6 +11,8 @@ Ouvre ton navigateur et va sur :
 
 👉 **http://IP_DE_TON_SERVEUR:8989**
 
+A la premiere connexion, il faudra configurer ton **UserAdmin** et **Password** avec Authentification type **Forms**
+
 ---
 
 # 2️⃣ Configurer les dossiers
@@ -20,9 +22,12 @@ Avant toute chose, Sonarr doit savoir **où stocker tes séries** et **où récu
 ### ➤ Dossier de la médiathèque
 Dans Sonarr :
 
-1. Menu → **Media Management** 
-2. Clique sur **Add Root Folder** dans la catégorie **Root Folders**
-3. Choisis ton dossier séries, par exemple :  
+1. Menu  → **Settings** → **Media Management**
+2. Active **Rename Episodes** et **Replace Illegal Characters**
+3. Active **Delete Empty Folders**
+4. Active **Unmonitor Deleted Episode**
+5. Clique sur **Add Root Folder** dans la catégorie **Root Folders**
+6. Choisis ton dossier séries, par exemple :  
    **/data/series**
 
 ### ➤ Dossier des téléchargements
@@ -33,6 +38,10 @@ Ce dossier est surveillé pour importer automatiquement les épisodes :
 - **/data/qbittorrent/downloads**
 
 Il sera utilisé lors de la configuration du client torrent.
+
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/51aa7aaf-8b7f-486b-8480-49cb6cf3e895" /> <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3cb902b5-596b-42e1-9ce9-3ff255c8d8f6" />
+
+
 
 ---
 
@@ -48,12 +57,12 @@ Il sera utilisé lors de la configuration du client torrent.
 | Paramètre | Valeur |
 |----------|--------|
 | Name | qBittorrent |
-| Host | `qbittorrent` (Docker) ou `IP_DU_SERVEUR` |
+| Host | `qBittorrent` (Docker) ou `IP_DU_SERVEUR` |
 | Port | 8080 |
 | Username | admin (ou le tien) |
 | Password | ton mot de passe |
 | Category | sonarr |
-| Completed Download Folder | `/data/qbittorrent/downloads` |
+| Completed Download Handling | Remove Completed → Active
 
 ### ➤ Test & Save
 - Clique sur **Test**  
@@ -90,40 +99,42 @@ Clique sur **Test**, puis **Save**.
 
 ---
 
-# 5️⃣ Configurer les profils de qualité
+# 5️⃣ Configurer les profils de qualité dans Sonarr
 
 1. Menu → **Settings**
-2. Onglet **Quality**
-3. Choisis un profil :
+2. Onglet **Profiles**
+3. Choisis ou ajout un **Quality profil** et modifier le à ta convenance :
    - **HD-1080p**
    - **HD-720p**
    - **WEB-DL**
-   - etc.
-
-Tu peux personnaliser :
-- les tailles max/min
-- les priorités
-- les formats acceptés
+   - etc
+  Tu peux personnaliser :
+   - les tailles max/min
+   - les priorités
+   - les formats acceptés
+4. Pour pouvoir supprimer un profil il faut activé l'affichage **Avancé** et afficher le profil puis **Delete*
+5. Choisis ou ajout un **Release profil** et modifier le à ta convenance puis **Enable Profile** : (exemple)
+   - Name : French Multi
+   - Must Contain : multi, french, truefrench, vf, vfi...
 
 ---
 
-# 6️⃣ Configurer les langues (si besoin)
+# 6️⃣ Configurer des customs formats (si besoin)
 
 1. Menu → **Settings**
-2. Onglet **Media Management**
-3. Section **Episode Naming**
-4. Active :
-   - **Rename Episodes**
-   - **Replace Illegal Characters**
-
-Tu peux aussi définir :
-- Langue préférée
-- Format du nom des fichiers
-- Format des dossiers
+2. Onglet **Custom Formats**
+3. Choisis ou ajout un **Custom Format**
+4. Exemple pour s'assurer d'aller chercher un film contenant du français :
+   - Name : French
+   - Add Condition **Release Title**
+      - Name : FRENCH
+      - Regular Expression : FRENCH
+      - Required : Enable
+5. Retourne dans **Profiles** et selectionne un **Qualiity Profile** et tu verras que tu peux prioriser le **Custom Format** que tu as créé.
 
 ---
 
-# 7️⃣ Ajouter une série
+# 7️⃣ Ajouter une série (qui sera automatiser par la suite via des requêtes depuis Seer)
 
 1. Menu → **Series**
 2. **Add New Series**
@@ -131,10 +142,8 @@ Tu peux aussi définir :
 4. Choisis :
    - le dossier racine (`/data/series`)
    - le profil de qualité
-   - la langue
-   - le monitoring (All / Future / None)
-
-Clique sur **Add**
+   - ...
+5. Clique sur **Add**
 
 Sonarr va :
 - scanner ta médiathèque  
