@@ -1,5 +1,8 @@
 # 🗂️ Historique des versions
 
+### **v1.3.7 — 2026‑03‑26**
+- Extraction de l'historique des versions dans un fichier dédié (`CHANGELOG.md`)  
+
 ### **v1.3.6 — 2026‑03‑26**
 - Mise à jour de la FAQ : ajout de la section Portainer  
 - Mise à jour du README `not_check_in_test` : statut d'intégration de Portainer et des healthchecks  
