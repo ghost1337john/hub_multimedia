@@ -41,10 +41,10 @@ Télécharge et gère les sous‑titres pour Radarr et Sonarr.
 ### ⭐ Seerr — Interface de demandes utilisateurs
 Permet aux utilisateurs de demander films et séries déjà présents ou à importer.
 
-### � Tautulli — Surveillance et statistiques Plex
+### Tautulli — Surveillance et statistiques Plex
 Fournit un tableau de bord complet pour surveiller l’activité Plex, l’usage des médias, les historiques de lecture et les alertes.
 
-### �🛡️ FlareSolverr — Contournement Cloudflare
+### 🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
 ### 🧹 Cleanuparr — Nettoyage automatisé  
