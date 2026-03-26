@@ -1,5 +1,9 @@
 # 🗂️ Historique des versions
 
+### **v1.3.8 — 2026‑03‑26**
+- Suppression de l'historique des versions du README principal, redirection vers `CHANGELOG.md`  
+- Ajout du tutoriel de configuration Plex (`tuto_config/README_PLEX_CONFIG.md`)  
+
 ### **v1.3.7 — 2026‑03‑26**
 - Extraction de l'historique des versions dans un fichier dédié (`CHANGELOG.md`)  
 
