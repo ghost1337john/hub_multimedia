@@ -68,6 +68,12 @@ WIREGUARD_PRIVATE_KEY=ta_cle_privee
 SERVER_COUNTRIES=Spain,Portugal
 ```
 
+> 💡 **Comment récupérer PUID et PGID ?** Exécutez la commande `id` dans votre terminal. La valeur après `uid=` correspond au **PUID** et celle après `gid=` au **PGID**.
+> ```bash
+> id
+> # uid=1000(plex) gid=1000(plex) → PUID=1000, PGID=1000
+> ```
+
 > ⚠️ Le fichier `.env` est **obligatoire**. Sans lui, le script s'arrêtera avec une erreur.
 
 ### 3. Lancer le script d'installation

@@ -1,5 +1,8 @@
 # 🗂️ Historique des versions
 
+### **v1.4.3 — 2026‑03‑26**
+- Ajout des instructions pour récupérer le PUID et PGID dans les guides d'installation et l'autoscript (`french_docs/` et `english_docs/`)  
+
 ### **v1.4.2 — 2026‑03‑26**
 - Ajout de la mention de la documentation anglaise en haut du README principal  
 - Ajout des instructions de configuration WireGuard dans les prérequis de l'autoscript (`french_docs/` et `english_docs/`)  

@@ -55,13 +55,25 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── tautulli/config
   └── portainer/config
 
-#Afficher l'uid et le giud de l'utilisateur en cours :
+#Récupérer le PUID et le PGID de l'utilisateur
+
+Les valeurs **PUID** (User ID) et **PGID** (Group ID) permettent aux containers Docker de s'exécuter avec les mêmes permissions que votre utilisateur sur le système hôte. Pour les récupérer, exécutez la commande `id` dans votre terminal :
+
+```bash
+id
 ```
-plex@SRV-PLEX:~$id
+
+Résultat attendu :
+```
 uid=1000(plex) gid=1000(plex)
 groupes=1000(plex),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plu
 gdev),100(users),101(netdev)
 ```
+
+- **PUID** = la valeur après `uid=` → ici `1000`
+- **PGID** = la valeur après `gid=` → ici `1000`
+
+> 💡 Reportez ces valeurs dans votre fichier `.env` pour que les containers aient les bons droits sur vos fichiers.
 #Création des répertoires en une ligne de commande :
 ```
 sudo mkdir -p \
