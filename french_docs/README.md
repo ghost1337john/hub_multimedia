@@ -1,73 +1,279 @@
-⚠️ Disclaimer — Responsabilité
-L'auteur de ce projet ne peut être tenu responsable de l'usage qui en est fait.
-Chaque utilisateur est entièrement responsable de s'assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d'auteur.
+> 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](../english_docs/) folder.
 
-Ce projet fournit uniquement une infrastructure technique destinée à la gestion de contenus obtenus légalement.
-Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est strictement interdite et se fait aux risques et périls de l'utilisateur.
+---
+
+> ⚠️ **Disclaimer — Responsabilité**
+>
+> L'auteur de ce projet ne peut être tenu responsable de l'usage qui en est fait.
+> Chaque utilisateur est entièrement responsable de s'assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d'auteur.
+>
+> Ce projet fournit uniquement une infrastructure technique destinée à la gestion de contenus **obtenus légalement**.
+> Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est **strictement interdite** et se fait aux risques et périls de l'utilisateur.
+
+---
 
 # 🎬 Hub Multimédia Automatisé
+
+> *Un écosystème Docker complet, sécurisé et automatisé pour vos bibliothèques multimédias personnelles.*
+
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+![Docker Compose](https://img.shields.io/badge/Docker%20Compose-v2-2496ED?logo=docker&logoColor=white)
+![Plex](https://img.shields.io/badge/Plex-Media%20Server-E5A00D?logo=plex&logoColor=white)
+![VPN](https://img.shields.io/badge/VPN-ProtonVPN-6D4AFF?logo=protonvpn&logoColor=white)
+![License](https://img.shields.io/badge/Usage-Personnel%20uniquement-green)
 
 Ce projet est destiné exclusivement à la gestion de contenus multimédias.
 Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes de protection liés au droit d'auteur.
 
-🧩 Présentation
-Ce hub multimédia propose un écosystème complet, automatisé et sécurisé, basé sur Docker (ou Portainer).
-Il permet de gérer l'organisation, la récupération, les sous‑titres, les demandes utilisateurs et la sécurité réseau via VPN.
-
-L'objectif : offrir une infrastructure moderne sécurisée, propre et centralisée pour vos bibliothèques multimédias personnelles.
 ---
 
-## 🧩 Services inclus
+## 📋 Table des matières
 
-### 🔐 Gluetun — VPN + Firewall
-Assure la sécurité du réseau en encapsulant les services sensibles dans un tunnel VPN.
+- [🧩 Présentation](#-présentation)
+- [⚙️ Services inclus](#️-services-inclus)
+- [🏗️ Architecture](#️-architecture)
+- [🔗 Flux de fonctionnement](#-flux-de-fonctionnement)
+- [🚀 Installation rapide](#-installation-rapide)
+- [🛠️ Prérequis](#️-prérequis)
+- [📁 Structure du projet](#-structure-du-projet)
+- [📝 Note sur la configuration](#-note-sur-la-configuration)
+- [❓ FAQ / Dépannage](#-faq--dépannage)
+- [🗂️ Historique des versions](#️-historique-des-versions)
 
-### 🧲 qBittorrent — Téléchargement sécurisé
-Fonctionne uniquement via Gluetun pour garantir un trafic protégé.
-(L'usage doit respecter les lois en vigueur et se limiter à des contenus dont vous possédez les droits.)
+---
 
-### 🧭 Prowlarr — Gestionnaire d'indexers
-Centralise et synchronise les indexers pour Radarr et Sonarr.
+## 🧩 Présentation
 
-### 📺 Sonarr — Séries automatisées
-Gère la recherche, l'importation et l'organisation de séries.
+Ce hub multimédia propose un **écosystème complet, automatisé et sécurisé**, basé sur Docker (ou Portainer).
+Il permet de gérer l'organisation, la récupération, les sous‑titres, les demandes utilisateurs et la sécurité réseau via VPN.
 
-### 🎬 Radarr — Films automatisés
-Même fonctionnement que Sonarr, mais pour les films.
+**L'objectif :** offrir une infrastructure moderne, sécurisée, propre et centralisée pour vos bibliothèques multimédias personnelles.
 
-### 💬 Bazarr — Sous‑titres automatiques
-Télécharge et gère les sous‑titres pour Radarr et Sonarr.
+---
 
-### ⭐ Seerr — Interface de demandes utilisateurs
-Permet aux utilisateurs de demander films et séries déjà présents ou à importer.
+## ⚙️ Services inclus
 
-### 📺 Plex — Serveur multimédia
-Permet de centraliser, organiser et diffuser vos films, séries et musiques sur tous vos appareils (TV, mobile, navigateur).
+| # | Service | Rôle | Port |
+|---|---------|------|------|
+| 1 | 🔐 **Gluetun** | VPN + Firewall (tunnel ProtonVPN) | — |
+| 2 | 🧲 **qBittorrent** | Téléchargement sécurisé via VPN | 8080 |
+| 3 | 🧭 **Prowlarr** | Gestionnaire d'indexers centralisé | 9696 |
+| 4 | 📺 **Sonarr** | Automatisation des séries TV | 8989 |
+| 5 | 🎬 **Radarr** | Automatisation des films | 7878 |
+| 6 | 💬 **Bazarr** | Sous‑titres automatiques | 6767 |
+| 7 | ⭐ **Seerr** | Interface de demandes utilisateurs | 5055 |
+| 8 | 📺 **Plex** | Serveur multimédia (streaming) | 32400 |
+| 9 | 📊 **Tautulli** | Surveillance et statistiques Plex | 8181 |
+| 10 | 🛡️ **FlareSolverr** | Contournement Cloudflare pour Prowlarr | 8191 |
+| 11 | 🐳 **Portainer** | Gestion des containers en WebUI | 9000 |
+| 12 | 🧹 **Cleanuparr** | Nettoyage automatisé des téléchargements | 11011 |
 
-### 📊 Tautulli — Surveillance et statistiques Plex
-Fournit un tableau de bord complet pour surveiller l'activité Plex, l'usage des médias, les historiques de lecture et les alertes.
+> ⚠️ **qBittorrent**, **Prowlarr** et **FlareSolverr** passent par **Gluetun** — leurs ports sont exposés via le conteneur VPN.
 
-### 🛡️ FlareSolverr — Contournement Cloudflare
-Proxy permettant à Prowlarr d'accéder aux indexers protégés.
+---
 
-### 🐳 Portainer — Gestion des containers en WebUI
-Interface graphique pour gérer, surveiller et administrer l'ensemble des containers Docker depuis un navigateur.
+## 🏗️ Architecture
 
-### 🧹 Cleanuparr — Nettoyage automatisé  
-Nouveau module permettant :  
-- le nettoyage des synchronisations terminées  
-- la suppression des torrents importés  
-- la gestion des fichiers orphelins  
-- la synchronisation propre avec Radarr/Sonarr
+```
+┌─────────────────────────────────────────────────────────┐
+│                    HUB MULTIMÉDIA                       │
+│                                                         │
+│  ┌──────────┐    ┌──────────┐    ┌──────────────────┐   │
+│  │  Seerr   │───▶│  Radarr  │───▶│                  │   │
+│  │ (5055)   │    │  (7878)  │    │   qBittorrent    │   │
+│  └──────────┘    └──────────┘    │     (8080)       │   │
+│       │          ┌──────────┐    │  via Gluetun VPN │   │
+│       └─────────▶│  Sonarr  │───▶│                  │   │
+│                  │  (8989)  │    └──────────────────┘   │
+│                  └──────────┘             │             │
+│                       │                  ▼             │
+│              ┌─────────────────┐  ┌──────────────┐     │
+│              │    Prowlarr     │  │  FlareSolverr │     │
+│              │     (9696)      │  │    (8191)     │     │
+│              └─────────────────┘  └──────────────┘     │
+│                       │                                 │
+│              ┌─────────────────┐                        │
+│              │     Bazarr      │                        │
+│              │     (6767)      │                        │
+│              └─────────────────┘                        │
+│                       │                                 │
+│              ┌─────────────────┐  ┌──────────────┐     │
+│              │      Plex       │  │  Cleanuparr  │     │
+│              │    (32400)      │  │   (11011)    │     │
+│              └─────────────────┘  └──────────────┘     │
+│                       │                                 │
+│              ┌─────────────────┐  ┌──────────────┐     │
+│              │    Tautulli     │  │  Portainer   │     │
+│              │     (8181)      │  │   (9000)     │     │
+│              └─────────────────┘  └──────────────┘     │
+└─────────────────────────────────────────────────────────┘
+```
 
-# 📝 Note sur la configuration des services
-Afin de garder ce projet simple, évolutif et indépendant des préférences de chacun, je ne détaillerai pas la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.).
-Chaque utilisateur est libre d'adapter l'écosystème à ses besoins et peut facilement trouver des guides complets en effectuant une recherche internet pour la configuration de chaque outil.
+---
 
 ## 🔗 Flux de fonctionnement
 
-<img width="1104" height="976" alt="Gemini_Generated_Image_6wk7c16wk7c16wk7" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
+<img width="1104" height="976" alt="Schéma du flux des services hub_multimedia" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
 
-# 🗂️ Historique des versions
+---
+
+## 🚀 Installation rapide
+
+> 💡 **Sur Debian 13**, utilise le script automatique : [`auto_deploy/README_AUTOSCRIPT.md`](../auto_deploy/README_AUTOSCRIPT.md)
+
+### Étapes en 4 commandes
+
+```bash
+# 1. Cloner le dépôt
+git clone https://github.com/ghost1337john/hub_multimedia.git
+cd hub_multimedia/sources
+
+# 2. Créer et configurer le fichier .env
+cp .env.example .env   # puis éditer avec vos identifiants VPN
+
+# 3. Créer les répertoires nécessaires
+sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
+sudo mkdir -p /data/qbittorrent/downloads
+
+# 4. Lancer la stack
+docker compose up -d
+```
+
+> Pour une installation complète et détaillée, consulte [`README_HOWTOINSTALL.md`](README_HOWTOINSTALL.md)
+
+---
+
+## 🛠️ Prérequis
+
+### 🔧 Matériel & système
+
+| Composant | Minimum | Recommandé |
+|-----------|---------|------------|
+| CPU | 4 cœurs | 6 cœurs |
+| RAM | 8 Go | 16 Go |
+| Stockage | 64 Go SSD | 128 Go SSD |
+| OS | Linux (Debian/Ubuntu) | Debian 13 |
+
+> 💡 Sans GPU, chaque flux Plex transcodé consomme 1–2 cœurs CPU.
+
+### 📦 Logiciels requis
+
+- **Docker** (dernière version stable)
+- **Docker Compose** v2 ou supérieur
+- **Git**
+
+### 🔐 VPN & réseau
+
+- Compte **ProtonVPN** actif (compatible port forwarding)
+- Clé **WireGuard** valide (ou identifiants OpenVPN)
+
+---
+
+## 📁 Structure du projet
+
+```
+hub_multimedia/
+├── sources/
+│   ├── docker_compose.yml      # Stack Docker principale
+│   └── .env                    # Variables d'environnement (VPN, chemins)
+├── auto_deploy/
+│   ├── autoscript_install_hub_on_debian.sh
+│   └── README_AUTOSCRIPT.md
+├── french_docs/
+│   ├── README.md               # Ce fichier
+│   ├── README_HOWTOINSTALL.md
+│   ├── README_SOURCES.md
+│   └── tuto_config/            # Tutoriels de configuration par service
+├── english_docs/
+│   ├── README.md
+│   ├── README_HOWTOINSTALL.md
+│   └── tuto_config/
+├── CHANGELOG.md
+└── README.md                   # README racine (français)
+```
+
+---
+
+## 📝 Note sur la configuration
+
+Afin de garder ce projet **simple, évolutif et indépendant** des préférences de chacun, la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) n'est pas détaillée ici.
+
+Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutoriels dédiés sont disponibles dans le dossier [`tuto_config/`](tuto_config/).
+
+---
+
+## ❓ FAQ / Dépannage
+
+<details>
+<summary>🔴 Un container ne démarre pas</summary>
+
+```bash
+# Vérifier les logs du container
+docker logs <nom_du_container>
+
+# Vérifier l'état de tous les services
+docker compose ps
+```
+</details>
+
+<details>
+<summary>🔴 Gluetun / VPN ne se connecte pas</summary>
+
+```bash
+# Vérifier les logs Gluetun
+docker logs gluetun
+
+# Vérifier l'IP publique actuelle (doit être celle du VPN)
+docker exec gluetun wget -qO- https://api.ipify.org
+```
+
+Vérifie que ta clé WireGuard et tes identifiants ProtonVPN sont corrects dans le fichier `.env`.
+</details>
+
+<details>
+<summary>🔴 qBittorrent / Prowlarr inaccessibles</summary>
+
+Ces services passent par Gluetun. S'ils sont inaccessibles, vérifie d'abord que **Gluetun est en bonne santé** (`healthy`).
+
+```bash
+docker compose ps gluetun
+```
+</details>
+
+<details>
+<summary>🔴 Problèmes de permissions sur les fichiers</summary>
+
+```bash
+# Vérifier ton PUID/PGID
+id
+
+# Réappliquer les permissions
+sudo chown -R 1000:1000 /app
+sudo chown -R 1000:1000 /data
+```
+
+Assure-toi que `PUID` et `PGID` dans le fichier `.env` correspondent à ton utilisateur.
+</details>
+
+<details>
+<summary>🔵 Mettre à jour les containers</summary>
+
+```bash
+docker compose pull
+docker compose up -d
+```
+</details>
+
+<details>
+<summary>🔵 Arrêter proprement la stack</summary>
+
+```bash
+docker compose down
+```
+</details>
+
+---
+
+## 🗂️ Historique des versions
 
 Consulte le fichier [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
