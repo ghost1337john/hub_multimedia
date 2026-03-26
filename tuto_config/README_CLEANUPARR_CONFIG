@@ -1,72 +1,79 @@
-# 🧹 Cleanuparr — Configuration via Interface Web
+# 🧹 Tutoriel de configuration de CleanUpArr (version simplifiée)
 
-Cleanuparr dispose d’une interface web simple pour gérer le nettoyage automatique des torrents et fichiers orphelins.  
-Voici comment la configurer étape par étape.
+CleanUpArr est un outil permettant de maintenir propre et cohérente votre bibliothèque multimédia en automatisant certaines tâches de nettoyage.  
+Ce guide présente uniquement les grandes étapes, sans entrer dans les détails techniques.  
+Pour toute configuration avancée, veuillez consulter la documentation officielle du projet.
 
----
-
-## 🔐 Accès à l’interface
-
-1. Ouvre ton navigateur et accède à l’URL de Cleanuparr :  
-   `http://localhost:PORT` ou `http://IP_DU_SERVEUR:PORT`  
-   *(par défaut : 11011 ou celui défini dans ton `docker-compose.yml`)*
-
-2. Tu arrives sur le tableau de bord Cleanuparr.
+https://github.com/cleanuparr/cleanuparr
 
 ---
 
-## ⚙️ Configuration des services
+## 1️⃣ Accéder à CleanUpArr
 
-### 1. Onglet **Radarr**
-
-- **Name** : Radarr 
-- **URL** : `http://radarr:7878` *(ou l’IP locale si hors Docker)*  
-- **API Key** : récupère-la dans Radarr → Settings → General → Security  
-- **Activer** : coche la case pour activer le nettoyage Radarr
-
-### 2. Onglet **Sonarr**
-
-- **Name** : Sonarr
-- **URL** : `http://sonarr:8989`  
-- **API Key** : idem, dans Sonarr → Settings → General  
-- **Activer** : coche la case pour activer le nettoyage Sonarr
-
-### 3. Onglet **Download Clients**
-
-- **Name** : qBittorrent
-- **URL** : `http://qbittorrent:8080`  
-- **Identifiants** : `admin / password
-- **Activer** : coche la case pour supprimer les torrents importés
+Une fois CleanUpArr installé, ouvrez l’interface via l’adresse configurée dans votre environnement.  
+Selon votre installation, cela peut ressembler à : http://IP_DE_VOTRE_SERVEUR:PORT
 
 ---
 
-## 🧼 Options de nettoyage
+## 2️⃣ Associer CleanUpArr à vos services *Arr
 
-Dans l’onglet **Queue Cleaner** :
+Dans :
 
-- **Activer** : coche la case 
+Settings → Services
 
-Dans l’onglet **Download Cleaner** :
 
-- **Activer** : coche la case pour supprimer les torrents importés
-- Ajout deux catégories pour radarr et sonarr
-- Règles à 0 : Max Ratio, Min Seed Time, Max Seed Time
-- Privacy Type : Both 
-- Delete Sources Files : Activer 
----
+Ajoutez les applications que vous souhaitez intégrer (Sonarr, Radarr, etc.) en renseignant :
 
-## 🧪 Test manuel
+- L’adresse du service  
+- Le port  
+- La clé API  
 
-Tu peux lancer un nettoyage à la main :
-
-- Bouton **Dry Run** : simule le nettoyage sans rien supprimer  
-- Bouton **Run Now** : exécute le nettoyage immédiatement
+CleanUpArr utilisera ces connexions pour analyser et nettoyer les éléments concernés.
 
 ---
 
-## 📄 Logs & Résultats
+## 3️⃣ Configurer les règles de nettoyage
 
-- Onglet **Logs** : affiche les actions effectuées  
-- Onglet **Status** : montre les fichiers supprimés, les torrents nettoyés, les erreurs éventuelles
+Dans :
+
+Settings → Queue Cleaner
+Settings → Download Cleaner
+
+Vous pouvez activer ou désactiver les règles proposées par CleanUpArr.  
+Chaque règle peut être ajustée selon vos préférences.  
+Les explications détaillées sont disponibles dans la documentation officielle.
 
 ---
+
+## 4️⃣ Lancer une analyse
+
+Dans :
+
+Dashboard → Jobs → Run Now
+
+Vous pouvez lancer une analyse manuelle pour vérifier l’état de votre bibliothèque.  
+Les actions proposées dépendront des règles activées.
+
+---
+
+## 5️⃣ Finaliser et automatiser
+
+Une fois la configuration terminée :
+
+- Vérifiez que les services sont bien connectés  
+- Activez l’automatisation si souhaité  
+- Enregistrez avec **Save**
+
+---
+
+## 📚 Pour aller plus loin
+
+Ce guide volontairement simplifié ne couvre pas :
+
+- Les règles avancées  
+- Les actions automatiques complexes  
+- Les intégrations externes supplémentaires  
+- Les paramètres de logs ou de diagnostic  
+
+Pour une configuration complète et toujours à jour, référez‑vous à la documentation officielle du projet.
+https://github.com/cleanuparr/cleanuparr
