@@ -1,160 +1,91 @@
-# 🎟️ Configuration de Seerr (après installation)
+# ⭐ Tutoriel de configuration de Seerr (version simplifiée)
 
-Seerr est l’interface utilisateur qui permet de **faire des demandes de films et séries**.  
-Il se connecte directement à Radarr, Sonarr et Plex pour automatiser l’ajout de contenus à ton hub multimédia.
-
-Voici comment le configurer proprement après son installation.
+Seerr est une interface permettant aux utilisateurs de faire des demandes de films et séries, et de suivre l’état de leur ajout dans votre bibliothèque.  
+Ce guide présente uniquement les grandes étapes, sans entrer dans les détails techniques.  
+Pour toute configuration avancée, veuillez consulter la documentation officielle :  
+👉 https://docs.seerr.dev/
 
 ---
 
 ## 1️⃣ Accéder à Seerr
 
-Ouvre ton navigateur et rends‑toi sur :
+Une fois Seerr installé, ouvrez l’interface via : http://IP_DE_VOTRE_SERVEUR:5055
 
-**http://IP_DE_TON_SERVEUR:5055**
 
-Lors de la première connexion, Seerr te demandera de créer un compte administrateur.
-
----
-
-## 2️⃣ Connecter Seerr à Plex
-
-Cette étape permet à Seerr de récupérer :
-
-- les utilisateurs Plex  
-- ta médiathèque  
-- les statuts “déjà vu / en cours / disponible”  
-
-### ➤ Étape 1 : Récupérer le token Plex
-
-1. Connecte‑toi à Plex dans ton navigateur  
-2. Va dans **Paramètres → Compte**  
-3. Le token peut être récupéré via l’URL (ou via les outils Plex)
-
-### ➤ Étape 2 : Ajouter Plex dans Seerr
-
-Dans Seerr :
-
-1. Menu → **Settings**
-2. Onglet **Plex**
-3. Clique sur **Sign in with Plex**
-4. Autorise Seerr à accéder à ton serveur Plex
-
-Seerr détectera automatiquement :
-
-- ton serveur Plex  
-- tes bibliothèques  
-- tes utilisateurs  
+Lors de la première ouverture, suivez l’assistant de configuration rapide et créez votre compte administrateur.
 
 ---
 
-## 3️⃣ Connecter Seerr à Radarr
+## 2️⃣ Associer Seerr à Radarr et Sonarr
 
-1. Menu → **Settings**
-2. Onglet **Services**
-3. **Add Service → Radarr**
+Dans :
 
-### ➤ Paramètres recommandés
+Settings → Services
 
-| Paramètre | Valeur |
-|----------|--------|
-| Name | Radarr |
-| Host | `http://radarr:7878` (Docker) ou `http://IP:7878` |
-| API Key | récupérée dans Radarr → Settings → General |
-| Quality Profile | ton profil préféré (ex : HD-1080p) |
-| Root Folder | `/data/films` |
-| Minimum Availability | Released |
 
-Clique sur **Test**, puis **Save**.
+Ajoutez vos instances Radarr et Sonarr en renseignant :
+
+- L’adresse du service  
+- Le port  
+- La clé API  
+
+Les options avancées sont détaillées dans la documentation officielle.
 
 ---
 
-## 4️⃣ Connecter Seerr à Sonarr
+## 3️⃣ Configurer l’authentification
 
-1. Menu → **Settings**
-2. Onglet **Services**
-3. **Add Service → Sonarr**
+Dans :
 
-### ➤ Paramètres recommandés
+Settings → Users
 
-| Paramètre | Valeur |
-|----------|--------|
-| Name | Sonarr |
-| Host | `http://sonarr:8989` (Docker) ou `http://IP:8989` |
-| API Key | récupérée dans Sonarr → Settings → General |
-| Quality Profile | HD-1080p (ou autre) |
-| Root Folder | `/data/series` |
-| Language Profile | French / English selon ton setup |
 
-Clique sur **Test**, puis **Save**.
+Vous pouvez :
+
+- Activer l’authentification via un fournisseur externe (ex. Plex, Jellyfin, Emby)  
+- Gérer les utilisateurs et leurs permissions  
+
+Les méthodes d’authentification sont expliquées en détail dans la documentation officielle.
 
 ---
 
-## 5️⃣ Configurer les permissions utilisateurs
+## 4️⃣ Définir les permissions et rôles
 
-Seerr permet de gérer finement ce que les utilisateurs peuvent faire.
+Dans :
 
-1. Menu → **Users**
-2. Sélectionne un utilisateur Plex
-3. Choisis les permissions :
+Settings → Permissions
 
-- **Request Movies**
-- **Request TV Shows**
-- **Auto‑approve Movies**
-- **Auto‑approve Series**
-- **Manage Requests**
-- **Admin** (à utiliser avec prudence)
 
-Tu peux aussi définir des règles globales dans :
+Vous pouvez définir :
 
-**Settings → Users → Permissions**
+- Les actions autorisées pour les utilisateurs  
+- Les limites de demandes  
+- Les rôles personnalisés  
+
+Ces paramètres dépendent de votre organisation et de vos besoins.
 
 ---
 
-## 6️⃣ Configurer les notifications (optionnel)
+## 5️⃣ Finaliser et tester
 
-Seerr peut envoyer des notifications via :
+Une fois les éléments configurés :
 
-- Discord  
-- Telegram  
-- Slack  
-- Webhooks  
-- Email  
-
-Pour cela :
-
-1. Menu → **Settings**
-2. Onglet **Notifications**
-3. Choisis ton service
-4. Configure les paramètres (Webhook, Token, etc.)
+- Vérifiez la connexion à Radarr et Sonarr via **Test**  
+- Enregistrez avec **Save**  
+- Faites une demande test pour valider le fonctionnement
 
 ---
 
-## 7️⃣ Tester une demande
+## 📚 Pour aller plus loin
 
-1. Depuis l’accueil, recherche un film ou une série  
-2. Clique sur **Request**  
-3. Si tout est bien configuré :
-   - Seerr envoie la demande à Radarr ou Sonarr  
-   - Radarr/Sonarr envoient la recherche à Prowlarr  
-   - qBittorrent télécharge  
-   - Plex met à jour la bibliothèque  
+Ce guide volontairement simplifié ne couvre pas :
 
----
+- Les notifications  
+- Les intégrations avancées  
+- Les webhooks  
+- Les paramètres de quotas  
+- Les personnalisations d’interface  
 
-# 🎉 Configuration terminée
-
-Tu as maintenant un Seerr :
-
-- connecté à Plex  
-- synchronisé avec Radarr et Sonarr  
-- capable de gérer les demandes automatiquement  
-- avec permissions utilisateurs  
-- avec notifications optionnelles  
-
-Ton hub multimédia est maintenant complet et user‑friendly.
-
----
-
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/8f803772-0fb0-481c-ac3f-5f753e919db9" />
+Pour une configuration complète et toujours à jour :  
+👉 https://docs.seerr.dev/
 
