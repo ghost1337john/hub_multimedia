@@ -1,7 +1,11 @@
 # 🗂️ Version History
 
+### **v1.4.1 — 2026‑03‑26**
+- Reorganized French documentation into the `french_docs/` folder  
+- 18 Markdown files copied into the mirrored `french_docs/` structure  
+
 ### **v1.4.0 — 2026‑03‑26**
-- Added English translation of the entire project (`en/` folder)
+- Added English translation of the entire project (`english_docs/` folder)
 
 ### **v1.3.9 — 2026‑03‑26**
 - Updated hardware recommendations in `README_HOWTOINSTALL.md`: minimum and recommended configuration, note on Plex transcoding  
