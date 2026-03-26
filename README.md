@@ -74,6 +74,8 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 - Ajout du container **Portainer** dans le docker‑compose avec healthcheck  
 - Ajout de Portainer dans la liste des services du README principal  
 - Mise à jour du `README_HOWTOINSTALL.md` : arborescence, mkdir, tableau des accès  
+- Mise à jour du script de déploiement (`autoscript_install_hub_on_debian.sh`) : ajout de Portainer  
+- Ajout du tutoriel de configuration Portainer (`tuto_config/README_PORTAINER_CONFIG.md`)  
 
 ### **v1.3.4 — 2026‑03‑26**
 - Ajout des healthchecks manquants dans le docker‑compose : Prowlarr, Sonarr, Radarr, Bazarr, Tautulli et Plex  
