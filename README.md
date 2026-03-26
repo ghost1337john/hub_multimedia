@@ -41,7 +41,10 @@ Télécharge et gère les sous‑titres pour Radarr et Sonarr.
 ### ⭐ Seerr — Interface de demandes utilisateurs
 Permet aux utilisateurs de demander films et séries déjà présents ou à importer.
 
-### 🛡️ FlareSolverr — Contournement Cloudflare
+### � Tautulli — Surveillance et statistiques Plex
+Fournit un tableau de bord complet pour surveiller l’activité Plex, l’usage des médias, les historiques de lecture et les alertes.
+
+### �🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
 ### 🧹 Cleanuparr — Nettoyage automatisé  
@@ -60,6 +63,10 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 <img width="1104" height="976" alt="Gemini_Generated_Image_6wk7c16wk7c16wk7" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
 
 # 🗂️ Historique des versions
+
+### **v1.2.2 — 2026‑03‑26**
+- Ajout du module **Tautulli** dans le README principal  
+- Description du service et rôle dans l’écosystème Plex  
 
 ### **v1.2.1 — 2026‑03‑26**
 - Ajout d’une note globale expliquant que les tutoriels sont volontairement simplifiés  
