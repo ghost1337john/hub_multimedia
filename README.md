@@ -70,6 +70,11 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 
 # 🗂️ Historique des versions
 
+### **v1.3.6 — 2026‑03‑26**
+- Mise à jour de la FAQ : ajout de la section Portainer  
+- Mise à jour du README `not_check_in_test` : statut d'intégration de Portainer et des healthchecks  
+- Ajout du fichier `README_SOURCES.md` : crédits et processus de contribution humain / IA  
+
 ### **v1.3.5 — 2026‑03‑26**
 - Ajout du container **Portainer** dans le docker‑compose avec healthcheck  
 - Ajout de Portainer dans la liste des services du README principal  

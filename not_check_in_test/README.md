@@ -10,22 +10,20 @@ Ils doivent être testés et validés avant d'être déplacés dans les dossiers
 ### 🐳 `docker_compose_extras.yml`
 Containers supplémentaires prêts à être ajoutés au docker-compose principal :
 
-| Container    | Rôle                                                        | Port  |
-|--------------|-------------------------------------------------------------|-------|
-| Portainer    | Gestion des containers Docker via une WebUI                 | 9000  |
-| Watchtower   | Mise à jour automatique des images Docker + notifications   | —     |
-| Uptime Kuma  | Monitoring de disponibilité des services avec alertes       | 3001  |
-| Lidarr       | Gestion automatisée de la musique (équivalent Sonarr/Radarr)| 8686  |
-| Readarr      | Gestion automatisée des ebooks                              | 8787  |
-| Recyclarr    | Synchronisation des profils qualité TRaSH Guides            | —     |
+| Container    | Rôle                                                        | Port  | Statut     |
+|--------------|-------------------------------------------------------------|-------|------------|
+| Portainer    | Gestion des containers Docker via une WebUI                 | 9000  | ✅ Intégré  |
+| Watchtower   | Mise à jour automatique des images Docker + notifications   | —     | En test    |
+| Uptime Kuma  | Monitoring de disponibilité des services avec alertes       | 3001  | En test    |
+| Lidarr       | Gestion automatisée de la musique (équivalent Sonarr/Radarr)| 8686  | En test    |
+| Readarr      | Gestion automatisée des ebooks                              | 8787  | En test    |
+| Recyclarr    | Synchronisation des profils qualité TRaSH Guides            | —     | En test    |
 
 ---
 
 ### 🩺 `healthchecks_to_add.yml`
-Blocs de healthchecks à ajouter aux containers existants qui n'en ont pas :
-- Plex, Tautulli, Sonarr, Radarr, Bazarr, Prowlarr
-
-Permet à Docker de détecter automatiquement si un service est en panne et de le redémarrer.
+Blocs de healthchecks pour les containers existants.  
+**✅ Intégrés** dans le docker-compose principal (v1.3.4).
 
 ---
 

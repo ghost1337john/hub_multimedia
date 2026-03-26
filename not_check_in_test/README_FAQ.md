@@ -83,6 +83,25 @@ Au premier lancement, qBittorrent génère un mot de passe aléatoire.
 
 ---
 
+## 🐳 Portainer
+
+### Impossible de créer le compte administrateur
+Portainer se verrouille automatiquement si le compte admin n'est pas créé dans les premières minutes.
+- Redémarre le container : `docker restart portainer`
+- Accède immédiatement à `http://IP_DU_SERVEUR:9000` pour créer le compte
+
+### Portainer ne voit pas les containers
+- Vérifie que le socket Docker est bien monté : `/var/run/docker.sock:/var/run/docker.sock`
+- Vérifie les permissions sur le socket : `ls -la /var/run/docker.sock`
+- Consulte les logs : `docker logs portainer`
+
+### Impossible de déployer une stack depuis Portainer
+- Vérifie que le fichier docker-compose est valide (pas d'erreurs de syntaxe YAML)
+- Vérifie que toutes les variables du `.env` sont renseignées
+- Consulte les logs dans Portainer : container → Logs
+
+---
+
 ## 🐳 Docker général
 
 ### Un container redémarre en boucle
