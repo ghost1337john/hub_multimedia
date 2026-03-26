@@ -1,5 +1,10 @@
 # 🗂️ Historique des versions
 
+### **v1.5.1 — 2026‑03‑26**
+- Déplacement du projet Windows dans le dossier `windows_project_test/` (scripts + docs FR/EN)  
+- Génération de l'exécutable `install_hub_multimedia.exe` via ps2exe  
+- Publication de la Release GitHub v1.5.0 avec le binaire Windows  
+
 ### **v1.5.0 — 2026‑03‑26**
 - Ajout du script d'installation automatique pour Windows (PowerShell + .bat)  
 - Ajout du docker-compose adapté Windows (sans `/dev/net/tun`, chemins Windows, Plex en port mapping)  
