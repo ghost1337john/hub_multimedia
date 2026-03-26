@@ -1,176 +1,80 @@
-# 📘 Configuration de Radarr (après installation)
+# 🎬 Tutoriel de configuration de Radarr (version simplifiée)
 
-Radarr est l’outil chargé d’automatiser la gestion de tes **films** : recherche, téléchargement, renommage, tri et mise à jour.  
-Voici comment le configurer proprement après son installation.
+Radarr est un outil permettant d’automatiser la gestion et l’organisation de vos films.  
+Ce guide présente uniquement les grandes étapes, sans entrer dans les détails techniques.  
+Pour toute configuration avancée, veuillez consulter la documentation officielle :  
+👉 https://radarr.video/
 
 ---
 
 ## 1️⃣ Accéder à Radarr
 
-Ouvre ton navigateur et rends‑toi sur :
+Une fois Radarr installé, ouvrez l’interface via : http://IP_DE_VOTRE_SERVEUR:7878
 
-**http://IP_DE_TON_SERVEUR:7878**
-
----
-
-## 2️⃣ Configurer les dossiers
-
-Radarr doit connaître :
-
-- le dossier où stocker les films  
-- le dossier où qBittorrent dépose les téléchargements  
-
-### ➤ Dossier de la médiathèque
-
-1. Menu → **Movies**  
-2. **Add Root Folder**  
-3. Sélectionne ton dossier films, par exemple :  
-   **/data/films**
-
-### ➤ Dossier des téléchargements
-
-Ce dossier est surveillé pour importer automatiquement les films :
-
-**/data/qbittorrent/downloads**
-
-Il sera utilisé lors de la configuration du client torrent.
+Lors de la première ouverture, créez simplement votre compte administrateur si demandé.
 
 ---
 
-## 3️⃣ Ajouter qBittorrent comme client de téléchargement
+## 2️⃣ Définir les dossiers principaux
 
-1. Menu → **Settings**  
-2. Onglet **Download Clients**  
-3. **Add → qBittorrent**
+Radarr doit connaître les emplacements où se trouvent :
 
-### ➤ Paramètres recommandés
+- Vos films  
+- Les fichiers en cours de traitement  
 
-| Paramètre | Valeur |
-|----------|--------|
-| Name | qBittorrent |
-| Host | `qbittorrent` (Docker) ou `IP_DU_SERVEUR` |
-| Port | 8080 |
-| Username | admin (ou le tien) |
-| Password | ton mot de passe |
-| Category | radarr |
-| Completed Download Folder | `/data/qbittorrent/downloads` |
+Ces paramètres se configurent dans :
 
-### ➤ Test & Save
+Settings → Media Management
+Settings → Root Folders
 
-- Clique sur **Test**  
-- Si OK → **Save**
+Les chemins exacts dépendent de votre propre organisation.
 
 ---
 
-## 4️⃣ Connecter Radarr à Prowlarr
+## 3️⃣ Ajouter un client externe
 
-Pour que Radarr utilise automatiquement tous tes indexers.
+Dans :
 
-### ➤ Étape 1 : Récupérer la clé API de Radarr
+Settings → Download Clients
 
-Dans Radarr :
 
-- Menu → **Settings → General**
-- Copie la **API Key**
+…vous pouvez ajouter un service externe compatible (ex. qBittorrent).
 
-### ➤ Étape 2 : Ajouter Radarr dans Prowlarr
-
-Dans Prowlarr :
-
-1. Menu → **Settings**
-2. Onglet **Apps**
-3. **Add Application**
-4. Choisir **Radarr**
-
-### ➤ Paramètres à renseigner
-
-| Paramètre | Valeur |
-|----------|--------|
-| Name | Radarr |
-| Sync Level | Full Sync |
-| URL | `http://radarr:7878` (Docker) ou `http://IP:7878` |
-| API Key | celle copiée dans Radarr |
-
-Clique sur **Test**, puis **Save**.
+Renseignez uniquement les informations de connexion nécessaires (adresse, port, identifiants).  
+Les options avancées sont détaillées dans la documentation officielle.
 
 ---
 
-## 5️⃣ Configurer les profils de qualité
+## 4️⃣ Configurer les indexers (optionnel)
 
-1. Menu → **Settings**
-2. Onglet **Quality**
-3. Choisis un profil :
-   - **HD-1080p**
-   - **HD-720p**
-   - **WEB-DL**
-   - **Remux**
-   - **Bluray**
+Dans :
 
-Tu peux ajuster :
-- tailles max/min  
-- priorités  
-- formats acceptés  
+Settings → Indexers
+
+Vous pouvez ajouter des indexers compatibles pour permettre à Radarr de rechercher des informations sur les films.  
+Les configurations spécifiques dépendent de vos sources et sont expliquées dans la documentation officielle.
 
 ---
 
-## 6️⃣ Configurer le renommage et l’organisation
+## 5️⃣ Finaliser et tester
 
-1. Menu → **Settings**
-2. Onglet **Media Management**
-3. Active :
-   - **Rename Movies**
-   - **Replace Illegal Characters**
+Une fois les éléments configurés :
 
-Tu peux personnaliser :
-- format des noms de fichiers  
-- format des dossiers  
-- ajout de l’année, qualité, etc.  
+- Utilisez **Test** pour vérifier les connexions  
+- Cliquez sur **Save** pour enregistrer
 
 ---
 
-## 7️⃣ Ajouter un film
+## 📚 Pour aller plus loin
 
-1. Menu → **Movies**
-2. **Add New Movie**
-3. Recherche ton film
-4. Choisis :
-   - le dossier racine (`/data/films`)
-   - le profil de qualité
-   - le monitoring (Yes/No)
-   - la langue (si applicable)
+Ce guide volontairement simplifié ne couvre pas :
 
-Clique sur **Add Movie**
+- Les profils de qualité  
+- Les règles d’importation  
+- Les paramètres avancés de Media Management  
+- Les automatisations  
+- Les intégrations avec Sonarr, Prowlarr, Bazarr, etc.
 
-Radarr va :
-- scanner ta médiathèque  
-- rechercher les films manquants  
-- envoyer les requêtes à Prowlarr  
-- lancer les téléchargements via qBittorrent  
+Pour une configuration complète et toujours à jour :  
+👉 https://wiki.servarr.com/radarr
 
----
-
-## 8️⃣ Vérifier le fonctionnement
-
-Pour tester :
-
-1. Ajoute un film  
-2. Va dans la fiche du film  
-3. Clique sur **Search → Manual Search**
-
-Si des résultats apparaissent → tout fonctionne.
-
----
-
-# 🎉 Configuration terminée
-
-Tu as maintenant un Radarr :
-
-- connecté à Prowlarr  
-- lié à qBittorrent  
-- configuré pour importer automatiquement  
-- avec dossiers propres  
-- profils de qualité optimisés  
-
-Ton hub multimédia est opérationnel pour les films.
-
----
