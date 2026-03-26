@@ -131,7 +131,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /app//bazarr:/config
+      - /app/bazarr/config:/config
       - /data:/data
       - /data2:/data2
       - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
@@ -172,6 +172,8 @@ services:
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
       - TZ=${TZ}
+    volumes:
+      - /app/flaresolverr/config:/config
     depends_on:
       gluetun:
         condition: service_healthy
