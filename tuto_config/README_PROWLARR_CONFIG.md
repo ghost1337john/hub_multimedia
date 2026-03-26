@@ -1,148 +1,90 @@
-# 🧭 Tutoriel de configuration de Prowlarr (après installation)
+# 🧭 Tutoriel de configuration de Prowlarr (version simplifiée)
 
-Prowlarr est le gestionnaire d’indexers de ton hub multimédia. Il centralise tous les indexers et les synchronise automatiquement avec Radarr, Sonarr, Lidarr, Readarr, etc.
-
-Voici comment le configurer correctement après l’installation.
-
----
-
-# 1️⃣ Accéder à Prowlarr
-
-Ouvre ton navigateur et va sur :
-
-👉 **http://IP_DE_TON_SERVEUR:9696**
+Prowlarr est un gestionnaire d’indexers centralisé, conçu pour fonctionner avec Sonarr, Radarr et les autres applications de l’écosystème *Arr.  
+Ce guide présente uniquement les grandes étapes, sans entrer dans les détails techniques.  
+Pour toute configuration avancée, veuillez consulter la documentation officielle :  
+👉 https://wiki.servarr.com/prowlarr
 
 ---
 
-# 2️⃣ Configurer les indexers
+## 1️⃣ Accéder à Prowlarr
 
-C’est la partie la plus importante.
+Une fois Prowlarr installé, ouvrez l’interface via : http://IP_DE_VOTRE_SERVEUR:9696
 
-### ➤ Étape 1 : Ajouter un indexer
-1. Dans le menu de gauche, clique sur **Indexers**
-2. Clique sur **+ Add Indexer**
-3. Choisis un indexer dans la liste :
-   - **Publics** : 1337x, Nyaa, RARBG (si dispo), etc.
-   - **Privés** : trackers nécessitant un compte
-   - **Torznab** : pour les indexers compatibles NZBHydra / Jackett
-4. Configure les champs demandés :
-   - URL de l’indexer
-   - Clé API (si nécessaire)
-   - Catégories (Films, Séries, etc.)
-   - Ratio de confiance (optionnel)
 
-### ➤ Étape 2 : Tester l’indexer
-Clique sur **Test**  
-→ Si tout est vert, c’est bon.
-
-### ➤ Étape 3 : Sauvegarder
-Clique sur **Save**
+Lors de la première ouverture, configurez simplement votre compte administrateur si demandé.
 
 ---
 
-# 3️⃣ Connecter Prowlarr à Radarr & Sonarr
+## 2️⃣ Ajouter des indexers
 
-C’est ce qui permet la synchronisation automatique des indexers.
+Dans :
 
-### ➤ Étape 1 : Aller dans *Settings → Apps*
-1. Menu de gauche → **Settings**
-2. Onglet **Apps**
-3. Clique sur **+ Add Application**
+Indexers → Add Indexer
 
-### ➤ Étape 2 : Ajouter Radarr
-1. Choisis **Radarr**
-2. Renseigne :
-   - **Name** : Radarr
-   - **Sync Level** : *Full Sync* (recommandé)
-   - **URL** :  
-     `http://radarr:7878` (si même réseau Docker)  
-     ou  
-     `http://IP_DE_TON_SERVEUR:7878`
-   - **API Key** : récupérable dans Radarr → Settings → General
 
-3. Clique sur **Test**
-4. Clique sur **Save**
+…ajoutez les indexers de votre choix.
 
-### ➤ Étape 3 : Ajouter Sonarr
-Même procédure que Radarr :
+Chaque indexer peut nécessiter :
 
-- **URL** :  
-  `http://sonarr:8989` (Docker)  
-  ou  
-  `http://IP_DE_TON_SERVEUR:8989`
-- **API Key** : Sonarr → Settings → General
+- Une clé API  
+- Un identifiant  
+- Un mot de passe  
+- Une URL spécifique  
+
+Les instructions détaillées sont disponibles dans la documentation officielle ou sur le site de chaque indexer.
 
 ---
 
-# 4️⃣ Vérifier la synchronisation
+## 3️⃣ Connecter Prowlarr à Sonarr et Radarr
 
-Une fois Radarr et Sonarr ajoutés :
+Dans :
 
-1. Retourne dans **Indexers**
-2. Tu verras une colonne **Sync** avec :
-   - Radarr
-   - Sonarr
+Settings → Apps
 
-Si tout est vert → la synchro fonctionne.
 
----
+Ajoutez vos applications *Arr (Sonarr, Radarr, etc.) en renseignant :
 
-# 5️⃣ Configurer FlareSolverr (si Cloudflare)
+- L’adresse du service  
+- Le port  
+- La clé API  
 
-Si tu utilises FlareSolverr (souvent nécessaire pour les indexers publics) :
-
-1. Menu → **Settings**
-2. Onglet **Indexers**
-3. Section **Proxy**
-4. Active **Use Proxy**
-5. Renseigne :
-   - **Proxy Type** : FlareSolverr
-   - **URL** :  
-     `http://flaresolverr:8191` (Docker)  
-     ou  
-     `http://IP_DE_TON_SERVEUR:8191`
-
-6. Clique sur **Test**
-7. Clique sur **Save**
+Prowlarr synchronisera automatiquement les indexers avec ces applications.
 
 ---
 
-# 6️⃣ Ajuster les catégories (important)
+## 4️⃣ Configurer les catégories (optionnel)
 
-Prowlarr utilise des catégories standardisées.  
-Vérifie que les catégories correspondent bien à :
+Dans :
 
-| Type | Catégorie |
-|------|-----------|
-| Films | 2000 |
-| Séries | 5000 |
-| Anime | 5070 |
-| Musique | 3000 |
+Indexers → (Sélectionner un indexer) → Categories
 
-Tu peux les modifier dans chaque indexer si nécessaire.
+
+Vous pouvez ajuster les catégories pour correspondre à vos préférences.  
+Les valeurs par défaut conviennent dans la majorité des cas.
 
 ---
 
-# 7️⃣ Vérifier le fonctionnement global
+## 5️⃣ Finaliser et tester
 
-Pour tester :
+Une fois les éléments configurés :
 
-1. Va dans Radarr ou Sonarr
-2. Cherche un film ou une série
-3. Lance une recherche manuelle
-
-Si les résultats apparaissent → Prowlarr fonctionne parfaitement.
+- Utilisez **Test** pour vérifier les connexions  
+- Cliquez sur **Save** pour enregistrer  
+- Vérifiez que les indexers apparaissent bien dans Sonarr et Radarr
 
 ---
 
-# 🎉 Configuration terminée
+## 📚 Pour aller plus loin
 
-Tu as maintenant un Prowlarr entièrement opérationnel :
+Ce guide volontairement simplifié ne couvre pas :
 
-- Indexers configurés  
-- Synchronisation automatique avec Radarr/Sonarr  
-- FlareSolverr intégré  
-- Catégories propres  
-- Tests OK  
+- Les proxys  
+- Les indexers privés avancés  
+- Les paramètres de ratio  
+- Les filtres personnalisés  
+- Les intégrations complexes avec d’autres services  
 
----
+Pour une configuration complète et toujours à jour :  
+👉 https://wiki.servarr.com/prowlarr
+
