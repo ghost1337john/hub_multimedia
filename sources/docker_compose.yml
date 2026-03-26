@@ -275,3 +275,24 @@ services:
       timeout: 10s
       start_period: 60s
       retries: 3
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /app/portainer/config:/data
+    ports:
+      - 9000:9000
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.16
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:9000/api/system/status || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3

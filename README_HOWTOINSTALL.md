@@ -43,7 +43,8 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── seerr/config
   ├── flaresolverr/config
   ├── plex/config
-  └── tautulli/config
+  ├── tautulli/config
+  └── portainer/config
 
 #Afficher l'uid et le giud de l'utilisateur en cours :
 ```
@@ -66,6 +67,7 @@ sudo mkdir -p \
   /app/flaresolverr/config \
   /app/plex/config \
   /app/tautulli/config \
+  /app/portainer/config \
 
 sudo mkdir /data
 ```
@@ -215,6 +217,7 @@ Vérifie que tous les conteneurs sont en Running
 | FlareSolverr  | http://ipduserveur:8191       |
 | Tautulli      | http://ipduserveur:8181       |
 | Cleanuparr    | http://ipduserveur:11011       |
+| Portainer     | http://ipduserveur:9000        |
 
 > ⚠️ qBittorrent, Prowlarr et FlareSolverr passent par **Gluetun**, donc leurs ports sont exposés via le conteneur VPN.
 

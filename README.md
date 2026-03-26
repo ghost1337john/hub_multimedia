@@ -50,6 +50,9 @@ Fournit un tableau de bord complet pour surveiller l’activité Plex, l’usage
 ### 🛡️ FlareSolverr — Contournement Cloudflare
 Proxy permettant à Prowlarr d’accéder aux indexers protégés.
 
+### 🐳 Portainer — Gestion des containers en WebUI
+Interface graphique pour gérer, surveiller et administrer l'ensemble des containers Docker depuis un navigateur.
+
 ### 🧹 Cleanuparr — Nettoyage automatisé  
 Nouveau module permettant :  
 - le nettoyage des synchronisations terminées  
@@ -66,6 +69,11 @@ Chaque utilisateur est libre d’adapter l’écosystème à ses besoins et peut
 <img width="1104" height="976" alt="Gemini_Generated_Image_6wk7c16wk7c16wk7" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
 
 # 🗂️ Historique des versions
+
+### **v1.3.5 — 2026‑03‑26**
+- Ajout du container **Portainer** dans le docker‑compose avec healthcheck  
+- Ajout de Portainer dans la liste des services du README principal  
+- Mise à jour du `README_HOWTOINSTALL.md` : arborescence, mkdir, tableau des accès  
 
 ### **v1.3.4 — 2026‑03‑26**
 - Ajout des healthchecks manquants dans le docker‑compose : Prowlarr, Sonarr, Radarr, Bazarr, Tautulli et Plex  
