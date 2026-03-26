@@ -34,8 +34,9 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── sonarr/config
   ├── radarr/config
   ├── cleanuparr/config
-  ├── bazarr/
-  ├── seerr/
+  ├── bazarr/config
+  ├── seerr/config
+  ├── flaresolverr/config
   ├── plex/config
   └── tautulli/config
 
@@ -57,6 +58,7 @@ sudo mkdir -p \
   /app/cleanuparr/config \
   /app/bazarr/config \
   /app/seerr/config \
+  /app/flaresolverr/config \
   /app/plex/config \
   /app/tautulli/config \
 
