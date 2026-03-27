@@ -126,53 +126,24 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-> 💡 **Sur Debian 13**, utilise le script automatique : [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)
+Cette branche `Project` sert de **référence globale**.
 
-### Étapes en 4 commandes
+Choisis la branche adaptée à ton type d'installation :
 
-```bash
-# 1. Cloner le dépôt
-git clone https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
-
-# 2. Créer et configurer le fichier .env
-cp .env.example .env   # puis éditer avec vos identifiants VPN
-
-# 3. Créer les répertoires nécessaires
-sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
-sudo mkdir -p /data/qbittorrent/downloads
-
-# 4. Lancer la stack
-docker compose up -d
-```
-
-> Pour une installation complète et détaillée, consulte [`french_docs/README_HOWTOINSTALL.md`](french_docs/README_HOWTOINSTALL.md)
+- **Linux manuel** : [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic)
+	- Guide FR : [`french_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/french_docs/README_HOWTOINSTALL.md)
+- **Linux automatisé (Debian)** : [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
+	- Guide FR : [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md)
+- **Windows** : [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows)
+	- Guide FR : [`windows_project_test/README_WINDOWS_FR.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_FR.md)
 
 ---
 
 ## 🛠️ Prérequis
 
-### 🔧 Matériel & système
+Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
 
-| Composant | Minimum | Recommandé |
-|-----------|---------|------------|
-| CPU | 4 cœurs | 6 cœurs |
-| RAM | 8 Go | 16 Go |
-| Stockage | 64 Go SSD | 128 Go SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
-
-> 💡 Sans GPU, chaque flux Plex transcodé consomme 1–2 cœurs CPU.
-
-### 📦 Logiciels requis
-
-- **Docker** (dernière version stable)
-- **Docker Compose** v2 ou supérieur
-- **Git**
-
-### 🔐 VPN & réseau
-
-- Compte **ProtonVPN** actif (compatible port forwarding)
-- Clé **WireGuard** valide (ou identifiants OpenVPN)
+Consulte directement la documentation de la branche cible depuis la section [Installation rapide](#-installation-rapide).
 
 ---
 
@@ -183,9 +154,6 @@ hub_multimedia/
 ├── sources/
 │   ├── docker_compose.yml      # Stack Docker principale
 │   └── .env                    # Variables d'environnement (VPN, chemins)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
 ├── french_docs/
 │   ├── README.md
 │   ├── README_HOWTOINSTALL.md
