@@ -130,7 +130,7 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ```bash
 # 1. Cloner le dépôt
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch classic --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia/sources
 
 # 2. Créer et configurer le fichier .env
