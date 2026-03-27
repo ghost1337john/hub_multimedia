@@ -128,7 +128,7 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ```powershell
 # 1. Clone the repository
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch windows --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia/windows_project_test
 
 # 2. Temporarily allow script execution
