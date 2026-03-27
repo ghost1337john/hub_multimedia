@@ -32,6 +32,7 @@ It does not in any way aim to encourage, facilitate, or circumvent copyright pro
 - [🚀 Quick Start](#-quick-start)
 - [🛠️ Prerequisites](#️-prerequisites)
 - [📁 Project Structure](#-project-structure)
+- [🌿 Git Strategy](#-git-strategy)
 - [📝 Note on Configuration](#-note-on-configuration)
 - [❓ FAQ / Troubleshooting](#-faq--troubleshooting)
 - [🗂️ Version History](#️-version-history)
@@ -192,6 +193,31 @@ hub_multimedia/
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # French root README
+```
+
+---
+
+## 🌿 Git Strategy
+
+The repository is organized around one main branch and specialized branches:
+
+- `Project`: full reference branch with all variants.
+- `classic`: manual Linux installation variant (without auto-deploy and without Windows).
+- `auto-deploy`: automated Debian variant (script + Linux stack).
+- `windows`: Windows installation variant.
+
+Recommended merge conventions:
+
+1. Open PRs against the business target branch (not always `Project`).
+2. Cross-cutting changes (Docker stack, security, shared docs) should land in `Project` first.
+3. Then backport only the needed commits to specialized branches with selective `cherry-pick` to avoid reintroducing removed folders.
+4. Avoid merging specialized branches back into `Project` unless explicitly validated.
+
+Example targeted sync:
+
+```bash
+git checkout classic
+git cherry-pick <commit_sha_from_Project>
 ```
 
 ---

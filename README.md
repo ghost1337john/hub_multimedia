@@ -36,6 +36,7 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
+- [🌿 Strategie Git](#-strategie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
 - [🗂️ Historique des versions](#️-historique-des-versions)
@@ -196,6 +197,31 @@ hub_multimedia/
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # Ce fichier
+```
+
+---
+
+## 🌿 Strategie Git
+
+Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
+
+- `Project` : branche complète (référence) avec toutes les variantes.
+- `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
+- `auto-deploy` : variante automatisée Debian (script + stack Linux).
+- `windows` : variante installation Windows.
+
+Conventions recommandées pour les merges :
+
+1. Ouvrir les PR sur la branche cible métier (pas systématiquement sur `Project`).
+2. Les changements transverses (stack Docker, sécurité, docs globales) partent d'abord sur `Project`.
+3. Reporter ensuite ces commits dans les branches spécialisées par sélection (`cherry-pick`) pour éviter de réintroduire des dossiers supprimés.
+4. Éviter les merges de branches spécialisées vers `Project` sauf cas explicitement validé.
+
+Exemple de synchronisation ciblée :
+
+```bash
+git checkout classic
+git cherry-pick <sha_commit_depuis_Project>
 ```
 
 ---
