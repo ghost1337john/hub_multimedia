@@ -206,6 +206,11 @@ Each user is free to adapt the ecosystem to their needs. Dedicated tutorials are
 
 ## ❓ FAQ / Troubleshooting
 
+For a more complete FAQ (detailed guides, common issues, and advanced solutions), see:
+
+- 🇬🇧 Full FAQ (EN) : [`README_FAQ.md`](README_FAQ.md)
+- 🇫🇷 FAQ complète (FR) : [`french_docs/README_FAQ.md`](../french_docs/README_FAQ.md)
+
 <details>
 <summary>🔴 A container won't start</summary>
 
