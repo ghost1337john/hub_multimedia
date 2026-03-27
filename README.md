@@ -134,7 +134,7 @@ Choisis la branche adaptée à ton type d'installation :
 	- Guide FR : [`french_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/french_docs/README_HOWTOINSTALL.md)
 - **Linux automatisé (Debian)** : [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
 	- Guide FR : [`french_docs/auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/french_docs/auto_deploy/README_AUTOSCRIPT.md)
-- **Windows** : [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows)
+- **Windows** : [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows) — ⚠️ **En cours de test, ne pas utiliser pour le moment**
 	- Guide FR : [`windows_project_test/README_WINDOWS_FR.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_FR.md)
 
 ---
@@ -176,7 +176,7 @@ Le dépôt est organisé autour d'une branche principale et de branches spécial
 - `Project` : branche complète (référence) avec toutes les variantes.
 - `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
 - `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows.
+- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Conventions recommandées pour les merges :
 

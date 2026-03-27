@@ -134,7 +134,7 @@ Pick the branch that matches your installation type:
 	- EN guide: [`english_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/english_docs/README_HOWTOINSTALL.md)
 - **Automated Linux (Debian)**: [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
 	- EN guide: [`english_docs/auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/english_docs/auto_deploy/README_AUTOSCRIPT.md)
-- **Windows**: [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows)
+- **Windows**: [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows) — ⚠️ **Work in progress, do not use for now**
 	- EN guide: [`windows_project_test/README_WINDOWS_EN.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_EN.md)
 
 ---
@@ -176,7 +176,7 @@ The repository is organized around one main branch and specialized branches:
 - `Project`: full reference branch with all variants.
 - `classic`: manual Linux installation variant (without auto-deploy and without Windows).
 - `auto-deploy`: automated Debian variant (script + Linux stack).
-- `windows`: Windows installation variant.
+- `windows`: Windows installation variant. *(work in progress — do not use in production)*
 
 Recommended merge conventions:
 
