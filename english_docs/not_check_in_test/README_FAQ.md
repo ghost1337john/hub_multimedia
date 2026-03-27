@@ -197,14 +197,23 @@ The DNS should point to a VPN server, not your local DNS.
 ### Plex database is corrupted
 - Symptoms: Plex crashes on startup, libraries empty despite files being present
 - Stop Plex: `docker stop plex`
-- Backup the database:
+- Backup the database (host path, via the volume mount `/app/plex/config:/config`):
   ```bash
-  cp /app/plex/config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db{,.backup}
+  DB_PATH="/app/plex/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases"
+  cp "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library.db.backup"
   ```
-- Repair the database:
+- Check database integrity with `sqlite3` (install on the host if missing: `sudo apt install sqlite3`):
   ```bash
-  docker exec plex sqlite3 "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db" "PRAGMA integrity_check"
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" "PRAGMA integrity_check"
   ```
+- If the check returns errors, attempt a repair:
+  ```bash
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" ".clone ${DB_PATH}/com.plexapp.plugins.library-repaired.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library-corrupt.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library-repaired.db" "${DB_PATH}/com.plexapp.plugins.library.db"
+  ```
+- Restart Plex: `docker start plex`
+- If the repair fails, restore the backup: `cp "${DB_PATH}/com.plexapp.plugins.library.db.backup" "${DB_PATH}/com.plexapp.plugins.library.db"`
 
 ---
 

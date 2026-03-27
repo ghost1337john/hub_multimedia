@@ -197,14 +197,23 @@ Le DNS doit pointer vers un serveur VPN, pas vers ton DNS local.
 ### La base de données Plex est corrompue
 - Symptômes : Plex plante au démarrage, bibliothèques vides malgré fichiers présents
 - Arrête Plex : `docker stop plex`
-- Sauvegarde la base :
+- Sauvegarde la base de données (chemin sur l'hôte, via le montage de volume `/app/plex/config:/config`) :
   ```bash
-  cp /app/plex/config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db{,.backup}
+  DB_PATH="/app/plex/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases"
+  cp "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library.db.backup"
   ```
-- Répare la base :
+- Vérifie l'intégrité de la base avec `sqlite3` (à installer sur l'hôte si absent : `sudo apt install sqlite3`) :
   ```bash
-  docker exec plex sqlite3 "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db" "PRAGMA integrity_check"
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" "PRAGMA integrity_check"
   ```
+- Si la vérification renvoie des erreurs, tente une réparation :
+  ```bash
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" ".clone ${DB_PATH}/com.plexapp.plugins.library-repaired.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library-corrupt.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library-repaired.db" "${DB_PATH}/com.plexapp.plugins.library.db"
+  ```
+- Redémarre Plex : `docker start plex`
+- Si la réparation échoue, restaure la sauvegarde : `cp "${DB_PATH}/com.plexapp.plugins.library.db.backup" "${DB_PATH}/com.plexapp.plugins.library.db"`
 
 ---
 
