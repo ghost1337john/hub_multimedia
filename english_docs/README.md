@@ -122,7 +122,7 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ## 🚀 Quick Start
 
-> 💡 **On Debian 13**, use the automatic script: [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)
+> 💡 **Automated Debian install**: use the dedicated [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy) branch and its guide [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md)
 
 ### 4-Step Installation
 
@@ -179,9 +179,6 @@ hub_multimedia/
 ├── sources/
 │   ├── docker_compose.yml      # Main Docker stack
 │   └── .env                    # Environment variables (VPN, paths)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
 ├── french_docs/
 │   ├── README.md
 │   ├── README_HOWTOINSTALL.md

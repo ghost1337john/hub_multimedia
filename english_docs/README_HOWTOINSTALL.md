@@ -1,6 +1,6 @@
 
 > 💡 **Quick Installation**: If you are on **Debian 13**, you can use the automatic installation script instead of following this guide manually.  
-> See [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md) for more details.
+> Use the dedicated [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy) branch, then see [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md).
 
 ---
 
