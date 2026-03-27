@@ -126,27 +126,26 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-> 💡 **Sur Debian 13**, utilise le script automatique : [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)
+> 💡 **Branche Windows** : utilise le script PowerShell dans [`windows_project_test/`](windows_project_test/)
 
 ### Étapes en 4 commandes
 
-```bash
+```powershell
 # 1. Cloner le dépôt
 git clone https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
+cd hub_multimedia/windows_project_test
 
-# 2. Créer et configurer le fichier .env
-cp .env.example .env   # puis éditer avec vos identifiants VPN
+# 2. Autoriser temporairement l'exécution des scripts
+Set-ExecutionPolicy Bypass -Scope Process
 
-# 3. Créer les répertoires nécessaires
-sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
-sudo mkdir -p /data/qbittorrent/downloads
+# 3. Lancer l'installation interactive
+.\install_hub_windows.ps1
 
-# 4. Lancer la stack
-docker compose up -d
+# 4. Vérifier les services Docker
+docker ps
 ```
 
-> Pour une installation complète et détaillée, consulte [`french_docs/README_HOWTOINSTALL.md`](french_docs/README_HOWTOINSTALL.md)
+> Pour un guide complet Windows (FR), consulte [`windows_project_test/README_WINDOWS_FR.md`](windows_project_test/README_WINDOWS_FR.md)
 
 ---
 
@@ -159,14 +158,14 @@ docker compose up -d
 | CPU | 4 cœurs | 6 cœurs |
 | RAM | 8 Go | 16 Go |
 | Stockage | 64 Go SSD | 128 Go SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
+| OS | Windows 10/11 | Windows 11 + WSL2 |
 
 > 💡 Sans GPU, chaque flux Plex transcodé consomme 1–2 cœurs CPU.
 
 ### 📦 Logiciels requis
 
-- **Docker** (dernière version stable)
-- **Docker Compose** v2 ou supérieur
+- **Docker Desktop** (backend WSL2)
+- **PowerShell** 5.1+ / 7+
 - **Git**
 
 ### 🔐 VPN & réseau
@@ -183,9 +182,11 @@ hub_multimedia/
 ├── sources/
 │   ├── docker_compose.yml      # Stack Docker principale
 │   └── .env                    # Variables d'environnement (VPN, chemins)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
+├── windows_project_test/
+│   ├── install_hub_windows.bat
+│   ├── install_hub_windows.ps1
+│   ├── README_WINDOWS_FR.md
+│   └── README_WINDOWS_EN.md
 ├── french_docs/
 │   ├── README.md
 │   ├── README_HOWTOINSTALL.md

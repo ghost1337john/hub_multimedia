@@ -122,27 +122,26 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ## 🚀 Quick Start
 
-> 💡 **On Debian 13**, use the automatic script: [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)
+> 💡 **Windows branch**: use the PowerShell installer in [`windows_project_test/`](../windows_project_test/)
 
 ### 4-Step Installation
 
-```bash
+```powershell
 # 1. Clone the repository
 git clone https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
+cd hub_multimedia/windows_project_test
 
-# 2. Create and configure the .env file
-cp .env.example .env   # then edit with your VPN credentials
+# 2. Temporarily allow script execution
+Set-ExecutionPolicy Bypass -Scope Process
 
-# 3. Create required directories
-sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
-sudo mkdir -p /data/qbittorrent/downloads
+# 3. Run the interactive installer
+.\install_hub_windows.ps1
 
-# 4. Launch the stack
-docker compose up -d
+# 4. Check Docker services
+docker ps
 ```
 
-> For a complete and detailed installation guide, see [`english_docs/README_HOWTOINSTALL.md`](README_HOWTOINSTALL.md)
+> For the full Windows guide (EN), see [`../windows_project_test/README_WINDOWS_EN.md`](../windows_project_test/README_WINDOWS_EN.md)
 
 ---
 
@@ -155,14 +154,14 @@ docker compose up -d
 | CPU | 4 cores | 6 cores |
 | RAM | 8 GB | 16 GB |
 | Storage | 64 GB SSD | 128 GB SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
+| OS | Windows 10/11 | Windows 11 + WSL2 |
 
 > 💡 Without a GPU, each Plex transcoded stream consumes 1–2 CPU cores.
 
 ### 📦 Required Software
 
-- **Docker** (latest stable version)
-- **Docker Compose** v2 or higher
+- **Docker Desktop** (WSL2 backend)
+- **PowerShell** 5.1+ / 7+
 - **Git**
 
 ### 🔐 VPN & Network
@@ -179,9 +178,11 @@ hub_multimedia/
 ├── sources/
 │   ├── docker_compose.yml      # Main Docker stack
 │   └── .env                    # Environment variables (VPN, paths)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
+├── windows_project_test/
+│   ├── install_hub_windows.bat
+│   ├── install_hub_windows.ps1
+│   ├── README_WINDOWS_FR.md
+│   └── README_WINDOWS_EN.md
 ├── french_docs/
 │   ├── README.md
 │   ├── README_HOWTOINSTALL.md
