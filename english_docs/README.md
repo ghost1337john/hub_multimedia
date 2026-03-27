@@ -122,53 +122,24 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ## 🚀 Quick Start
 
-> 💡 **Automated Debian install**: use the dedicated [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy) branch and its guide [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md)
+This `Project` branch is the **global reference** branch.
 
-### 4-Step Installation
+Pick the branch that matches your installation type:
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
-
-# 2. Create and configure the .env file
-cp .env.example .env   # then edit with your VPN credentials
-
-# 3. Create required directories
-sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
-sudo mkdir -p /data/qbittorrent/downloads
-
-# 4. Launch the stack
-docker compose up -d
-```
-
-> For a complete and detailed installation guide, see [`english_docs/README_HOWTOINSTALL.md`](README_HOWTOINSTALL.md)
+- **Manual Linux**: [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic)
+	- EN guide: [`english_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/english_docs/README_HOWTOINSTALL.md)
+- **Automated Linux (Debian)**: [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
+	- EN guide: [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md)
+- **Windows**: [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows)
+	- EN guide: [`windows_project_test/README_WINDOWS_EN.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_EN.md)
 
 ---
 
 ## 🛠️ Prerequisites
 
-### 🔧 Hardware & System
+Prerequisites depend on the selected branch (`classic`, `auto-deploy`, `windows`).
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| CPU | 4 cores | 6 cores |
-| RAM | 8 GB | 16 GB |
-| Storage | 64 GB SSD | 128 GB SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
-
-> 💡 Without a GPU, each Plex transcoded stream consumes 1–2 CPU cores.
-
-### 📦 Required Software
-
-- **Docker** (latest stable version)
-- **Docker Compose** v2 or higher
-- **Git**
-
-### 🔐 VPN & Network
-
-- Active **ProtonVPN** account (port forwarding compatible)
-- Valid **WireGuard** key (or OpenVPN credentials)
+Go directly to the target branch documentation from the [Quick Start](#-quick-start) section.
 
 ---
 
