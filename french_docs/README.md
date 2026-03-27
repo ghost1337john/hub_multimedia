@@ -153,6 +153,9 @@ Cette branche `auto-deploy` est conçue pour un **déploiement entièrement auto
 - **Docker Compose** v2 ou supérieur
 - **Git**
 
+> ℹ️ **Si vous utilisez le script `auto_deploy`** : n'installez pas ces outils manuellement juste avant l'exécution.
+> Le script gère la préparation de l'environnement et vérifie ces dépendances pendant l'installation.
+
 ### 🔐 VPN & réseau
 
 - Compte **ProtonVPN** actif (compatible port forwarding)

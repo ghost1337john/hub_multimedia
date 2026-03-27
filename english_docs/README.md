@@ -149,6 +149,9 @@ This `auto-deploy` branch is designed for a **fully automated deployment on Debi
 - **Docker Compose** v2 or higher
 - **Git**
 
+> ℹ️ **If you use the `auto_deploy` script**: do not manually install these tools right before running it.
+> The script prepares the environment and checks these dependencies during installation.
+
 ### 🔐 VPN & Network
 
 - Active **ProtonVPN** account (port forwarding compatible)
