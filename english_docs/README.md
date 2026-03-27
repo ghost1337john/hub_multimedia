@@ -185,12 +185,10 @@ hub_multimedia/
 │   └── README_WINDOWS_EN.md
 ├── french_docs/
 │   ├── README.md
-│   ├── README_HOWTOINSTALL.md
 │   ├── README_SOURCES.md
 │   └── tuto_config/            # Service configuration tutorials
 ├── english_docs/
 │   ├── README.md               # This file
-│   ├── README_HOWTOINSTALL.md
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # French root README
