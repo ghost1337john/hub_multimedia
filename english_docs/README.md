@@ -133,7 +133,7 @@ Pick the branch that matches your installation type:
 - **Manual Linux**: [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic)
 	- EN guide: [`english_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/english_docs/README_HOWTOINSTALL.md)
 - **Automated Linux (Debian)**: [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
-	- EN guide: [`auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/auto_deploy/README_AUTOSCRIPT.md)
+	- EN guide: [`english_docs/auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/english_docs/auto_deploy/README_AUTOSCRIPT.md)
 - **Windows**: [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows)
 	- EN guide: [`windows_project_test/README_WINDOWS_EN.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_EN.md)
 
