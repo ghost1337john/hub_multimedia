@@ -43,7 +43,7 @@ Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle c
 ### 1. Cloner le dépôt sur le serveur
 
 ```bash
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch auto-deploy --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia
 ```
 

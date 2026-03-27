@@ -128,7 +128,7 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch auto-deploy --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia/sources
 
 # 2. Create and configure the .env file

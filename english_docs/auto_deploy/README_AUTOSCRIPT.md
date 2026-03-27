@@ -43,7 +43,7 @@ For WireGuard, go to the Downloads section and create a new WireGuard configurat
 ### 1. Clone the repository on the server
 
 ```bash
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch auto-deploy --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia
 ```
 
