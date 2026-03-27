@@ -1,3 +1,10 @@
+> 🧪 **Branch under development — Do not use in production**
+>
+> This `windows` branch is currently in the development and testing phase.
+> It is not yet ready for real use. Please use the [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic) or [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy) branch in the meantime.
+
+---
+
 # 🪟 Windows Installation
 
 ## Prerequisites
