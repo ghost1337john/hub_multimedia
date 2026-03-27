@@ -202,7 +202,6 @@ services:
     ports:
       - 8080:8080/tcp   # qbittorrent
       - 6881:6881       # qbittorrent torrent
-      - 6789:6789       # nzbget
       - 9696:9696       # prowlarr
       - 8191:8191       # flaresolverr
     environment:
