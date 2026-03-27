@@ -165,13 +165,17 @@ hub_multimedia/
 │   └── .env                    # Environment variables (VPN, paths)
 ├── auto_deploy/
 │   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
+│   └── save_hub.sh
 ├── french_docs/
 │   ├── README.md
 │   ├── README_SOURCES.md
+│   ├── auto_deploy/
+│   │   └── README_AUTOSCRIPT.md
 │   └── tuto_config/            # Service configuration tutorials
 ├── english_docs/
 │   ├── README.md               # This file
+│   ├── auto_deploy/
+│   │   └── README_AUTOSCRIPT.md
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # French root README

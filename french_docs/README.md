@@ -128,7 +128,7 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 Cette branche `auto-deploy` est conçue pour un **déploiement entièrement automatisé sur Debian 13**.
 
-📖 **Guide d'installation principal : [`auto_deploy/README_AUTOSCRIPT.md`](../auto_deploy/README_AUTOSCRIPT.md)**
+📖 **Guide d'installation principal : [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)**
 
 > 💡 Pour une installation **manuelle** (sans script), se référer à la branche [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic).
 
@@ -169,13 +169,17 @@ hub_multimedia/
 │   └── .env                    # Variables d'environnement (VPN, chemins)
 ├── auto_deploy/
 │   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
+│   └── save_hub.sh
 ├── french_docs/
 │   ├── README.md               # Ce fichier
 │   ├── README_SOURCES.md
+│   ├── auto_deploy/
+│   │   └── README_AUTOSCRIPT.md
 │   └── tuto_config/            # Tutoriels de configuration par service
 ├── english_docs/
 │   ├── README.md
+│   ├── auto_deploy/
+│   │   └── README_AUTOSCRIPT.md
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # README racine (français)
