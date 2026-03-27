@@ -142,10 +142,10 @@ SERVER_COUNTRIES=Spain,Portugal
 
 ## 🚀 Installation avec docker
 
-### 1️⃣ Cloner le dépôt sur votre linux dans un répertoire de travail et placer vous dedans (ex : /home/$user/docker) 
+### 1️⃣ Cloner la branche `classic` sur votre linux dans un répertoire de travail et placer vous dedans (ex : /home/$user/docker) 
 
 ```bash
-git clone https://github.com/ghost1337john/hub_multimedia.git
+git clone --branch classic --single-branch https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia/sources
 ```
 
