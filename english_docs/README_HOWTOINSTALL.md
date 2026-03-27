@@ -1,9 +1,3 @@
-
-> 💡 **Quick Installation**: If you are on **Debian 13**, you can use the automatic installation script instead of following this guide manually.  
-> See [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md) for more details.
-
----
-
 ## 🛠️ Prerequisites
 
 Before installing this multimedia hub, make sure you have the following:
