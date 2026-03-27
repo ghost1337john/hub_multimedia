@@ -126,27 +126,11 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-> 💡 **Sur Debian 13**, utilise le script automatique : [`auto_deploy/README_AUTOSCRIPT.md`](../auto_deploy/README_AUTOSCRIPT.md)
+Cette branche `auto-deploy` est conçue pour un **déploiement entièrement automatisé sur Debian 13**.
 
-### Étapes en 4 commandes
+📖 **Guide d'installation principal : [`auto_deploy/README_AUTOSCRIPT.md`](../auto_deploy/README_AUTOSCRIPT.md)**
 
-```bash
-# 1. Cloner le dépôt
-git clone --branch auto-deploy --single-branch https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
-
-# 2. Créer et configurer le fichier .env
-cp .env.example .env   # puis éditer avec vos identifiants VPN
-
-# 3. Créer les répertoires nécessaires
-sudo mkdir -p /app/{gluetun,qbittorrent,prowlarr,sonarr,radarr,cleanuparr,bazarr,seerr,flaresolverr,plex,tautulli,portainer}/config
-sudo mkdir -p /data/qbittorrent/downloads
-
-# 4. Lancer la stack
-docker compose up -d
-```
-
-> Pour une installation complète et détaillée, consulte [`README_HOWTOINSTALL.md`](README_HOWTOINSTALL.md)
+> 💡 Pour une installation **manuelle** (sans script), se référer à la branche [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic).
 
 ---
 
@@ -188,12 +172,10 @@ hub_multimedia/
 │   └── README_AUTOSCRIPT.md
 ├── french_docs/
 │   ├── README.md               # Ce fichier
-│   ├── README_HOWTOINSTALL.md
 │   ├── README_SOURCES.md
 │   └── tuto_config/            # Tutoriels de configuration par service
 ├── english_docs/
 │   ├── README.md
-│   ├── README_HOWTOINSTALL.md
 │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # README racine (français)
