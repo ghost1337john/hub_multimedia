@@ -126,8 +126,6 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-> 💡 **Sur Debian 13**, utilise le script automatique : [`auto_deploy/README_AUTOSCRIPT.md`](../auto_deploy/README_AUTOSCRIPT.md)
-
 ### Étapes en 4 commandes
 
 ```bash
@@ -183,9 +181,6 @@ hub_multimedia/
 ├── sources/
 │   ├── docker_compose.yml      # Stack Docker principale
 │   └── .env                    # Variables d'environnement (VPN, chemins)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── README_AUTOSCRIPT.md
 ├── french_docs/
 │   ├── README.md               # Ce fichier
 │   ├── README_HOWTOINSTALL.md
