@@ -1,3 +1,7 @@
+> 🇫🇷 **French documentation available** — The full documentation is also available in French in the [`french_docs/`](../french_docs/) folder.
+
+---
+
 > ⚠️ **Disclaimer — Liability**
 >
 > The author of this project cannot be held responsible for its use.

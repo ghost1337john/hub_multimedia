@@ -36,7 +36,7 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Strategie Git](#-strategie-git)
+- [🌿 Stratégie Git](#-stratégie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
 - [🗂️ Historique des versions](#️-historique-des-versions)
@@ -169,7 +169,7 @@ hub_multimedia/
 
 ---
 
-## 🌿 Strategie Git
+## 🌿 Stratégie Git
 
 Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
 
