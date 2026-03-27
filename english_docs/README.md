@@ -64,7 +64,13 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 | 11 | 🐳 **Portainer** | Container management WebUI | 9000 |
 | 12 | 🧹 **Cleanuparr** | Automated download cleanup | 11011 |
 
-> ⚠️ **qBittorrent**, **Prowlarr**, and **FlareSolverr** route through **Gluetun** — their ports are exposed via the VPN container.
+> 🔒 **qBittorrent**, **Prowlarr**, and **FlareSolverr** use `network_mode: service:gluetun` — they share the VPN container's network namespace.
+>
+> **Advantages of this architecture:**
+> - **All traffic goes through the VPN**: these services have no direct Internet access — everything is routed through the WireGuard/OpenVPN tunnel.
+> - **Automatic kill switch**: if the VPN goes down, these services lose all connectivity — no IP leaks possible.
+> - **Simplified local communication**: services sharing the same network namespace communicate via `localhost` (e.g., Prowlarr → FlareSolverr on `localhost:8191`).
+> - **Ports exposed via Gluetun**: since these services don't have their own network stack, their ports are declared on the Gluetun container — this is the expected and recommended behavior.
 
 ---
 

@@ -1,5 +1,9 @@
 # 🗂️ Historique des versions
 
+### **v1.5.3 — 2026‑03‑27**
+- Suppression du port 6789 (nzbget) inutilisé dans le docker‑compose et les scripts Windows  
+- Ajout d'une section explicative dans les README sur les avantages de l'architecture VPN (`network_mode: service:gluetun`) : tunnel obligatoire, kill switch automatique, communication localhost et ports exposés via Gluetun  
+
 ### **v1.5.2 — 2026‑03‑27**
 - Refonte complète des README.md (racine, `french_docs/`, `english_docs/`) avec un style professionnel GreyWizard-Filter  
 - Ajout de badges (Docker, Plex, VPN, Licence), table des matières, et diagramme d'architecture  
