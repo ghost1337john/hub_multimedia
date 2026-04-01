@@ -61,13 +61,14 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 | 3 | 🧭 **Prowlarr** | Centralized indexer manager | 9696 |
 | 4 | 📺 **Sonarr** | Automated TV series management | 8989 |
 | 5 | 🎬 **Radarr** | Automated movie management | 7878 |
-| 6 | 💬 **Bazarr** | Automatic subtitle management | 6767 |
-| 7 | ⭐ **Seerr** | User request interface | 5055 |
-| 8 | 📺 **Plex** | Media server (streaming) | 32400 |
-| 9 | 📊 **Tautulli** | Plex monitoring & statistics | 8181 |
-| 10 | 🛡️ **FlareSolverr** | Cloudflare bypass for Prowlarr | 8191 |
-| 11 | 🐳 **Portainer** | Container management WebUI | 9000 |
-| 12 | 🧹 **Cleanuparr** | Automated download cleanup | 11011 |
+| 6 | 🎵 **Lidarr** | Automated music management | 8686 |
+| 7 | 💬 **Bazarr** | Automatic subtitle management | 6767 |
+| 8 | ⭐ **Seerr** | User request interface | 5055 |
+| 9 | 📺 **Plex** | Media server (streaming) | 32400 |
+| 10 | 📊 **Tautulli** | Plex monitoring & statistics | 8181 |
+| 11 | 🛡️ **FlareSolverr** | Cloudflare bypass for Prowlarr | 8191 |
+| 12 | 🐳 **Portainer** | Container management WebUI | 9000 |
+| 13 | 🧹 **Cleanuparr** | Automated download cleanup | 11011 |
 
 > 🔒 **qBittorrent**, **Prowlarr**, and **FlareSolverr** use `network_mode: service:gluetun` — they share the VPN container's network namespace.
 >
@@ -89,11 +90,15 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 │  │  Seerr   │───▶│  Radarr  │───▶│                  │   │
 │  │ (5055)   │    │  (7878)  │    │   qBittorrent    │   │
 │  └──────────┘    └──────────┘    │     (8080)       │   │
-│       │          ┌──────────┐    │  via Gluetun VPN │   │
-│       └─────────▶│  Sonarr  │───▶│                  │   │
-│                  │  (8989)  │    └──────────────────┘   │
-│                  └──────────┘             │             │
-│                       │                  ▼             │
+│       │      ┌──────────┐        │  via Gluetun VPN │   │
+│       ├─────▶│  Sonarr  │───────▶│                  │   │
+│       │      │  (8989)  │        └──────────────────┘   │
+│       │      └──────────┘               │              │
+│       │      ┌──────────┐               ▼              │
+│       └─────▶│  Lidarr  │───────────────┐              │
+│              │  (8686)  │               │              │
+│              └──────────┘               │              │
+│                       │                 │              │
 │              ┌─────────────────┐  ┌──────────────┐     │
 │              │    Prowlarr     │  │  FlareSolverr │     │
 │              │     (9696)      │  │    (8191)     │     │

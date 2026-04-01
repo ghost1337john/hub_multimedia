@@ -1,5 +1,12 @@
 # 🗂️ Version History
 
+### **v1.5.5 — 2026‑04‑01**
+- Added **Lidarr** for automated music management (port 8686)
+- Integrated the service into docker-compose with configuration identical to Radarr/Sonarr
+- Created Lidarr configuration documentation (French and English)
+- Updated service tables in all READMEs (Project, french_docs, english_docs)
+- Network IP assigned: 172.19.0.7
+
 ### **v1.5.4 — 2026‑03‑27**
 - Reorganized the project into multiple dedicated Git branches (e.g. `Project`, `windows`, `docs`, etc.)
 - Clear separation of environments and features by branch
