@@ -47,6 +47,7 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── prowlarr/config
   ├── sonarr/config
   ├── radarr/config
+  ├── lidarr/config
   ├── cleanuparr/config
   ├── bazarr/config
   ├── seerr/config
@@ -82,6 +83,7 @@ sudo mkdir -p \
   /app/prowlarr/config \
   /app/sonarr/config \
   /app/radarr/config \
+    /app/lidarr/config \
   /app/cleanuparr/config \
   /app/bazarr/config \
   /app/seerr/config \
@@ -231,6 +233,7 @@ Vérifie que tous les conteneurs sont en Running
 | Plex          | http://ipduserveur:32400/web  |
 | Sonarr        | http://ipduserveur:8989       |
 | Radarr        | http://ipduserveur:7878       |
+| Lidarr        | http://ipduserveur:8686       |
 | Bazarr        | http://ipduserveur:6767       |
 | Seerr         | http://ipduserveur:5055       |
 | Prowlarr      | http://ipduserveur:9696       |
@@ -253,6 +256,7 @@ Suivre cette ordre de configuration :
 | Plex          |
 | Sonarr        | 
 | Radarr        |
+| Lidarr        |
 | Bazarr        |
 | Prowlarr      |
 | FlareSolverr  |

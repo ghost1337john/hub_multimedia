@@ -13,6 +13,7 @@
 - [📺 Sonarr / TV Series](#-sonarr--tv-series)
 - [🎬 Radarr / Movies](#-radarr--movies)
 - [💬 Bazarr / Subtitles](#-bazarr--subtitles)
+- [🎵 Lidarr / Music](#-lidarr--music)
 - [🎬 Seerr / Requests](#-seerr--requests)
 - [🧹 Cleanuparr](#-cleanuparr)
 - [📊 Tautulli](#-tautulli)
@@ -859,3 +860,35 @@ docker exec <container_name> env
 ```bash
 docker exec <container_name> wget -qO- https://ipinfo.io
 ```
+
+---
+
+## 🎵 Lidarr / Music
+
+### Lidarr starts but WebUI is not accessible
+- Check the correct IP address: `http://172.19.0.7:8686`
+- Lidarr runs on port 8686. Verify its status:
+  ```bash
+  docker ps | grep lidarr
+  ```
+- If the container is `unhealthy`, check the logs:
+  ```bash
+  docker logs lidarr --tail 30
+  ```
+
+### Lidarr can't find artists/albums
+- Verify Prowlarr is connected and synced with Lidarr
+- Configure Prowlarr as the indexer source in Lidarr: Settings → Apps
+- To download music, set up a download client (qBittorrent) in Lidarr settings
+
+### Music files are not detected
+- Verify `/data` and `/data2` folders are accessible within Lidarr
+- Add a Root Folder pointing to `/data/music` or `/data2/music`
+- Check permissions on music files:
+  ```bash
+  ls -la /data/music
+  ```
+
+---
+
+## 🎬 Seerr / Requests
