@@ -7,6 +7,11 @@
 - Updated service tables in all READMEs (Project, french_docs, english_docs)
 - Network IP assigned: 172.19.0.7
 
+### **v1.5.4 — 2026‑03‑27**
+- Reorganized the project into multiple dedicated Git branches (e.g. `Project`, `windows`, `docs`, etc.)
+- Clear separation of environments and features by branch
+- Updated repository structure to ease contribution and maintenance
+
 ### **v1.5.3 — 2026‑03‑27**
 - Removed unused port 6789 (nzbget) from docker-compose and Windows scripts  
 - Added an explanatory section in READMEs about the VPN architecture benefits (`network_mode: service:gluetun`): enforced tunnel, automatic kill switch, localhost communication, and ports exposed via Gluetun  
