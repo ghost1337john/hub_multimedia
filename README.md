@@ -68,13 +68,14 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 | 3 | 🧭 **Prowlarr** | Gestionnaire d'indexers centralisé | 9696 |
 | 4 | 📺 **Sonarr** | Automatisation des séries TV | 8989 |
 | 5 | 🎬 **Radarr** | Automatisation des films | 7878 |
-| 6 | 💬 **Bazarr** | Sous‑titres automatiques | 6767 |
-| 7 | ⭐ **Seerr** | Interface de demandes utilisateurs | 5055 |
-| 8 | 📺 **Plex** | Serveur multimédia (streaming) | 32400 |
-| 9 | 📊 **Tautulli** | Surveillance et statistiques Plex | 8181 |
-| 10 | 🛡️ **FlareSolverr** | Contournement Cloudflare pour Prowlarr | 8191 |
-| 11 | 🐳 **Portainer** | Gestion des containers en WebUI | 9000 |
-| 12 | 🧹 **Cleanuparr** | Nettoyage automatisé des téléchargements | 11011 |
+| 6 | 🎵 **Lidarr** | Automatisation de la musique | 8686 |
+| 7 | 💬 **Bazarr** | Sous‑titres automatiques | 6767 |
+| 8 | ⭐ **Seerr** | Interface de demandes utilisateurs | 5055 |
+| 9 | 📺 **Plex** | Serveur multimédia (streaming) | 32400 |
+| 10 | 📊 **Tautulli** | Surveillance et statistiques Plex | 8181 |
+| 11 | 🛡️ **FlareSolverr** | Contournement Cloudflare pour Prowlarr | 8191 |
+| 12 | 🐳 **Portainer** | Gestion des containers en WebUI | 9000 |
+| 13 | 🧹 **Cleanuparr** | Nettoyage automatisé des téléchargements | 11011 |
 
 > 🔒 **qBittorrent**, **Prowlarr** et **FlareSolverr** utilisent `network_mode: service:gluetun` — ils partagent l'espace réseau du conteneur VPN.
 >
