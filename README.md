@@ -7,6 +7,8 @@
 
 > 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](english_docs/) folder.
 
+<img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
+
 ---
 
 > ⚠️ **Disclaimer — Responsabilité**
@@ -43,7 +45,7 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Strategie Git](#-strategie-git)
+- [🌿 Stratégie Git](#-stratégie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
 - [🗂️ Historique des versions](#️-historique-des-versions)
@@ -97,11 +99,15 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 │  │  Seerr   │───▶│  Radarr  │───▶│                  │   │
 │  │ (5055)   │    │  (7878)  │    │   qBittorrent    │   │
 │  └──────────┘    └──────────┘    │     (8080)       │   │
-│       │          ┌──────────┐    │  via Gluetun VPN │   │
-│       └─────────▶│  Sonarr  │───▶│                  │   │
-│                  │  (8989)  │    └──────────────────┘   │
-│                  └──────────┘             │             │
-│                       │                  ▼             │
+│       │      ┌──────────┐        │  via Gluetun VPN │   │
+│       ├─────▶│  Sonarr  │───────▶│                  │   │
+│       │      │  (8989)  │        └──────────────────┘   │
+│       │      └──────────┘               │              │
+│       │      ┌──────────┐               ▼              │
+│       └─────▶│  Lidarr  │───────────────┐              │
+│              │  (8686)  │               │              │
+│              └──────────┘               │              │
+│                       │                 │              │
 │              ┌─────────────────┐  ┌──────────────┐     │
 │              │    Prowlarr     │  │  FlareSolverr │     │
 │              │     (9696)      │  │    (8191)     │     │
@@ -136,7 +142,7 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 > 💡 **Branche Windows** : utilise le script PowerShell dans [`windows_project_test/`](windows_project_test/)
 
-### Étapes en 4 commandes
+Choisis la branche adaptée à ton type d'installation :
 
 ```powershell
 # 1. Cloner le dépôt
@@ -159,7 +165,7 @@ docker ps
 
 ## 🛠️ Prérequis
 
-### 🔧 Matériel & système
+Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
 
 | Composant | Minimum | Recommandé |
 |-----------|---------|------------|
@@ -208,14 +214,14 @@ hub_multimedia/
 
 ---
 
-## 🌿 Strategie Git
+## 🌿 Stratégie Git
 
 Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
 
 - `Project` : branche complète (référence) avec toutes les variantes.
 - `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
 - `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows.
+- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Conventions recommandées pour les merges :
 

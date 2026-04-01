@@ -1,3 +1,7 @@
+> 🇫🇷 **French documentation available** — The full documentation is also available in French in the [`french_docs/`](../french_docs/) folder.
+
+---
+
 > ⚠️ **Disclaimer — Liability**
 >
 > The author of this project cannot be held responsible for its use.
@@ -129,7 +133,7 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 > 💡 **Windows branch**: use the PowerShell installer in [`windows_project_test/`](../windows_project_test/)
 
-### 4-Step Installation
+Pick the branch that matches your installation type:
 
 ```powershell
 # 1. Clone the repository
@@ -152,7 +156,7 @@ docker ps
 
 ## 🛠️ Prerequisites
 
-### 🔧 Hardware & System
+Prerequisites depend on the selected branch (`classic`, `auto-deploy`, `windows`).
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
@@ -208,7 +212,7 @@ The repository is organized around one main branch and specialized branches:
 - `Project`: full reference branch with all variants.
 - `classic`: manual Linux installation variant (without auto-deploy and without Windows).
 - `auto-deploy`: automated Debian variant (script + Linux stack).
-- `windows`: Windows installation variant.
+- `windows`: Windows installation variant. *(work in progress — do not use in production)*
 
 Recommended merge conventions:
 
