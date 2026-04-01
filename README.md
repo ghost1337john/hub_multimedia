@@ -1,5 +1,7 @@
 > 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](english_docs/) folder.
 
+<img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
+
 ---
 
 > ⚠️ **Disclaimer — Responsabilité**
