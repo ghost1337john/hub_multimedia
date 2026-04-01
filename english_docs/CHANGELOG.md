@@ -1,5 +1,12 @@
 # 🗂️ Version History
 
+### **v1.5.5 — 2026‑04‑01**
+- Added **Lidarr** for automated music management (port 8686)
+- Integrated the service into docker-compose with configuration identical to Radarr/Sonarr
+- Created Lidarr configuration documentation (French and English)
+- Updated service tables in all READMEs (Project, french_docs, english_docs)
+- Network IP assigned: 172.19.0.7
+
 ### **v1.5.3 — 2026‑03‑27**
 - Removed unused port 6789 (nzbget) from docker-compose and Windows scripts  
 - Added an explanatory section in READMEs about the VPN architecture benefits (`network_mode: service:gluetun`): enforced tunnel, automatic kill switch, localhost communication, and ports exposed via Gluetun  

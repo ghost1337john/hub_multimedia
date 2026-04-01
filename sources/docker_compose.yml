@@ -137,6 +137,32 @@ services:
       timeout: 10s
       start_period: 20s
       retries: 3
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/lidarr/config:/config
+      - /data:/data
+      - /data2:/data2
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    ports:
+      - 8686:8686
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.7
+    healthcheck:
+      test: curl -f http://localhost:8686/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
         
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -210,6 +236,7 @@ services:
     depends_on:
       - radarr
       - sonarr
+      - lidarr
     restart: unless-stopped
     ports:
       - "11011:11011"
