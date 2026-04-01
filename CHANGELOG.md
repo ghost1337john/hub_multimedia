@@ -7,6 +7,11 @@
 - Mise à jour des tableaux des services dans tous les README (Project, french_docs, english_docs)
 - IP réseau attribuée : 172.19.0.7
 
+### **v1.5.4 — 2026‑03‑27**
+- Réorganisation du projet en plusieurs branches Git dédiées (ex : `Project`, `windows`, `docs`, etc.)
+- Séparation claire des environnements et fonctionnalités par branche
+- Mise à jour de la structure du dépôt pour faciliter la contribution et la maintenance
+
 ### **v1.5.3 — 2026‑03‑27**
 - Suppression du port 6789 (nzbget) inutilisé dans le docker‑compose et les scripts Windows  
 - Ajout d'une section explicative dans les README sur les avantages de l'architecture VPN (`network_mode: service:gluetun`) : tunnel obligatoire, kill switch automatique, communication localhost et ports exposés via Gluetun  
