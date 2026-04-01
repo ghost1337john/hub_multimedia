@@ -13,6 +13,7 @@
 - [📺 Sonarr / Séries TV](#-sonarr--séries-tv)
 - [🎬 Radarr / Films](#-radarr--films)
 - [💬 Bazarr / Sous-titres](#-bazarr--sous-titres)
+- [🎵 Lidarr / Musique](#-lidarr--musique)
 - [🎬 Seerr / Demandes](#-seerr--demandes)
 - [🧹 Cleanuparr](#-cleanuparr)
 - [📊 Tautulli](#-tautulli)
@@ -662,9 +663,31 @@ docker stats
 Si les logs deviennent trop volumineux, configure la rotation dans `/etc/docker/daemon.json` :
 ```json
 {
+## 🎵 Lidarr / Musique
   "log-driver": "json-file",
+### Lidarr démarre mais la WebUI n'est pas accessible
+- Vérifie que l'adresse IP est correcte : `http://172.19.0.7:8686`
+- Lidarr s'exécute sur le port 8686. Vérifie le status :
+  ```bash
+  docker ps | grep lidarr
+  ```
+- Si le container est `unhealthy`, vérifie les logs :
+  ```bash
+  docker logs lidarr --tail 30
+  ```
   "log-opts": {
+### Lidarr ne trouve pas d'artistes/albums
+- Vérifie que Prowlarr est connecté et synchronisé avec Lidarr
+- Configuration en Sonarr/Radarr : Settings → Apps - Ajoute Prowlarr comme source d'indexers
+- Pour récupérer de la musique, configure un client de téléchargement (qBittorrent) dans Lidarr
     "max-size": "10m",
+### Les fichiers de musique ne sont pas détectés
+- Vérifie que les dossiers `/data` et `/data2` sont correctement accessibles dans Lidarr
+- Ajoute un chemin racine (Root Folder) pointant vers `/data/music` ou `/data2/music`
+- Vérifie les permissions sur les fichiers de musique :
+  ```bash
+  ls -la /data/music
+  ```
     "max-file": "3"
   }
 }

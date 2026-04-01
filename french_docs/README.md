@@ -36,7 +36,7 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Strategie Git](#-strategie-git)
+- [🌿 Stratégie Git](#-stratégie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
 - [🗂️ Historique des versions](#️-historique-des-versions)
@@ -141,7 +141,7 @@ Cette branche `auto-deploy` est conçue pour un **déploiement entièrement auto
 
 ## 🛠️ Prérequis
 
-### 🔧 Matériel & système
+Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
 
 | Composant | Minimum | Recommandé |
 |-----------|---------|------------|
@@ -195,14 +195,14 @@ hub_multimedia/
 
 ---
 
-## 🌿 Strategie Git
+## 🌿 Stratégie Git
 
 Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
 
 - `Project` : branche complète (référence) avec toutes les variantes.
 - `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
 - `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows.
+- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Conventions recommandées pour les merges :
 
