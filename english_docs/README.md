@@ -1,3 +1,7 @@
+> 🇫🇷 **French documentation available** — The full documentation is also available in French in the [`french_docs/`](../french_docs/) folder.
+
+---
+
 > ⚠️ **Disclaimer — Liability**
 >
 > The author of this project cannot be held responsible for its use.
@@ -151,27 +155,9 @@ docker compose up -d
 
 ## 🛠️ Prerequisites
 
-### 🔧 Hardware & System
+Prerequisites depend on the selected branch (`classic`, `auto-deploy`, `windows`).
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| CPU | 4 cores | 6 cores |
-| RAM | 8 GB | 16 GB |
-| Storage | 64 GB SSD | 128 GB SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
-
-> 💡 Without a GPU, each Plex transcoded stream consumes 1–2 CPU cores.
-
-### 📦 Required Software
-
-- **Docker** (latest stable version)
-- **Docker Compose** v2 or higher
-- **Git**
-
-### 🔐 VPN & Network
-
-- Active **ProtonVPN** account (port forwarding compatible)
-- Valid **WireGuard** key (or OpenVPN credentials)
+Go directly to the target branch documentation from the [Quick Start](#-quick-start) section.
 
 ---
 
@@ -204,7 +190,7 @@ The repository is organized around one main branch and specialized branches:
 - `Project`: full reference branch with all variants.
 - `classic`: manual Linux installation variant (without auto-deploy and without Windows).
 - `auto-deploy`: automated Debian variant (script + Linux stack).
-- `windows`: Windows installation variant.
+- `windows`: Windows installation variant. *(work in progress — do not use in production)*
 
 Recommended merge conventions:
 

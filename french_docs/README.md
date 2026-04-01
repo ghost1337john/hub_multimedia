@@ -36,7 +36,7 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Strategie Git](#-strategie-git)
+- [🌿 Stratégie Git](#-stratégie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
 - [🗂️ Historique des versions](#️-historique-des-versions)
@@ -155,27 +155,9 @@ docker compose up -d
 
 ## 🛠️ Prérequis
 
-### 🔧 Matériel & système
+Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
 
-| Composant | Minimum | Recommandé |
-|-----------|---------|------------|
-| CPU | 4 cœurs | 6 cœurs |
-| RAM | 8 Go | 16 Go |
-| Stockage | 64 Go SSD | 128 Go SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
-
-> 💡 Sans GPU, chaque flux Plex transcodé consomme 1–2 cœurs CPU.
-
-### 📦 Logiciels requis
-
-- **Docker** (dernière version stable)
-- **Docker Compose** v2 ou supérieur
-- **Git**
-
-### 🔐 VPN & réseau
-
-- Compte **ProtonVPN** actif (compatible port forwarding)
-- Clé **WireGuard** valide (ou identifiants OpenVPN)
+Consulte directement la documentation de la branche cible depuis la section [Installation rapide](#-installation-rapide).
 
 ---
 
@@ -201,14 +183,14 @@ hub_multimedia/
 
 ---
 
-## 🌿 Strategie Git
+## 🌿 Stratégie Git
 
 Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
 
 - `Project` : branche complète (référence) avec toutes les variantes.
 - `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
 - `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows.
+- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Conventions recommandées pour les merges :
 

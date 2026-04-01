@@ -41,6 +41,7 @@ Organize your folders to store container configs on your server as follows:
   ├── prowlarr/config
   ├── sonarr/config
   ├── radarr/config
+  ├── lidarr/config
   ├── cleanuparr/config
   ├── bazarr/config
   ├── seerr/config
@@ -76,8 +77,10 @@ sudo mkdir -p \
   /app/prowlarr/config \
   /app/sonarr/config \
   /app/radarr/config \
+    /app/lidarr/config \
   /app/cleanuparr/config \
   /app/bazarr/config \
+  | Lidarr        | http://serverip:8686       |
   /app/seerr/config \
   /app/flaresolverr/config \
   /app/plex/config \
@@ -135,7 +138,7 @@ SERVER_COUNTRIES=Spain,Portugal
 
 ## 🚀 Installation with Docker
 
-### 1️⃣ Clone the repository on your Linux machine in a working directory and navigate into it (e.g., /home/$user/docker) 
+### 1️⃣ Clone the `classic` branch on your Linux machine in a working directory and navigate into it (e.g., /home/$user/docker) 
 
 ```bash
 git clone --branch classic --single-branch https://github.com/ghost1337john/hub_multimedia.git
@@ -246,6 +249,7 @@ Follow this configuration order:
 | Plex          |
 | Sonarr        | 
 | Radarr        |
+| Lidarr        |
 | Bazarr        |
 | Prowlarr      |
 | FlareSolverr  |
