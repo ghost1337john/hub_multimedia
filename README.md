@@ -100,12 +100,10 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
 
-Choisis le dossier adapté à ton type d'installation :
+👉 Pour installer le hub, consulte directement le `README.md` du dossier correspondant à ton besoin :
 
-- **Linux manuel** : [`branches/classic/`](branches/classic/)
-	- Guide FR : [`branches/classic/french_docs/README_HOWTOINSTALL.md`](branches/classic/french_docs/README_HOWTOINSTALL.md)
-- **Linux automatisé (Debian)** : [`branches/autodeploy/`](branches/autodeploy/)
-	- Guide FR : [`branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md`](branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md)
+- **Installation Linux manuelle** : [branches/classic/french_docs/README.md](branches/classic/french_docs/README.md)
+- **Installation Linux automatisée (Debian)** : [branches/autodeploy/french_docs/README.md](branches/autodeploy/french_docs/README.md)
 
 ---
 
