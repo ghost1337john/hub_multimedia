@@ -1,5 +1,10 @@
 # 🗂️ Historique des versions
 
+### **v1.5.6 — 2026‑04‑04**
+- Consolidation de l'historique des versions dans un **seul** fichier `CHANGELOG.md` à la racine (`Project`)
+- Suppression des fichiers `CHANGELOG.md` dupliqués dans `branches/classic/*` et `branches/autodeploy/*`
+- Mise à jour des README secondaires pour pointer vers le changelog racine
+
 ### **v1.5.5 — 2026‑04‑01**
 - Ajout de **Lidarr** pour l'automatisation de la musique (port 8686)
 - Intégration du service dans le docker-compose avec configuration identique à Radarr/Sonarr

@@ -279,6 +279,6 @@ docker compose down
 
 ## 🗂️ Version History
 
-See the [`CHANGELOG.md`](CHANGELOG.md) file for the complete version history.
+See the [`CHANGELOG.md`](../../../CHANGELOG.md) file for the complete version history.
 
 
