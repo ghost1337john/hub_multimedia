@@ -1,4 +1,7 @@
-> 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](english_docs/) folder.
+> 🌍 **English documentation available** — Documentation is available in each installation folder:
+> [`branches/classic/english_docs/`](branches/classic/english_docs/),
+> [`branches/autodeploy/english_docs/`](branches/autodeploy/english_docs/) and
+> [`branches/windows/english_docs/`](branches/windows/english_docs/).
 
 <img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
 
@@ -127,24 +130,24 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-Cette branche `Project` sert de **référence globale**.
+Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
 
-Choisis la branche adaptée à ton type d'installation :
+Choisis le dossier adapté à ton type d'installation :
 
-- **Linux manuel** : [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic)
-	- Guide FR : [`french_docs/README_HOWTOINSTALL.md`](https://github.com/ghost1337john/hub_multimedia/blob/classic/french_docs/README_HOWTOINSTALL.md)
-- **Linux automatisé (Debian)** : [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy)
-	- Guide FR : [`french_docs/auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/french_docs/auto_deploy/README_AUTOSCRIPT.md)
-- **Windows** : [`windows`](https://github.com/ghost1337john/hub_multimedia/tree/windows) — ⚠️ **En cours de test, ne pas utiliser pour le moment**
-	- Guide FR : [`windows_project_test/README_WINDOWS_FR.md`](https://github.com/ghost1337john/hub_multimedia/blob/windows/windows_project_test/README_WINDOWS_FR.md)
+- **Linux manuel** : [`branches/classic/`](branches/classic/)
+	- Guide FR : [`branches/classic/french_docs/README_HOWTOINSTALL.md`](branches/classic/french_docs/README_HOWTOINSTALL.md)
+- **Linux automatisé (Debian)** : [`branches/autodeploy/`](branches/autodeploy/)
+	- Guide FR : [`branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md`](branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md)
+- **Windows** : [`branches/windows/`](branches/windows/) — ⚠️ **En cours de test, ne pas utiliser pour le moment**
+	- Guide FR : [`branches/windows/windows_project_test/README_WINDOWS_FR.md`](branches/windows/windows_project_test/README_WINDOWS_FR.md)
 
 ---
 
 ## 🛠️ Prérequis
 
-Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
+Les prérequis dépendent du dossier choisi (`branches/classic`, `branches/autodeploy`, `branches/windows`).
 
-Consulte directement la documentation de la branche cible depuis la section [Installation rapide](#-installation-rapide).
+Consulte directement la documentation du dossier cible depuis la section [Installation rapide](#-installation-rapide).
 
 ---
 
@@ -152,18 +155,21 @@ Consulte directement la documentation de la branche cible depuis la section [Ins
 
 ```
 hub_multimedia/
-├── sources/
-│   ├── docker_compose.yml      # Stack Docker principale
-│   └── .env                    # Variables d'environnement (VPN, chemins)
-├── french_docs/
-│   ├── README.md
-│   ├── README_HOWTOINSTALL.md
-│   ├── README_SOURCES.md
-│   └── tuto_config/            # Tutoriels de configuration par service
-├── english_docs/
-│   ├── README.md
-│   ├── README_HOWTOINSTALL.md
-│   └── tuto_config/
+├── branches/
+│   ├── classic/
+│   │   ├── sources/
+│   │   ├── french_docs/
+│   │   └── english_docs/
+│   ├── autodeploy/
+│   │   ├── auto_deploy/
+│   │   ├── sources/
+│   │   ├── french_docs/
+│   │   └── english_docs/
+│   └── windows/
+│       ├── sources/
+│       ├── windows_project_test/
+│       ├── french_docs/
+│       └── english_docs/
 ├── CHANGELOG.md
 └── README.md                   # Ce fichier
 ```
@@ -172,26 +178,17 @@ hub_multimedia/
 
 ## 🌿 Stratégie Git
 
-Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
+Le dépôt est organisé sur **une branche unique** (`Project`) avec des variantes regroupées en sous-dossiers :
 
-- `Project` : branche complète (référence) avec toutes les variantes.
-- `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
-- `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
+- `branches/classic` : installation Linux manuelle.
+- `branches/autodeploy` : installation Linux automatisée (Debian).
+- `branches/windows` : installation Windows. *(en cours de test — ne pas utiliser en production)*
 
-Conventions recommandées pour les merges :
+Recommandations :
 
-1. Ouvrir les PR sur la branche cible métier (pas systématiquement sur `Project`).
-2. Les changements transverses (stack Docker, sécurité, docs globales) partent d'abord sur `Project`.
-3. Reporter ensuite ces commits dans les branches spécialisées par sélection (`cherry-pick`) pour éviter de réintroduire des dossiers supprimés.
-4. Éviter les merges de branches spécialisées vers `Project` sauf cas explicitement validé.
-
-Exemple de synchronisation ciblée :
-
-```bash
-git checkout classic
-git cherry-pick <sha_commit_depuis_Project>
-```
+1. Créer les PR directement sur `Project`.
+2. Limiter les changements au dossier concerné quand la modification est spécifique à un type d'installation.
+3. Appliquer les changements transverses (docs globales, structure commune) de façon cohérente dans les dossiers impactés.
 
 ---
 
@@ -199,7 +196,11 @@ git cherry-pick <sha_commit_depuis_Project>
 
 Afin de garder ce projet **simple, évolutif et indépendant** des préférences de chacun, la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) n'est pas détaillée ici.
 
-Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutoriels dédiés sont disponibles dans le dossier [`french_docs/tuto_config/`](french_docs/tuto_config/).
+Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutoriels dédiés sont disponibles dans :
+
+- [`branches/classic/french_docs/tuto_config/`](branches/classic/french_docs/tuto_config/)
+- [`branches/autodeploy/french_docs/tuto_config/`](branches/autodeploy/french_docs/tuto_config/)
+- [`branches/windows/french_docs/tuto_config/`](branches/windows/french_docs/tuto_config/)
 
 ---
 
@@ -207,8 +208,12 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 
 Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions avancées), consulte :
 
-- 🇫🇷 FAQ complète (FR) : [`french_docs/README_FAQ.md`](french_docs/README_FAQ.md)
-- 🇬🇧 Full FAQ (EN) : [`english_docs/README_FAQ.md`](english_docs/README_FAQ.md)
+- 🇫🇷 FAQ Linux manuel (FR) : [`branches/classic/french_docs/README_FAQ.md`](branches/classic/french_docs/README_FAQ.md)
+- 🇫🇷 FAQ Linux auto-deploy (FR) : [`branches/autodeploy/french_docs/README_FAQ.md`](branches/autodeploy/french_docs/README_FAQ.md)
+- 🇫🇷 FAQ Windows (FR) : [`branches/windows/french_docs/README_FAQ.md`](branches/windows/french_docs/README_FAQ.md)
+- 🇬🇧 FAQ Linux manuel (EN) : [`branches/classic/english_docs/README_FAQ.md`](branches/classic/english_docs/README_FAQ.md)
+- 🇬🇧 FAQ Linux auto-deploy (EN) : [`branches/autodeploy/english_docs/README_FAQ.md`](branches/autodeploy/english_docs/README_FAQ.md)
+- 🇬🇧 FAQ Windows (EN) : [`branches/windows/english_docs/README_FAQ.md`](branches/windows/english_docs/README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>
