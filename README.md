@@ -35,7 +35,6 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 
 - [🧩 Présentation](#-présentation)
 - [⚙️ Services inclus](#️-services-inclus)
-- [🏗️ Architecture](#️-architecture)
 - [🔗 Flux de fonctionnement](#-flux-de-fonctionnement)
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
