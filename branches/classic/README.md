@@ -1,17 +1,20 @@
 
 
+
 ## 📋 Table des matières
 
 - [💻 Installer Debian (pré-requis)](#💻-installer-debian-pré-requis)
 - [🐳 Installer Docker & Docker Compose](#🐳-installer-docker--docker-compose)
-- [🛠️ Prérequis](#🛠️-prérequis)
-- [📦 Logiciels nécessaires](#📦-logiciels-nécessaires)
+- [🔧 Matériel & système](#🔧-matériel--système)
 - [🔐 VPN & réseau](#🔐-vpn--réseau)
 - [📁 Arborescence recommandée](#📁-arborescence-recommandée)
-- [Création et configuration du fichier .env](#création-et-configuration-du-fichier-env)
 - [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
-- [📁 Points de montage du NAS](#📁-points-de-montage-du-nas)
-- [🚀 Installation avec docker](#🚀-installation-avec-docker)
+- [📁 Points de montage du NAS par rapport au script](#📁-points-de-montage-du-nas-par-rapport-au-script)
+- [🔑 Fichier .env](#-fichier-env)
+- [1️⃣ Cloner le dépôt principal (branche Project)](#1️⃣-cloner-le-dépôt-principal-branche-project)
+- [2️⃣ Configurer le fichier .env comme expliquer précédement](#2️⃣-configurer-le-fichier-env-comme-expliquer-précédement)
+- [3️⃣ Lancer l'environnement](#3️⃣-lancer-lenvironnement)
+- [4️⃣ Vérifier que tout fonctionne](#4️⃣-vérifier-que-tout-fonctionne)
 - [🐳 Installation via Portainer (sans ligne de commande)](#🐳-installation-via-portainer-sans-ligne-de-commande)
 - [🌐 Accès aux services](#🌐-accès-aux-services)
 - [🌐 Configuration des différents services](#🌐-configuration-des-différents-services)
