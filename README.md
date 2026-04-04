@@ -133,108 +133,19 @@ hub_multimedia/
 └── README.md                   # Ce fichier
 ```
 
----
-
-## 🌿 Stratégie Git
-
-Le dépôt est organisé sur **une branche unique** (`Project`) avec des variantes regroupées en sous-dossiers :
-
-- `branches/classic` : installation Linux manuelle.
-- `branches/autodeploy` : installation Linux automatisée (Debian).
-
-Recommandations :
-
-1. Créer les PR directement sur `Project`.
-2. Limiter les changements au dossier concerné quand la modification est spécifique à un type d'installation.
-3. Appliquer les changements transverses (docs globales, structure commune) de façon cohérente dans les dossiers impactés.
-
----
-
 ## 📝 Note sur la configuration
 
-Afin de garder ce projet **simple, évolutif et indépendant** des préférences de chacun, la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) n'est pas détaillée ici.
+Tous les tutoriels de configuration détaillés pour chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) sont désormais centralisés dans le dossier :
 
-Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutoriels dédiés sont disponibles dans :
+- [tuto_config/](tuto_config/)
 
-- [`branches/classic/french_docs/tuto_config/`](branches/classic/french_docs/tuto_config/)
-- [`branches/autodeploy/french_docs/tuto_config/`](branches/autodeploy/french_docs/tuto_config/)
+Consulte ce dossier à la racine du projet pour trouver les guides adaptés à chaque composant ou besoin spécifique.
 
 ---
 
 ## ❓ FAQ / Dépannage
 
-
-- 🇫🇷 FAQ générale (FR) : [`README_FAQ.md`](README_FAQ.md)
-
-<details>
-<summary>🔴 Un container ne démarre pas</summary>
-
-```bash
-# Vérifier les logs du container
-docker logs <nom_du_container>
-
-# Vérifier l'état de tous les services
-docker compose ps
-```
-</details>
-
-<details>
-<summary>🔴 Gluetun / VPN ne se connecte pas</summary>
-
-```bash
-# Vérifier les logs Gluetun
-docker logs gluetun
-
-# Vérifier l'IP publique actuelle (doit être celle du VPN)
-docker exec gluetun wget -qO- https://api.ipify.org
-```
-
-Vérifie que ta clé WireGuard et tes identifiants ProtonVPN sont corrects dans le fichier `.env`.
-</details>
-
-<details>
-<summary>🔴 qBittorrent / Prowlarr inaccessibles</summary>
-
-Ces services passent par Gluetun. S'ils sont inaccessibles, vérifie d'abord que **Gluetun est en bonne santé** (`healthy`).
-
-```bash
-docker compose ps gluetun
-```
-</details>
-
-<details>
-<summary>�� Problèmes de permissions sur les fichiers</summary>
-
-```bash
-# Vérifier ton PUID/PGID
-id
-
-# Réappliquer les permissions
-sudo chown -R 1000:1000 /app
-sudo chown -R 1000:1000 /data
-```
-
-Assure-toi que `PUID` et `PGID` dans le fichier `.env` correspondent à ton utilisateur.
-</details>
-
-<details>
-<summary>🔵 Mettre à jour les containers</summary>
-
-```bash
-docker compose pull
-docker compose up -d
-```
-</details>
-
-<details>
-<summary>🔵 Arrêter proprement la stack</summary>
-
-```bash
-docker compose down
-```
-</details>
-
----
+- 🇫🇷 FAQ générale (FR) pour aider aux debugs : [`README_FAQ.md`](README_FAQ.md)
 
 ## 🗂️ Historique des versions
 
