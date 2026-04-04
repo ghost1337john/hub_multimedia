@@ -89,27 +89,6 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ---
 
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      HUB MULTIMÉDIA                         │
-│                                                             │
-│  [ZONE APPS - LAN / HOST]                                  │
-│  Utilisateurs -> Seerr -> Radarr / Sonarr / Lidarr         │
-│  Bazarr -> Sonarr / Radarr                                 │
-│  Tautulli -> Plex (mode host)                              │
-│  Cleanuparr -> qBittorrent + *arr                          │
-│  Portainer -> gestion Docker                               │
-│                                                             │
-│  [ZONE VPN - NAMESPACE PARTAGE service:gluetun]            │
-│  Prowlarr (9696) -> FlareSolverr (8191)                    │
-│  Radarr/Sonarr/Lidarr -> qBittorrent + Prowlarr +          │
-│  FlareSolverr -> Gluetun (VPN + Firewall) -> Internet      │
-│  Ports 8080/9696/8191 publies par Gluetun                  │
-└─────────────────────────────────────────────────────────────┘
-```
-
 ### 🔗 Flux de fonctionnement detaille
 
 1. L'utilisateur fait une demande de film ou de serie dans Seerr, ou une demande de musique via Lidarr.
@@ -321,3 +300,5 @@ docker compose down
 ## 🗂️ Historique des versions
 
 Consulte le fichier [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+
+

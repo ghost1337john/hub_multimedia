@@ -80,27 +80,6 @@ It allows the management of organization, retrieval, subtitles, user requests, a
 
 ---
 
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        MULTIMEDIA HUB                      │
-│                                                             │
-│  [APPS ZONE - LAN / HOST]                                  │
-│  Users -> Seerr -> Radarr / Sonarr / Lidarr                │
-│  Bazarr -> Sonarr / Radarr                                 │
-│  Tautulli -> Plex (host mode)                              │
-│  Cleanuparr -> qBittorrent + *arr                          │
-│  Portainer -> Docker management                            │
-│                                                             │
-│  [VPN ZONE - SHARED NAMESPACE service:gluetun]             │
-│  Prowlarr (9696) -> FlareSolverr (8191)                    │
-│  Radarr/Sonarr/Lidarr -> qBittorrent + Prowlarr +          │
-│  FlareSolverr -> Gluetun (VPN + Firewall) -> Internet      │
-│  Ports 8080/9696/8191 exposed via Gluetun                  │
-└─────────────────────────────────────────────────────────────┘
-```
-
 ### 🔗 Detailed Workflow
 
 1. The user requests a movie or series in Seerr, or a music release through Lidarr.
@@ -312,3 +291,5 @@ docker compose down
 ## 🗂️ Version History
 
 See the [`CHANGELOG.md`](CHANGELOG.md) file for the complete version history.
+
+
