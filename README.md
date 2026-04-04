@@ -2,7 +2,8 @@
 > [`branches/classic/english_docs/`](branches/classic/english_docs/),
 > [`branches/autodeploy/english_docs/`](branches/autodeploy/english_docs/).
 
-<img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
+<img width="1264" height="842" alt="Gemini_Generated_Image_bzivrtbzivrtbziv" src="https://github.com/user-attachments/assets/7271c058-62da-450e-828a-1569d611fc0d" />
+
 
 ---
 
