@@ -3,13 +3,13 @@
 
 ## 📋 Table des matières
 
-- [💻 Installer Debian (pré-requis)](#💻-installer-debian-pré-requis)
-- [🐳 Installer Docker & Docker Compose](#🐳-installer-docker--docker-compose)
-- [🔧 Matériel & système](#🔧-matériel--système)
-- [🔐 VPN & réseau](#🔐-vpn--réseau)
-- [📁 Arborescence recommandée](#📁-arborescence-recommandée)
+- [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
+- [🐳 Installer Docker & Docker Compose](#installer-docker--docker-compose)
+- [🔧 Matériel & système](#matériel--système)
+- [🔐 VPN & réseau](#vpn--réseau)
+- [📁 Arborescence recommandée](#arborescence-recommandée)
 - [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
-- [📁 Points de montage du NAS par rapport au script](#📁-points-de-montage-du-nas-par-rapport-au-script)
+- [📁 Points de montage du NAS par rapport au script](#points-de-montage-du-nas-par-rapport-au-script)
 - [🔑 Fichier .env](#-fichier-env)
 - [1️⃣ Cloner le dépôt principal (branche Project)](#1️⃣-cloner-le-dépôt-principal-branche-project)
 - [2️⃣ Configurer le fichier .env comme expliquer précédement](#2️⃣-configurer-le-fichier-env-comme-expliquer-précédement)
