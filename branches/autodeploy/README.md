@@ -1,4 +1,15 @@
+
 # 🚀 Installation automatique du Hub Multimédia via Autoscript
+
+## 📋 Table des matières
+
+- [🧩 Prérequis](#-prérequis)
+- [📁 Contenu du dossier auto_deploy](#-contenu-du-dossier-auto_deploy)
+- [🛠️ Étapes d'installation](#️-étapes-dinstallation)
+- [📋 Ce que fait le script](#-ce-que-fait-le-script)
+- [🌐 Accès aux services après installation](#-accès-aux-services-après-installation)
+- [💾 Sauvegarde des configurations](#-sauvegarde-des-configurations)
+- [⚠️ Notes importantes](#️-notes-importantes)
 
 Ce script permet de déployer l'intégralité du hub multimédia sur un serveur **Debian 13 (Trixie)** en une seule commande.
 
