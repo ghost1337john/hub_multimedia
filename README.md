@@ -165,10 +165,8 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 
 ## ❓ FAQ / Dépannage
 
-Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions avancées), consulte :
 
-- 🇫🇷 FAQ Linux manuel (FR) : [`branches/classic/french_docs/README_FAQ.md`](branches/classic/french_docs/README_FAQ.md)
-- 🇫🇷 FAQ Linux auto-deploy (FR) : [`branches/autodeploy/french_docs/README_FAQ.md`](branches/autodeploy/french_docs/README_FAQ.md)
+- 🇫🇷 FAQ générale (FR) : [`README_FAQ.md`](README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>

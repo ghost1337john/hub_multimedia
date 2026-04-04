@@ -184,9 +184,8 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 
 ## ❓ FAQ / Dépannage
 
-Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions avancées), consulte :
 
-- 🇫🇷 FAQ complète (FR) : [`README_FAQ.md`](README_FAQ.md)
+- 🇫🇷 FAQ générale (FR) : [`../../../README_FAQ.md`](../../../README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>
