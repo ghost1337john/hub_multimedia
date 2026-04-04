@@ -1,4 +1,17 @@
-## 🛠️ Prérequis
+
+## 📋 Table des matières
+
+- [🛠️ Prérequis](#prérequis)
+- [📦 Logiciels nécessaires](#logiciels-nécessaires)
+- [🔐 VPN & réseau](#vpn--réseau)
+- [📁 Arborescence recommandée](#arborescence-recommandée)
+- [Récupérer le PUID et le PGID de l'utilisateur](#récupérer-le-puid-et-le-pgid-de-lutilisateur)
+- [Création des répertoires en une ligne de commande](#création-des-répertoires-en-une-ligne-de-commande)
+- [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
+- [📁 Points de montage du NAS par rapport au script](#points-de-montage-du-nas-par-rapport-au-script)
+- [🔑 Fichier .env](#fichier-env)
+- [🚀 Installation avec docker](#installation-avec-docker)
+- [🐳 Installation via Portainer (sans ligne de commande)](#installation-via-portainer-sans-ligne-de-commande)
 
 Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suivants :
 
@@ -35,6 +48,24 @@ Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suiv
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
+Pour créer tous les dossiers nécessaires en une seule commande :
+```
+sudo mkdir -p \
+  /app/gluetun/config \
+  /app/qbittorrent/config \
+  /app/prowlarr/config \
+  /app/sonarr/config \
+  /app/radarr/config \
+    /app/lidarr/config \
+  /app/cleanuparr/config \
+  /app/bazarr/config \
+  /app/seerr/config \
+  /app/flaresolverr/config \
+  /app/plex/config \
+  /app/tautulli/config \
+
+# Exemple d'organisation des dossiers de configuration :
+
 /app/
   ├── gluetun/config
   ├── qbittorrent/config
@@ -50,46 +81,36 @@ Organise tes dossiers pour stocker les configs des containers sur ton serveur co
   ├── tautulli/config
   └── portainer/config
 
-#Récupérer le PUID et le PGID de l'utilisateur
 
-Les valeurs **PUID** (User ID) et **PGID** (Group ID) permettent aux containers Docker de s'exécuter avec les mêmes permissions que votre utilisateur sur le système hôte. Pour les récupérer, exécutez la commande `id` dans votre terminal :
+Pour que les containers Docker aient les bons droits sur vos fichiers, récupérez votre **PUID** (User ID) et **PGID** (Group ID) avec :
 
 ```bash
 id
 ```
 
-Résultat attendu :
+Notez ces valeurs, elles seront utilisées dans le fichier `.env` à la racine du projet.
+
+Exemple de fichier `.env` :
+
 ```
-uid=1000(plex) gid=1000(plex)
-groupes=1000(plex),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plu
-gdev),100(users),101(netdev)
+PUID=1000
+PGID=1000
+TZ=Europe/Paris
+MEDIA_DIR=/data
+OPENVPN_USER=kokorasta695
+OPENVPN_PASSWORD=rgijo7r8g7r@
+WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
+SERVER_COUNTRIES=Spain,Portugal
 ```
 
-- **PUID** = la valeur après `uid=` → ici `1000`
-- **PGID** = la valeur après `gid=` → ici `1000`
+Pour OpenVPN, allez dans la section Compte de ProtonVPN et copiez votre nom d'utilisateur et mot de passe. Ajoutez « +pmp » à la fin de votre nom d'utilisateur pour activer le port forwarding.
 
-> 💡 Reportez ces valeurs dans votre fichier `.env` pour que les containers aient les bons droits sur vos fichiers.
-#Création des répertoires en une ligne de commande :
-```
-sudo mkdir -p \
-  /app/gluetun/config \
-  /app/qbittorrent/config \
-  /app/prowlarr/config \
-  /app/sonarr/config \
-  /app/radarr/config \
-    /app/lidarr/config \
-  /app/cleanuparr/config \
-  /app/bazarr/config \
-  /app/seerr/config \
-  /app/flaresolverr/config \
-  /app/plex/config \
-  /app/tautulli/config \
-  /app/portainer/config \
+Pour WireGuard, créez une nouvelle configuration dans la section Téléchargements, sélectionnez Router, aucun filtrage, NAT‑PMP (Port Forwarding), puis copiez la PrivateKey.
 
-sudo mkdir /data
-```
-#Attribution des droits sur les répertoires 
-```
+> 💡 Adaptez les chemins et identifiants à votre configuration.
+
+# Attribution des droits sur les répertoires
+```bash
 sudo chown -R 1000:1000 /app
 sudo chown -R 1000:1000 /data
 ```
@@ -100,6 +121,8 @@ Organise tes points de montage sur ton serveur comme ceci :
 /data/
   ├── films 
   ├── series
+sudo mkdir /data
+```
   └── qbittorrent/
         └── downloads/
 
@@ -110,14 +133,10 @@ Pour OpenVPN, allez dans la section Compte et copiez votre nom d'utilisateur et 
 REMARQUE : POUR QUE LE TRANSFERT DE PORT FONCTIONNE, VOUS DEVEZ AJOUTER «
 +pmp » À LA FIN DE VOTRE NOM D'UTILISATEUR DANS LE FICHIER .env.
 
-<img width="1055" height="738" alt="image" src="https://github.com/user-attachments/assets/2b364b33-b5cc-4d03-8619-dd9c0b8f0363" />
-
 Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle configuration WireGuard.
 Sélectionnez Router, aucun filtrage, et « NAT‑PMP (Port Forwarding) ». Désélectionnez VPN
 Accelerator. Lorsque vous cliquez sur Create, une fenêtre affichera la configuration. Copiez la
 PrivateKey.
-
-<img width="1040" height="851" alt="image" src="https://github.com/user-attachments/assets/21c5f167-0c1d-4723-88b5-b6bbf737a88a" />
 
 Exemple de fichier avec les informations : 
 
@@ -138,11 +157,12 @@ SERVER_COUNTRIES=Spain,Portugal
 
 ## 🚀 Installation avec docker
 
-### 1️⃣ Cloner la branche `classic` sur votre linux dans un répertoire de travail et placer vous dedans (ex : /home/$user/docker) 
+
+### 1️⃣ Cloner le dépôt principal (branche `Project`)
 
 ```bash
-git clone --branch classic --single-branch https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia/sources
+git clone https://github.com/ghost1337john/hub_multimedia.git
+cd hub_multimedia/branches/classic
 ```
 
 ### 2️⃣ Configurer le fichier `.env` comme expliquer précédement 
