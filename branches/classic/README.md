@@ -1,19 +1,8 @@
-## 📋 Table des matières
 
+## 📋 Table des matières
 
 - [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
 - [🐳 Installer Docker & Docker Compose](#installer-docker--docker-compose)
-- [🛠️ Prérequis](#prérequis)
-- [📦 Logiciels nécessaires](#logiciels-nécessaires)
-- [🔐 VPN & réseau](#vpn--réseau)
-- [📁 Arborescence recommandée](#arborescence-recommandée)
-- [Création et configuration du fichier .env](#création-et-configuration-du-fichier-env)
-- [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
-- [📁 Points de montage du NAS](#points-de-montage-du-nas)
-- [🚀 Installation avec docker (avec sudo)](#installation-avec-docker)
-- [🐳 Installation via Portainer (sans ligne de commande)](#installation-via-portainer-sans-ligne-de-commande)
-
-- [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
 - [🛠️ Prérequis](#prérequis)
 - [📦 Logiciels nécessaires](#logiciels-nécessaires)
 - [🔐 VPN & réseau](#vpn--réseau)
