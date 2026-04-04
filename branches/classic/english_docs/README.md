@@ -128,7 +128,7 @@ docker compose up -d
 
 ## 🛠️ Prerequisites
 
-Prerequisites depend on the selected branch (`classic`, `auto-deploy`, `windows`).
+Prerequisites depend on the selected branch (`classic`, `auto-deploy`).
 
 Go directly to the target branch documentation from the [Quick Start](#-quick-start) section.
 
@@ -161,9 +161,8 @@ hub_multimedia/
 The repository is organized around one main branch and specialized branches:
 
 - `Project`: full reference branch with all variants.
-- `classic`: manual Linux installation variant (without auto-deploy and without Windows).
+- `classic`: manual Linux installation variant (without auto-deploy).
 - `auto-deploy`: automated Debian variant (script + Linux stack).
-- `windows`: Windows installation variant. *(work in progress — do not use in production)*
 
 Recommended merge conventions:
 

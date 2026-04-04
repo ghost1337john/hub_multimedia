@@ -116,7 +116,7 @@ Cette branche `auto-deploy` est conçue pour un **déploiement entièrement auto
 
 ## 🛠️ Prérequis
 
-Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`, `windows`).
+Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`).
 
 | Composant | Minimum | Recommandé |
 |-----------|---------|------------|
@@ -175,9 +175,8 @@ hub_multimedia/
 Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
 
 - `Project` : branche complète (référence) avec toutes les variantes.
-- `classic` : variante installation manuelle Linux (sans auto-deploy ni Windows).
+- `classic` : variante installation manuelle Linux (sans auto-deploy).
 - `auto-deploy` : variante automatisée Debian (script + stack Linux).
-- `windows` : variante installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Conventions recommandées pour les merges :
 

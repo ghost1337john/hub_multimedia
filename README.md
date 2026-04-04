@@ -1,7 +1,6 @@
 > 🌍 **English documentation available** — Documentation is available in each installation folder:
 > [`branches/classic/english_docs/`](branches/classic/english_docs/),
-> [`branches/autodeploy/english_docs/`](branches/autodeploy/english_docs/) and
-> [`branches/windows/english_docs/`](branches/windows/english_docs/).
+> [`branches/autodeploy/english_docs/`](branches/autodeploy/english_docs/).
 
 <img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
 
@@ -117,14 +116,12 @@ Choisis le dossier adapté à ton type d'installation :
 	- Guide FR : [`branches/classic/french_docs/README_HOWTOINSTALL.md`](branches/classic/french_docs/README_HOWTOINSTALL.md)
 - **Linux automatisé (Debian)** : [`branches/autodeploy/`](branches/autodeploy/)
 	- Guide FR : [`branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md`](branches/autodeploy/french_docs/auto_deploy/README_AUTOSCRIPT.md)
-- **Windows** : [`branches/windows/`](branches/windows/) — ⚠️ **En cours de test, ne pas utiliser pour le moment**
-	- Guide FR : [`branches/windows/windows_project_test/README_WINDOWS_FR.md`](branches/windows/windows_project_test/README_WINDOWS_FR.md)
 
 ---
 
 ## 🛠️ Prérequis
 
-Les prérequis dépendent du dossier choisi (`branches/classic`, `branches/autodeploy`, `branches/windows`).
+Les prérequis dépendent du dossier choisi (`branches/classic`, `branches/autodeploy`).
 
 Consulte directement la documentation du dossier cible depuis la section [Installation rapide](#-installation-rapide).
 
@@ -144,11 +141,6 @@ hub_multimedia/
 │   │   ├── sources/
 │   │   ├── french_docs/
 │   │   └── english_docs/
-│   └── windows/
-│       ├── sources/
-│       ├── windows_project_test/
-│       ├── french_docs/
-│       └── english_docs/
 ├── CHANGELOG.md
 └── README.md                   # Ce fichier
 ```
@@ -161,7 +153,6 @@ Le dépôt est organisé sur **une branche unique** (`Project`) avec des variant
 
 - `branches/classic` : installation Linux manuelle.
 - `branches/autodeploy` : installation Linux automatisée (Debian).
-- `branches/windows` : installation Windows. *(en cours de test — ne pas utiliser en production)*
 
 Recommandations :
 
@@ -179,7 +170,6 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 
 - [`branches/classic/french_docs/tuto_config/`](branches/classic/french_docs/tuto_config/)
 - [`branches/autodeploy/french_docs/tuto_config/`](branches/autodeploy/french_docs/tuto_config/)
-- [`branches/windows/french_docs/tuto_config/`](branches/windows/french_docs/tuto_config/)
 
 ---
 
@@ -189,10 +179,8 @@ Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions ava
 
 - 🇫🇷 FAQ Linux manuel (FR) : [`branches/classic/french_docs/README_FAQ.md`](branches/classic/french_docs/README_FAQ.md)
 - 🇫🇷 FAQ Linux auto-deploy (FR) : [`branches/autodeploy/french_docs/README_FAQ.md`](branches/autodeploy/french_docs/README_FAQ.md)
-- 🇫🇷 FAQ Windows (FR) : [`branches/windows/french_docs/README_FAQ.md`](branches/windows/french_docs/README_FAQ.md)
 - 🇬🇧 FAQ Linux manuel (EN) : [`branches/classic/english_docs/README_FAQ.md`](branches/classic/english_docs/README_FAQ.md)
 - 🇬🇧 FAQ Linux auto-deploy (EN) : [`branches/autodeploy/english_docs/README_FAQ.md`](branches/autodeploy/english_docs/README_FAQ.md)
-- 🇬🇧 FAQ Windows (EN) : [`branches/windows/english_docs/README_FAQ.md`](branches/windows/english_docs/README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>
