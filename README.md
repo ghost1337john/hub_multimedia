@@ -105,10 +105,11 @@ Consulte directement la documentation du dossier cible depuis la section [Instal
 
 Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
 
+
 👉 Pour installer le hub, consulte directement le `README.md` du dossier correspondant à ton besoin :
 
-- **Installation Linux manuelle** : [branches/classic/french_docs/README.md](branches/classic/french_docs/README.md)
-- **Installation Linux automatisée (Debian)** : [branches/autodeploy/french_docs/README.md](branches/autodeploy/french_docs/README.md)
+- **Installation Linux manuelle** : [branches/classic/README.md](branches/classic/README.md)
+- **Installation Linux automatisée (Debian)** : [branches/autodeploy/README.md](branches/autodeploy/README.md)
 
 ## 📁 Structure du projet
 
@@ -139,6 +140,7 @@ hub_multimedia/
 └── README_SOURCES.md
 ```
 
+
 ## 📝 Note sur la configuration
 
 Tous les tutoriels de configuration détaillés pour chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) sont désormais centralisés dans le dossier :
@@ -149,9 +151,10 @@ Consulte ce dossier à la racine du projet pour trouver les guides adaptés à c
 
 ---
 
+
 ## ❓ FAQ / Dépannage
 
-- 🇫🇷 FAQ générale (FR) pour aider aux debugs : [`README_FAQ.md`](README_FAQ.md)
+- 🇫🇷 FAQ générale et dépannage : [README_FAQ.md](README_FAQ.md)
 
 ## 🗂️ Historique des versions
 
