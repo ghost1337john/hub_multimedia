@@ -95,16 +95,6 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 11. Tautulli genere ensuite des statistiques sur l'utilisation de Plex par les utilisateurs.
 
 ---
-
-## 🚀 Installation rapide
-
-Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
-
-👉 Pour installer le hub, consulte directement le `README.md` du dossier correspondant à ton besoin :
-
-- **Installation Linux manuelle** : [branches/classic/french_docs/README.md](branches/classic/french_docs/README.md)
-- **Installation Linux automatisée (Debian)** : [branches/autodeploy/french_docs/README.md](branches/autodeploy/french_docs/README.md)
-
 ---
 
 ## 🛠️ Prérequis
@@ -114,6 +104,14 @@ Les prérequis dépendent du dossier choisi (`branches/classic`, `branches/autod
 Consulte directement la documentation du dossier cible depuis la section [Installation rapide](#-installation-rapide).
 
 ---
+## 🚀 Installation rapide
+
+Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
+
+👉 Pour installer le hub, consulte directement le `README.md` du dossier correspondant à ton besoin :
+
+- **Installation Linux manuelle** : [branches/classic/french_docs/README.md](branches/classic/french_docs/README.md)
+- **Installation Linux automatisée (Debian)** : [branches/autodeploy/french_docs/README.md](branches/autodeploy/french_docs/README.md)
 
 ## 📁 Structure du projet
 
