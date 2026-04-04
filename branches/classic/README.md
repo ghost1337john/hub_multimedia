@@ -1,5 +1,3 @@
-> 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](english_docs/) folder.
-
 <img width="1536" height="1024" alt="Copilot_20260401_223044" src="https://github.com/user-attachments/assets/7db04e1c-483b-40e9-bb52-0146caa42f0c" />
 
 ---
@@ -148,10 +146,6 @@ hub_multimedia/
 │   ├── README_HOWTOINSTALL.md
 │   ├── README_SOURCES.md
 │   └── tuto_config/            # Tutoriels de configuration par service
-├── english_docs/
-│   ├── README.md
-│   ├── README_HOWTOINSTALL.md
-│   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # Ce fichier
 ```
@@ -195,7 +189,6 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions avancées), consulte :
 
 - 🇫🇷 FAQ complète (FR) : [`french_docs/README_FAQ.md`](french_docs/README_FAQ.md)
-- 🇬🇧 Full FAQ (EN) : [`english_docs/README_FAQ.md`](english_docs/README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>

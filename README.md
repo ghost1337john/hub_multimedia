@@ -1,7 +1,3 @@
-> 🌍 **English documentation available** — Documentation is available in each installation folder:
-> [`branches/classic/english_docs/`](branches/classic/english_docs/),
-> [`branches/autodeploy/english_docs/`](branches/autodeploy/english_docs/).
-
 <img width="1264" height="842" alt="Gemini_Generated_Image_bzivrtbzivrtbziv" src="https://github.com/user-attachments/assets/7271c058-62da-450e-828a-1569d611fc0d" />
 
 
@@ -129,12 +125,12 @@ hub_multimedia/
 │   ├── classic/
 │   │   ├── sources/
 │   │   ├── french_docs/
-│   │   └── english_docs/
+│   │   └── tuto_config/
 │   ├── autodeploy/
 │   │   ├── auto_deploy/
 │   │   ├── sources/
 │   │   ├── french_docs/
-│   │   └── english_docs/
+│   │   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # Ce fichier
 ```
@@ -173,8 +169,6 @@ Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions ava
 
 - 🇫🇷 FAQ Linux manuel (FR) : [`branches/classic/french_docs/README_FAQ.md`](branches/classic/french_docs/README_FAQ.md)
 - 🇫🇷 FAQ Linux auto-deploy (FR) : [`branches/autodeploy/french_docs/README_FAQ.md`](branches/autodeploy/french_docs/README_FAQ.md)
-- 🇬🇧 FAQ Linux manuel (EN) : [`branches/classic/english_docs/README_FAQ.md`](branches/classic/english_docs/README_FAQ.md)
-- 🇬🇧 FAQ Linux auto-deploy (EN) : [`branches/autodeploy/english_docs/README_FAQ.md`](branches/autodeploy/english_docs/README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>

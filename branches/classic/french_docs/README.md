@@ -1,5 +1,3 @@
-> 🌍 **English documentation available** — The full documentation is also available in English in the [`english_docs/`](../english_docs/) folder.
-
 ---
 
 > ⚠️ **Disclaimer — Responsabilité**
@@ -146,10 +144,6 @@ hub_multimedia/
 │   ├── README_HOWTOINSTALL.md
 │   ├── README_SOURCES.md
 │   └── tuto_config/            # Tutoriels de configuration par service
-├── english_docs/
-│   ├── README.md
-│   ├── README_HOWTOINSTALL.md
-│   └── tuto_config/
 ├── CHANGELOG.md
 └── README.md                   # README racine (français)
 ```
@@ -193,7 +187,6 @@ Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutori
 Pour une FAQ plus complète (guides détaillés, cas fréquents et solutions avancées), consulte :
 
 - 🇫🇷 FAQ complète (FR) : [`README_FAQ.md`](README_FAQ.md)
-- 🇬🇧 Full FAQ (EN) : [`english_docs/README_FAQ.md`](../english_docs/README_FAQ.md)
 
 <details>
 <summary>🔴 Un container ne démarre pas</summary>
