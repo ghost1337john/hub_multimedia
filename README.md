@@ -1,6 +1,4 @@
 <img width="1264" height="842" alt="Gemini_Generated_Image_bzivrtbzivrtbziv" src="https://github.com/user-attachments/assets/7271c058-62da-450e-828a-1569d611fc0d" />
-
-
 ---
 
 > ⚠️ **Disclaimer — Responsabilité**
@@ -18,10 +16,10 @@
 > *Un écosystème Docker complet, sécurisé et automatisé pour vos bibliothèques multimédias personnelles.*
 
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
-![Docker Compose](https://img.shields.io/badge/Docker%20Compose-v2-2496ED?logo=docker&logoColor=white)
+![Docker Compose](https://img.shields.io/badge/Compose-v2+-2496ED?logo=docker&logoColor=white)
 ![Plex](https://img.shields.io/badge/Plex-Media%20Server-E5A00D?logo=plex&logoColor=white)
-![VPN](https://img.shields.io/badge/VPN-ProtonVPN-6D4AFF?logo=protonvpn&logoColor=white)
-![License](https://img.shields.io/badge/Usage-Personnel%20uniquement-green)
+![ProtonVPN](https://img.shields.io/badge/VPN-ProtonVPN-6D4AFF?logo=protonvpn&logoColor=white)
+![Usage](https://img.shields.io/badge/Usage-Personnel%20uniquement-green)
 
 Ce projet est destiné exclusivement à la gestion de contenus multimédias.
 Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes de protection liés au droit d'auteur.
@@ -31,15 +29,14 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 ## 📋 Table des matières
 
 - [🧩 Présentation](#-présentation)
-- [⚙️ Services inclus](#️-services-inclus)
-- [🔗 Flux de fonctionnement](#-flux-de-fonctionnement)
+- [⚙️ Services inclus](#-services-inclus)
+- [🔗 Flux de fonctionnement detaille](#-flux-de-fonctionnement-detaille)
+- [🛠️ Prérequis](#-prérequis)
 - [🚀 Installation rapide](#-installation-rapide)
-- [🛠️ Prérequis](#️-prérequis)
 - [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Stratégie Git](#-stratégie-git)
 - [📝 Note sur la configuration](#-note-sur-la-configuration)
 - [❓ FAQ / Dépannage](#-faq--dépannage)
-- [🗂️ Historique des versions](#️-historique-des-versions)
+- [🗂️ Historique des versions](#-historique-des-versions)
 
 ---
 
@@ -120,15 +117,26 @@ hub_multimedia/
 ├── branches/
 │   ├── classic/
 │   │   ├── sources/
-│   │   ├── french_docs/
-│   │   └── tuto_config/
+│   │   └── french_docs/
 │   ├── autodeploy/
 │   │   ├── auto_deploy/
 │   │   ├── sources/
-│   │   ├── french_docs/
-│   │   └── tuto_config/
+│   │   └── french_docs/
+├── tuto_config/                # Tous les guides de configuration
+│   ├── README_BAZARR_CONFIG.md
+│   ├── README_CLEANUPARR_CONFIG.md
+│   ├── README_LIDARR_CONFIG.md
+│   ├── README_PLEX_CONFIG.md
+│   ├── README_PORTAINER_CONFIG.md
+│   ├── README_PROWLARR_CONFIG.md
+│   ├── README_RADARR_CONFIG.md
+│   ├── README_SEERR_CONFIG.md
+│   ├── README_SONARR_CONFIG.md
+│   └── README_TAUTULLI_CONFIG.md
 ├── CHANGELOG.md
-└── README.md                   # Ce fichier
+├── README.md                   # Ce fichier
+├── README_FAQ.md
+└── README_SOURCES.md
 ```
 
 ## 📝 Note sur la configuration
