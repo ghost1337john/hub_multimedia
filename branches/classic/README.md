@@ -1,21 +1,29 @@
 
+
 ## 📋 Table des matières
 
-- [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
-- [🐳 Installer Docker & Docker Compose](#installer-docker--docker-compose)
-- [🛠️ Prérequis](#prérequis)
-- [📦 Logiciels nécessaires](#logiciels-nécessaires)
-- [🔐 VPN & réseau](#vpn--réseau)
-- [📁 Arborescence recommandée](#arborescence-recommandée)
+- [💻 Installer Debian (pré-requis)](#💻-installer-debian-pré-requis)
+- [🐳 Installer Docker & Docker Compose](#🐳-installer-docker--docker-compose)
+- [🛠️ Prérequis](#🛠️-prérequis)
+- [📦 Logiciels nécessaires](#📦-logiciels-nécessaires)
+- [🔐 VPN & réseau](#🔐-vpn--réseau)
+- [📁 Arborescence recommandée](#📁-arborescence-recommandée)
 - [Création et configuration du fichier .env](#création-et-configuration-du-fichier-env)
 - [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
-- [📁 Points de montage du NAS](#points-de-montage-du-nas)
-- [🚀 Installation avec docker (avec sudo)](#installation-avec-docker)
-- [🐳 Installation via Portainer (sans ligne de commande)](#installation-via-portainer-sans-ligne-de-commande)
+- [📁 Points de montage du NAS](#📁-points-de-montage-du-nas)
+- [🚀 Installation avec docker](#🚀-installation-avec-docker)
+- [🐳 Installation via Portainer (sans ligne de commande)](#🐳-installation-via-portainer-sans-ligne-de-commande)
+- [🌐 Accès aux services](#🌐-accès-aux-services)
+- [🌐 Configuration des différents services](#🌐-configuration-des-différents-services)
 
 ## 💻 Installer Debian (pré-requis)
 
-Pour installer Debian sur votre serveur ou machine virtuelle :
+
+Vous pouvez installer Debian sur :
+- une machine physique (PC, serveur, bare metal)
+- **ou** une machine virtuelle (VM) sous Proxmox, VirtualBox, VMware, etc.
+
+Instructions pour installer Debian sur une machine physique:
 
 1. Téléchargez l’ISO officiel sur https://www.debian.org/download
 2. Créez une clé USB bootable avec [Rufus](https://rufus.ie) (Windows) ou `dd` (Linux/Mac) :
