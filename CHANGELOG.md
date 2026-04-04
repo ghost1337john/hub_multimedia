@@ -1,3 +1,10 @@
+#
+### **v1.5.7 — 2026‑04‑04**
+- Suppression du service Portainer du `docker_compose.yml` de classic (évite l’auto-gestion, cohérence avec la doc)
+- Ajout d’un guide séparé [README_PORTAINER.md](branches/classic/README_PORTAINER.md) pour installer Portainer si besoin
+- Ajout d’une section détaillée sur l’installation de Debian dans le README classic (pré-requis)
+- Mise à jour de la table des matières et harmonisation sudo/commandes dans tous les exemples
+- Clarification dans la doc sur l’usage de Portainer comme méthode alternative
 # 🗂️ Historique des versions
 
 ### **v1.5.6 — 2026‑04‑04**

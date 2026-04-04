@@ -1,17 +1,76 @@
-
 ## 📋 Table des matières
 
+
+- [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
+- [🐳 Installer Docker & Docker Compose](#installer-docker--docker-compose)
 - [🛠️ Prérequis](#prérequis)
 - [📦 Logiciels nécessaires](#logiciels-nécessaires)
 - [🔐 VPN & réseau](#vpn--réseau)
 - [📁 Arborescence recommandée](#arborescence-recommandée)
-- [Récupérer le PUID et le PGID de l'utilisateur](#récupérer-le-puid-et-le-pgid-de-lutilisateur)
-- [Création des répertoires en une ligne de commande](#création-des-répertoires-en-une-ligne-de-commande)
+- [Création et configuration du fichier .env](#création-et-configuration-du-fichier-env)
 - [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
-- [📁 Points de montage du NAS par rapport au script](#points-de-montage-du-nas-par-rapport-au-script)
-- [🔑 Fichier .env](#fichier-env)
-- [🚀 Installation avec docker](#installation-avec-docker)
+- [📁 Points de montage du NAS](#points-de-montage-du-nas)
+- [🚀 Installation avec docker (avec sudo)](#installation-avec-docker)
 - [🐳 Installation via Portainer (sans ligne de commande)](#installation-via-portainer-sans-ligne-de-commande)
+
+- [💻 Installer Debian (pré-requis)](#installer-debian-pré-requis)
+- [🛠️ Prérequis](#prérequis)
+- [📦 Logiciels nécessaires](#logiciels-nécessaires)
+- [🔐 VPN & réseau](#vpn--réseau)
+- [📁 Arborescence recommandée](#arborescence-recommandée)
+- [Création et configuration du fichier .env](#création-et-configuration-du-fichier-env)
+- [Attribution des droits sur les répertoires](#attribution-des-droits-sur-les-répertoires)
+- [📁 Points de montage du NAS](#points-de-montage-du-nas)
+- [🚀 Installation avec docker (avec sudo)](#installation-avec-docker)
+- [🐳 Installation via Portainer (sans ligne de commande)](#installation-via-portainer-sans-ligne-de-commande)
+
+## 💻 Installer Debian (pré-requis)
+
+Pour installer Debian sur votre serveur ou machine virtuelle :
+
+1. Téléchargez l’ISO officiel sur https://www.debian.org/download
+2. Créez une clé USB bootable avec [Rufus](https://rufus.ie) (Windows) ou `dd` (Linux/Mac) :
+   ```bash
+   sudo dd if=debian-XX.iso of=/dev/sdX bs=4M status=progress
+   ```
+   (remplacez `/dev/sdX` par votre clé USB)
+3. Démarrez sur la clé USB et suivez l’installation graphique ou experte.
+4. Choisissez un partitionnement adapté, créez un utilisateur, activez sudo.
+5. Installez un environnement minimal (pas d’interface graphique nécessaire).
+6. Une fois Debian installé, connectez-vous en SSH ou localement pour suivre la suite du guide.
+
+> Pour un serveur multimédia, Debian 12 ou 13 (stable) est recommandé.
+
+## 🐳 Installer Docker & Docker Compose
+
+Sous Debian 12/13 :
+
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker $USER
+```
+
+> ⚠️ Déconnectez-vous/reconnectez-vous ou faites `newgrp docker` pour activer les droits si vous ne voulez plus utiliser sudo pour docker.
+
+Vérifiez l’installation :
+
+```bash
+docker --version
+docker compose version
+```
+
+Vous pouvez maintenant suivre la suite du guide.
 
 Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suivants :
 
@@ -36,10 +95,12 @@ Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suiv
 - Les partages du NAS paramétrés en montage automatique via le FSTAB
 - Un compte ProtonVPN payant
 
-### 📦 Logiciels nécessaires
+
 - **Docker**  
 - **Docker Compose** (v2 ou supérieur)
-- **Portainer** (Gestion des containers en WebUI)
+- **Portainer** (optionnel, gestion des containers en WebUI, à installer séparément si besoin)
+
+> ℹ️ Portainer n’est pas inclus dans le docker-compose classique pour éviter l’auto-gestion. Pour l’installer, voir [README_PORTAINER.md](README_PORTAINER.md).
 
 ### 🔐 VPN & réseau
 - Un compte **ProtonVPN** (compatible port forwarding)
@@ -48,23 +109,25 @@ Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suiv
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
+
 Pour créer tous les dossiers nécessaires en une seule commande :
-```
+```bash
 sudo mkdir -p \
   /app/gluetun/config \
   /app/qbittorrent/config \
   /app/prowlarr/config \
   /app/sonarr/config \
   /app/radarr/config \
-    /app/lidarr/config \
+  /app/lidarr/config \
   /app/cleanuparr/config \
   /app/bazarr/config \
   /app/seerr/config \
   /app/flaresolverr/config \
   /app/plex/config \
   /app/tautulli/config \
-
-# Exemple d'organisation des dossiers de configuration :
+  /app/portainer/config
+sudo mkdir -p /data
+```
 
 /app/
   ├── gluetun/config
@@ -90,24 +153,6 @@ id
 
 Notez ces valeurs, elles seront utilisées dans le fichier `.env` à la racine du projet.
 
-Exemple de fichier `.env` :
-
-```
-PUID=1000
-PGID=1000
-TZ=Europe/Paris
-MEDIA_DIR=/data
-OPENVPN_USER=kokorasta695
-OPENVPN_PASSWORD=rgijo7r8g7r@
-WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
-SERVER_COUNTRIES=Spain,Portugal
-```
-
-Pour OpenVPN, allez dans la section Compte de ProtonVPN et copiez votre nom d'utilisateur et mot de passe. Ajoutez « +pmp » à la fin de votre nom d'utilisateur pour activer le port forwarding.
-
-Pour WireGuard, créez une nouvelle configuration dans la section Téléchargements, sélectionnez Router, aucun filtrage, NAT‑PMP (Port Forwarding), puis copiez la PrivateKey.
-
-> 💡 Adaptez les chemins et identifiants à votre configuration.
 
 # Attribution des droits sur les répertoires
 ```bash
@@ -121,8 +166,6 @@ Organise tes points de montage sur ton serveur comme ceci :
 /data/
   ├── films 
   ├── series
-sudo mkdir /data
-```
   └── qbittorrent/
         └── downloads/
 
@@ -173,14 +216,16 @@ cd hub_multimedia/branches/classic
 
 ### 3️⃣ Lancer l'environnement
 
+
 ```bash
-docker compose up -d
+sudo docker compose up -d
 ```
 
 ### 4️⃣ Vérifier que tout fonctionne
 
+
 ```bash
-docker compose ps
+sudo docker compose ps
 ```
 
 Les services doivent apparaître en **Up**.
