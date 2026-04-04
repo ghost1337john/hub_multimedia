@@ -151,13 +151,13 @@ id
 Notez ces valeurs, elles seront utilisées dans le fichier `.env` à la racine du projet.
 
 
-# Attribution des droits sur les répertoires
+## Attribution des droits sur les répertoires
 ```bash
 sudo chown -R 1000:1000 /app
 sudo chown -R 1000:1000 /data
 ```
 
-### 📁 Points de montage du NAS par rapport au script 
+### 📁 Points de montage du NAS par rapport au script
 Organise tes points de montage sur ton serveur comme ceci :
 
 /data/
@@ -166,7 +166,7 @@ Organise tes points de montage sur ton serveur comme ceci :
   └── qbittorrent/
         └── downloads/
 
-### 🔑 Fichier `.env`
+### 🔑 Fichier .env
 Créer le fichier `.env` à la racine du projet avec les informations de proton VPN récupérables comme suit :
 
 Pour OpenVPN, allez dans la section Compte et copiez votre nom d'utilisateur et votre mot de passe.
@@ -192,14 +192,14 @@ OPENVPN_PASSWORD=rgijo7r8g7r@
 WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
 SERVER_COUNTRIES=Spain,Portugal
 ```
-### 1️⃣ Cloner le dépôt principal (branche `Project`)
+### 1️⃣ Cloner le dépôt principal (branche Project)
 
 ```bash
 git clone https://github.com/ghost1337john/hub_multimedia.git
 cd hub_multimedia/branches/classic
 ```
 
-### 2️⃣ Configurer le fichier `.env` comme expliquer précédement 
+### 2️⃣ Configurer le fichier .env comme expliquer précédement
 
 - Renseigne tes identifiants VPN
 - Vérifie les chemins de volumes
@@ -218,7 +218,7 @@ sudo docker compose ps
 Les services doivent apparaître en **Up**.
 
 ---
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
 
 ## 🐳 Installation via Portainer (sans ligne de commande)
 Cette méthode permet d'installer tout le hub multimédia directement depuis Portainer, sans utiliser Docker en ligne de commande.
