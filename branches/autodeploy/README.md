@@ -42,17 +42,19 @@ Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle c
 
 ### 1. Cloner le dépôt sur le serveur
 
+
 ```bash
-git clone --branch auto-deploy --single-branch https://github.com/ghost1337john/hub_multimedia.git
-cd hub_multimedia
+sudo git clone https://github.com/ghost1337john/hub_multimedia.git
+cd hub_multimedia/branches/autodeploy
 ```
 
 ### 2. Créer le fichier `.env`
 
-Avant de lancer le script, crée le fichier `.env` dans le dossier `sources/` :
+
+Avant de lancer le script, crée le fichier `.env` dans le dossier `sources/` (déjà présent par défaut, à adapter) :
 
 ```bash
-nano sources/.env
+sudo nano sources/.env
 ```
 
 Contenu attendu :
@@ -65,7 +67,7 @@ MEDIA_DIR=/data
 OPENVPN_USER=ton_user+pmp
 OPENVPN_PASSWORD=ton_password
 WIREGUARD_PRIVATE_KEY=ta_cle_privee
-SERVER_COUNTRIES=Spain,Portugal
+SERVER_COUNTRIES=Les_pays_choisis_lors_de_la_conf_wirguard (Attention il faut les noter en Anglais ex: Switzerland (pour la Suisse))
 ```
 
 > 💡 **Comment récupérer PUID et PGID ?** Exécutez la commande `id` dans votre terminal. La valeur après `uid=` correspond au **PUID** et celle après `gid=` au **PGID**.
@@ -77,6 +79,7 @@ SERVER_COUNTRIES=Spain,Portugal
 > ⚠️ Le fichier `.env` est **obligatoire**. Sans lui, le script s'arrêtera avec une erreur.
 
 ### 3. Lancer le script d'installation
+
 
 ```bash
 sudo bash auto_deploy/autoscript_install_hub_on_debian.sh
@@ -119,6 +122,8 @@ Le script affiche automatiquement les URLs avec l'IP du serveur :
 ---
 
 ## 💾 Sauvegarde des configurations
+
+> ⚠️ **Disclaimer** : La fonctionnalité de sauvegarde est actuellement en phase de test et sera validée/fiabilisée dans une prochaine version. Utilisez-la avec précaution et vérifiez manuellement vos archives si besoin.
 
 Une fois les services configurés via leurs WebUI, utilise le script de sauvegarde :
 
