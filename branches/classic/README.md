@@ -18,6 +18,7 @@
 
 ## 💻 Installer Debian (pré-requis)
 
+> Pour un serveur multimédia, Debian 12 ou 13 (stable) est recommandé.
 
 Vous pouvez installer Debian sur :
 - une machine physique (PC, serveur, bare metal)
@@ -35,8 +36,6 @@ Instructions pour installer Debian sur une machine physique:
 4. Choisissez un partitionnement adapté, créez un utilisateur, activez sudo.
 5. Installez un environnement minimal (pas d’interface graphique nécessaire).
 6. Une fois Debian installé, connectez-vous en SSH ou localement pour suivre la suite du guide.
-
-> Pour un serveur multimédia, Debian 12 ou 13 (stable) est recommandé.
 
 ## 🐳 Installer Docker & Docker Compose
 
@@ -58,7 +57,9 @@ sudo systemctl start docker
 sudo usermod -aG docker $USER
 ```
 
-> ⚠️ Déconnectez-vous/reconnectez-vous ou faites `newgrp docker` pour activer les droits si vous ne voulez plus utiliser sudo pour docker.
+
+> ⚠️ Après avoir exécuté `sudo usermod -aG docker $USER`, vous devez **vous déconnecter puis vous reconnecter** (ou redémarrer votre session) pour que les droits soient pris en compte.
+> Vous pourrez alors utiliser la commande `docker` sans sudo. Si vous ne voulez pas fermer votre session, tapez `newgrp docker` dans le terminal courant pour activer le groupe immédiatement.
 
 Vérifiez l’installation :
 
@@ -92,7 +93,6 @@ Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suiv
 - Les partages du NAS paramétrés en montage automatique via le FSTAB
 - Un compte ProtonVPN payant
 
-
 - **Docker**  
 - **Docker Compose** (v2 ou supérieur)
 - **Portainer** (optionnel, gestion des containers en WebUI, à installer séparément si besoin)
@@ -105,7 +105,6 @@ Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suiv
 
 ### 📁 Arborescence recommandée
 Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
-
 
 Pour créer tous les dossiers nécessaires en une seule commande :
 ```bash
@@ -121,8 +120,8 @@ sudo mkdir -p \
   /app/seerr/config \
   /app/flaresolverr/config \
   /app/plex/config \
-  /app/tautulli/config \
-  /app/portainer/config
+  /app/tautulli/config 
+  
 sudo mkdir -p /data
 ```
 
@@ -139,8 +138,6 @@ sudo mkdir -p /data
   ├── flaresolverr/config
   ├── plex/config
   ├── tautulli/config
-  └── portainer/config
-
 
 Pour que les containers Docker aient les bons droits sur vos fichiers, récupérez votre **PUID** (User ID) et **PGID** (Group ID) avec :
 
@@ -192,12 +189,6 @@ OPENVPN_PASSWORD=rgijo7r8g7r@
 WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
 SERVER_COUNTRIES=Spain,Portugal
 ```
-
----
-
-## 🚀 Installation avec docker
-
-
 ### 1️⃣ Cloner le dépôt principal (branche `Project`)
 
 ```bash
@@ -213,18 +204,14 @@ cd hub_multimedia/branches/classic
 
 ### 3️⃣ Lancer l'environnement
 
-
 ```bash
 sudo docker compose up -d
 ```
-
 ### 4️⃣ Vérifier que tout fonctionne
-
 
 ```bash
 sudo docker compose ps
 ```
-
 Les services doivent apparaître en **Up**.
 
 ---
