@@ -2,14 +2,32 @@
 
 ---
 
-## 📋 Sommaire
+
 
 - [🚀 Diagnostic rapide](#-diagnostic-rapide)
+
+---
+
+## 🚀 Diagnostic rapide
+
+Avant de chercher un problème spécifique, lance ces commandes pour avoir une vue d'ensemble :
+
+### Vérifier l'état de tous les containers
+
+docker exec sonarr ping -c 2 172.19.0.5
+```
+df -h /data /data2 /app
+```
+
+---
+
+## 🔐 VPN / Gluetun
+- [🚀 Diagnostic rapide](#-diagnostic-rapide)
 - [🔐 VPN / Gluetun](#-vpn--gluetun)
-- [📺 Plex](#-plex)
 - [🧲 qBittorrent](#-qbittorrent)
 - [🧭 Prowlarr / Indexers](#-prowlarr--indexers)
 - [🌐 FlareSolverr](#-flaresolverr)
+- [📺 Plex](#-plex)
 - [📺 Sonarr / Séries TV](#-sonarr--séries-tv)
 - [🎬 Radarr / Films](#-radarr--films)
 - [💬 Bazarr / Sous-titres](#-bazarr--sous-titres)
@@ -24,6 +42,266 @@
 - [💾 Sauvegarde & Restauration](#-sauvegarde--restauration)
 - [🔄 Mise à jour du Hub](#-mise-à-jour-du-hub)
 - [📝 Logs & Debugging avancé](#-logs--debugging-avancé)
+
+
+## 🔐 VPN / Gluetun
+
+### Le VPN ne se connecte pas
+- Vérifie que ta clé WireGuard est correcte dans le `.env`
+- Vérifie que ton compte ProtonVPN supporte le port forwarding (plan payant requis)
+- Consulte les logs : `docker logs gluetun`
+- Vérifie que le device `/dev/net/tun` existe sur ton serveur :
+  ```bash
+  ls -la /dev/net/tun
+  ```
+  Si absent, charge le module kernel :
+  ```bash
+  sudo modprobe tun
+  ```
+- Vérifie que le type VPN dans le `.env` correspond à tes identifiants (`VPN_TYPE=wireguard` ou `VPN_TYPE=openvpn`)
+
+### qBittorrent / Prowlarr / FlareSolverr sont inaccessibles
+Ces services passent par Gluetun (`network_mode: service:gluetun`). Si le VPN est down, ils sont inaccessibles.
+- Vérifie l'état de Gluetun : `docker ps | grep gluetun`
+- Redémarre le VPN : `docker restart gluetun`
+- Vérifie que Gluetun est `healthy` avant de redémarrer les services dépendants :
+  ```bash
+  docker inspect gluetun --format='{{.State.Health.Status}}'
+  ```
+- Si Gluetun est healthy mais les services sont toujours inaccessibles, redémarre-les :
+  ```bash
+  docker restart qbittorrent prowlarr flaresolverr
+  ```
+
+### Le port forwarding ne fonctionne pas
+- Vérifie que tu as ajouté `+pmp` à la fin de ton `OPENVPN_USER` dans le `.env`
+- Vérifie que `VPN_PORT_FORWARDING=on` est bien dans le docker-compose
+- Vérifie que `PORT_FORWARD_ONLY=on` est configuré si tu veux forcer les serveurs avec port forwarding
+- Consulte le port attribué :
+  ```bash
+  docker logs gluetun 2>&1 | grep "port forwarded"
+  ```
+- Vérifie que le port est bien appliqué à qBittorrent :
+  ```bash
+  docker exec gluetun wget -qO- http://127.0.0.1:8080/api/v2/app/preferences 2>/dev/null | grep listen_port
+  ```
+
+### Vérifier que Gluetun est bien connecté au VPN
+
+Pour confirmer que Gluetun a bien établi la connexion VPN, plusieurs méthodes :
+
+**1. Consulter les logs de Gluetun :**
+```bash
+docker logs gluetun
+```
+Cherche les lignes indiquant une connexion réussie :
+```
+INFO [vpn] connected to ...
+INFO [port forwarding] port forwarded is ...
+```
+Si tu vois des erreurs `AUTH` ou `TLS`, vérifie tes identifiants dans le `.env`.
+
+**2. Vérifier l'IP publique utilisée par le VPN :**
+```bash
+docker exec gluetun wget -qO- https://ipinfo.io
+```
+L'IP affichée doit être différente de ton IP réelle et correspondre au pays configuré dans `SERVER_COUNTRIES`.
+
+**3. Vérifier l'état via l'API intégrée de Gluetun (port 8000) :**
+```bash
+curl http://localhost:8000/v1/openvpn/status
+```
+Réponse attendue : `{"status":"running"}`
+
+**4. Vérifier qu'il n'y a pas de fuite DNS :**
+```bash
+docker exec gluetun cat /etc/resolv.conf
+```
+Le DNS doit pointer vers un serveur VPN, pas vers ton DNS local.
+
+### Le VPN se déconnecte régulièrement
+- Vérifie les logs pour des erreurs de keepalive :
+  ```bash
+  docker logs gluetun 2>&1 | grep -i "keepalive\|timeout\|disconnect"
+  ```
+- Essaie de changer de pays VPN dans le `.env` (`SERVER_COUNTRIES`)
+- Vérifie que la variable `UPDATER_PERIOD=24h` est bien configurée pour mettre à jour les serveurs automatiquement
+- Si tu utilises WireGuard, régénère ta clé privée depuis le portail ProtonVPN
+
+> 💡 Si la connexion VPN est down, tous les services qui passent par Gluetun (qBittorrent, Prowlarr, FlareSolverr) seront inaccessibles.
+
+---
+
+## 📺 Plex
+
+### Plex n'est pas trouvé sur le réseau local
+- Plex utilise `network_mode: host`, il doit être accessible directement via l'IP du serveur sur le port 32400
+- Vérifie que le port 32400 n'est pas bloqué par un firewall :
+  ```bash
+  sudo ufw status
+  sudo ufw allow 32400/tcp
+  ```
+- Vérifie les logs : `docker logs plex`
+- Vérifie que Plex écoute bien :
+  ```bash
+  curl -s http://localhost:32400/identity
+  ```
+
+### Plex ne voit pas mes fichiers
+- Vérifie que les volumes `/data` et `/data2` sont correctement montés dans le fstab :
+  ```bash
+  mount | grep -E "/data|/data2"
+  ```
+- Vérifie les permissions : `ls -la /data/` (doit appartenir à 1000:1000)
+- Dans Plex, ajoute les bibliothèques en pointant vers `/movies` ou `/series` (les chemins internes au container)
+- Si tu viens d'ajouter des fichiers, lance un scan manuel : Plex → Bibliothèques → `...` → Scanner les fichiers
+
+### Le claim token a expiré
+- Récupère un nouveau token sur https://plex.tv/claim (valide 4 minutes)
+- Ajoute-le dans le docker-compose : `PLEX_CLAIM=claim-xxxxx`
+- Redéploie : `docker compose up -d plex`
+
+### Le transcodage est lent ou en erreur
+- Vérifie que le dossier `/transcode` a suffisamment d'espace disque
+- Vérifie les paramètres de transcodage : Settings → Transcoder
+- Pour le transcodage matériel (GPU), vérifie que le device est monté dans le docker-compose :
+  ```yaml
+  devices:
+    - /dev/dri:/dev/dri
+  ```
+- Vérifie les capacités GPU :
+  ```bash
+  ls -la /dev/dri/
+  ```
+
+### Plex est inaccessible depuis l'extérieur (accès distant)
+- Vérifie que l'accès distant est activé dans Settings → Remote Access
+- Vérifie que le port 32400 est ouvert sur ton routeur (redirection de port/NAT)
+- Si tu es derrière un CGNAT, l'accès distant direct ne fonctionnera pas (utilise un reverse proxy ou un tunnel)
+
+### La base de données Plex est corrompue
+- Symptômes : Plex plante au démarrage, bibliothèques vides malgré fichiers présents
+- Arrête Plex : `docker stop plex`
+- Sauvegarde la base de données (chemin sur l'hôte, via le montage de volume `/app/plex/config:/config`) :
+  ```bash
+  DB_PATH="/app/plex/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases"
+  cp "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library.db.backup"
+  ```
+- Vérifie l'intégrité de la base avec `sqlite3` (à installer sur l'hôte si absent : `sudo apt install sqlite3`) :
+  ```bash
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" "PRAGMA integrity_check"
+  ```
+- Si la vérification renvoie des erreurs, tente une réparation :
+  ```bash
+  sqlite3 "${DB_PATH}/com.plexapp.plugins.library.db" ".clone ${DB_PATH}/com.plexapp.plugins.library-repaired.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library.db" "${DB_PATH}/com.plexapp.plugins.library-corrupt.db"
+  mv "${DB_PATH}/com.plexapp.plugins.library-repaired.db" "${DB_PATH}/com.plexapp.plugins.library.db"
+  ```
+- Redémarre Plex : `docker start plex`
+- Si la réparation échoue, restaure la sauvegarde : `cp "${DB_PATH}/com.plexapp.plugins.library.db.backup" "${DB_PATH}/com.plexapp.plugins.library.db"`
+
+---
+
+## 🧲 qBittorrent
+
+### Le mot de passe par défaut ne fonctionne pas
+Au premier lancement, qBittorrent génère un mot de passe aléatoire.
+- Consulte les logs : `docker logs qbittorrent`
+- Cherche la ligne contenant `temporary password`
+- Une fois connecté, change le mot de passe dans : Tools → Options → Web UI
+
+### Les téléchargements sont lents
+- Vérifie que le port forwarding VPN est actif :
+  ```bash
+  docker logs gluetun 2>&1 | grep "port forwarded"
+  ```
+- Vérifie que le port est bien configuré dans qBittorrent : Tools → Options → Connection → Listening Port
+- Vérifie les paramètres de connexion dans qBittorrent WebUI (limites de vitesse)
+- Vérifie le nombre de connexions max : Tools → Options → Connection (augmente si nécessaire)
+
+### Les téléchargements sont en « stalled » (bloqués)
+- Vérifie que le VPN est connecté et que le port forwarding fonctionne
+- Vérifie que les trackers répondent : clic droit sur le torrent → Trackers
+- Vérifie que l'espace disque est suffisant :
+  ```bash
+  df -h /data/downloads
+  ```
+- Redémarre qBittorrent : `docker restart qbittorrent`
+
+### Les fichiers ne sont pas déplacés vers Sonarr/Radarr
+- Vérifie que le chemin de téléchargement dans qBittorrent (`/downloads`) correspond à ce qui est monté dans Sonarr/Radarr
+- Vérifie les catégories dans qBittorrent : les torrents envoyés par Sonarr doivent avoir la catégorie `tv`, ceux de Radarr `movies`
+- Vérifie les permissions sur le dossier de téléchargement :
+  ```bash
+  ls -la ${MEDIA_DIR}/qbittorrent/downloads/
+  ```
+
+### L'interface WebUI n'est pas accessible
+- L'interface passe par Gluetun (port 8080). Vérifie d'abord que Gluetun est healthy
+- Vérifie les logs :
+  ```bash
+  docker logs qbittorrent --tail 20
+  ```
+- Vérifie que le port est bien mappé dans le service `gluetun` du docker-compose (`8080:8080/tcp`)
+
+---
+
+## 🧭 Prowlarr / Indexers
+
+### Les indexers échouent avec des erreurs Cloudflare
+- Vérifie que FlareSolverr est démarré : `docker ps | grep flaresolverr`
+- Dans Prowlarr, configure FlareSolverr comme proxy :
+  1. Settings → Indexers → Add → FlareSolverr
+  2. Host : `http://localhost:8191` (car Prowlarr et FlareSolverr partagent le réseau de Gluetun)
+  3. Ajoute un tag (ex : `flaresolverr`)
+  4. Sur chaque indexer Cloudflare, ajoute ce tag
+
+### Prowlarr ne synchronise pas avec Sonarr/Radarr
+- Vérifie les clés API dans Prowlarr (Settings → Apps)
+- Les adresses doivent utiliser les IPs du réseau Docker :
+  - Sonarr : `http://172.19.0.6:8989`
+  - Radarr : `http://172.19.0.5:7878`
+- Récupère la clé API de Sonarr/Radarr : Settings → General → API Key
+- Teste la connexion avec le bouton « Test » dans Prowlarr
+
+### Les indexers renvoient des erreurs 401/403
+- Vérifie que tes identifiants ou clés API d'indexer sont toujours valides
+- Certains indexers limitent le nombre de requêtes (rate limiting) — attends quelques minutes
+- Vérifie que l'indexer est toujours en ligne via un navigateur
+
+### Prowlarr ne démarre pas ou est en boucle de redémarrage
+- Prowlarr dépend de Gluetun (`network_mode: service:gluetun`). Vérifie d'abord que Gluetun est healthy
+- Vérifie les logs :
+  ```bash
+  docker logs prowlarr --tail 30
+  ```
+- Si la base de données est corrompue, supprime-la et redémarre :
+  ```bash
+  docker stop prowlarr
+  rm /app/prowlarr/config/prowlarr.db-journal
+  docker start prowlarr
+  ```
+
+---
+
+## 🌐 FlareSolverr
+
+### FlareSolverr ne démarre pas
+- FlareSolverr dépend de Gluetun. Vérifie que Gluetun est healthy :
+  ```bash
+  docker inspect gluetun --format='{{.State.Health.Status}}'
+  ```
+- Vérifie les logs :
+  ```bash
+  docker logs flaresolverr --tail 20
+  ```
+
+### FlareSolverr ne résout pas les challenges Cloudflare
+- Certains sites ont des protections anti-bot avancées que FlareSolverr ne peut pas contourner
+- Vérifie que FlareSolverr est à jour :
+  ```bash
+  docker logs flaresolverr --tail 20
+  ```
 
 ---
 
