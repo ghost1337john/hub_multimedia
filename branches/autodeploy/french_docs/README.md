@@ -1,275 +1,266 @@
----
 
-> ⚠️ **Disclaimer — Responsabilité**
->
-> L'auteur de ce projet ne peut être tenu responsable de l'usage qui en est fait.
-> Chaque utilisateur est entièrement responsable de s'assurer que son utilisation respecte les lois en vigueur dans son pays, notamment en matière de droit d'auteur.
->
-> Ce projet fournit uniquement une infrastructure technique destinée à la gestion de contenus **obtenus légalement**.
-> Toute utilisation visant à télécharger, partager ou accéder à des œuvres protégées sans autorisation est **strictement interdite** et se fait aux risques et périls de l'utilisateur.
-
----
-
-# 🎬 Hub Multimédia Automatisé
-
-> *Un écosystème Docker complet, sécurisé et automatisé pour vos bibliothèques multimédias personnelles.*
-
-![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
-![Docker Compose](https://img.shields.io/badge/Docker%20Compose-v2-2496ED?logo=docker&logoColor=white)
-![Plex](https://img.shields.io/badge/Plex-Media%20Server-E5A00D?logo=plex&logoColor=white)
-![VPN](https://img.shields.io/badge/VPN-ProtonVPN-6D4AFF?logo=protonvpn&logoColor=white)
-![License](https://img.shields.io/badge/Usage-Personnel%20uniquement-green)
-
-Ce projet est destiné exclusivement à la gestion de contenus multimédias.
-Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes de protection liés au droit d'auteur.
-
----
-
-## 📋 Table des matières
-
-- [🧩 Présentation](#-présentation)
-- [⚙️ Services inclus](#️-services-inclus)
-- [🏗️ Architecture](#️-architecture)
-- [🔗 Flux de fonctionnement](#-flux-de-fonctionnement)
-- [🚀 Installation rapide](#-installation-rapide)
-- [🛠️ Prérequis](#️-prérequis)
-- [📁 Structure du projet](#-structure-du-projet)
-- [🌿 Stratégie Git](#-stratégie-git)
-- [📝 Note sur la configuration](#-note-sur-la-configuration)
-- [❓ FAQ / Dépannage](#-faq--dépannage)
-- [🗂️ Historique des versions](#️-historique-des-versions)
-
----
-
-## 🧩 Présentation
-
-Ce hub multimédia propose un **écosystème complet, automatisé et sécurisé**, basé sur Docker (ou Portainer).
-Il permet de gérer l'organisation, la récupération, les sous‑titres, les demandes utilisateurs et la sécurité réseau via VPN.
-
-**L'objectif :** offrir une infrastructure moderne, sécurisée, propre et centralisée pour vos bibliothèques multimédias personnelles.
-
----
-
-## ⚙️ Services inclus
-
-| # | Service | Rôle | Port |
-|---|---------|------|------|
-| 1 | 🔐 **Gluetun** | VPN + Firewall (tunnel ProtonVPN) | — |
-| 2 | 🧲 **qBittorrent** | Téléchargement sécurisé via VPN | 8080 |
-| 3 | 🧭 **Prowlarr** | Gestionnaire d'indexers centralisé | 9696 |
-| 4 | 📺 **Sonarr** | Automatisation des séries TV | 8989 |
-| 5 | 🎬 **Radarr** | Automatisation des films | 7878 |
-| 6 | 🎵 **Lidarr** | Automatisation de la musique | 8686 |
-| 7 | 💬 **Bazarr** | Sous‑titres automatiques | 6767 |
-| 8 | ⭐ **Seerr** | Interface de demandes utilisateurs | 5055 |
-| 9 | 📺 **Plex** | Serveur multimédia (streaming) | 32400 |
-| 10 | 📊 **Tautulli** | Surveillance et statistiques Plex | 8181 |
-| 11 | 🛡️ **FlareSolverr** | Contournement Cloudflare pour Prowlarr | 8191 |
-| 12 | 🐳 **Portainer** | Gestion des containers en WebUI | 9000 |
-| 13 | 🧹 **Cleanuparr** | Nettoyage automatisé des téléchargements | 11011 |
-
-> 🔒 **qBittorrent**, **Prowlarr** et **FlareSolverr** utilisent `network_mode: service:gluetun` — ils partagent l'espace réseau du conteneur VPN.
->
-> **Avantages de cette architecture :**
-> - **Tout le trafic passe par le VPN** : ces services n'ont aucun accès direct à Internet, tout est routé à travers le tunnel WireGuard/OpenVPN.
-> - **Kill switch automatique** : si le VPN tombe, ces services perdent toute connectivité — aucune fuite d'IP possible.
-> - **Communication locale simplifiée** : les services qui partagent le même namespace réseau communiquent entre eux via `localhost` (ex : Prowlarr → FlareSolverr sur `localhost:8191`).
-> - **Ports exposés via Gluetun** : comme ces services n'ont pas leur propre pile réseau, leurs ports sont déclarés sur le conteneur Gluetun — c'est le fonctionnement attendu et recommandé.
-
----
-
-### 🔗 Flux de fonctionnement detaille
-
-1. L'utilisateur fait une demande de film ou de serie dans Seerr, ou une demande de musique via Lidarr.
-2. Seerr transmet ensuite la demande a Sonarr (series) et/ou Radarr (films).
-3. Sonarr, Radarr et Lidarr interrogent Prowlarr pour rechercher les indexers adaptes.
-4. Prowlarr utilise FlareSolverr si necessaire pour interroger certains indexers proteges.
-5. Une fois les releases trouvees, Sonarr, Radarr et Lidarr envoient les taches de telechargement a qBittorrent.
-6. qBittorrent, Prowlarr et FlareSolverr sont encapsules dans le tunnel VPN gere par Gluetun (`network_mode: service:gluetun`).
-7. Lorsque le telechargement est termine, Sonarr, Radarr et Lidarr importent, renomment et deplacent les fichiers vers les bons dossiers medias.
-8. Bazarr s'appuie sur Sonarr et Radarr pour identifier les medias et gerer les sous-titres manquants via ses propres indexers.
-9. Cleanuparr nettoie ensuite les elements termines dans qBittorrent et supprime les traces de telechargement selon ta configuration.
-10. Plex scanne les fichiers finaux et met a jour la bibliotheque.
-11. Tautulli genere ensuite des statistiques sur l'utilisation de Plex par les utilisateurs.
-
----
-
-## 🔗 Flux de fonctionnement
-
-<img width="1104" height="976" alt="Schéma du flux des services hub_multimedia" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
-
----
-
-## 🚀 Installation rapide
-
-Cette branche `auto-deploy` est conçue pour un **déploiement entièrement automatisé sur Debian 13**.
-
-📖 **Guide d'installation principal : [`auto_deploy/README_AUTOSCRIPT.md`](auto_deploy/README_AUTOSCRIPT.md)**
-
-> 💡 Pour une installation **manuelle** (sans script), se référer à la branche [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic).
+> 💡 **Installation rapide** : Si tu es sur **Debian 13**, tu peux utiliser le script d'installation automatique au lieu de suivre ce guide manuellement.  
+> Consulte la branche dédiée [`auto-deploy`](https://github.com/ghost1337john/hub_multimedia/tree/auto-deploy), puis le guide [`french_docs/auto_deploy/README_AUTOSCRIPT.md`](https://github.com/ghost1337john/hub_multimedia/blob/auto-deploy/french_docs/auto_deploy/README_AUTOSCRIPT.md).
 
 ---
 
 ## 🛠️ Prérequis
 
-Les prérequis dépendent de la branche choisie (`classic`, `auto-deploy`).
+Avant d'installer ce hub multimédia, assure-toi de disposer des éléments suivants :
 
-| Composant | Minimum | Recommandé |
-|-----------|---------|------------|
-| CPU | 4 cœurs | 6 cœurs |
-| RAM | 8 Go | 16 Go |
-| Stockage | 64 Go SSD | 128 Go SSD |
-| OS | Linux (Debian/Ubuntu) | Debian 13 |
+### 🔧 Matériel & système
+- Un serveur ou une machine virtuelle capable de faire tourner Docker  
+- Linux recommandé (Debian, Ubuntu)
+- Accès administrateur (sudo) 
+- Config minimale :
+  - CPU : 4 cœurs
+  - RAM : 8 Go
+  - Stockage : 64 Go SSD
+- Config recommandée (confortable) :
+  - CPU : 6 cœurs
+  - RAM : 16 Go
+  - Stockage : 128 Go SSD
 
-> 💡 Sans GPU, chaque flux Plex transcodé consomme 1–2 cœurs CPU.
+> 💡 **Note sur Plex** : sans transcodage matériel (GPU), chaque flux transcodé peut consommer 1‑2 cœurs CPU.  
+> Avec du **Direct Play** (pas de transcodage), 4 cœurs / 8 Go suffisent.  
+> Avec **transcodage** pour 2‑3 utilisateurs simultanés, prévoir 6 cœurs / 16 Go ou un GPU compatible (Intel QuickSync, NVIDIA).
 
-### 📦 Logiciels requis
+- Un NAS qui stocke vos fichiers (Series/Films)
+- Les partages du NAS paramétrés en montage automatique via le FSTAB
+- Un compte ProtonVPN payant
 
-- **Docker** (dernière version stable)
-- **Docker Compose** v2 ou supérieur
-- **Git**
-
-> ℹ️ **Si vous utilisez le script `auto_deploy`** : n'installez pas ces outils manuellement juste avant l'exécution.
-> Le script gère la préparation de l'environnement et vérifie ces dépendances pendant l'installation.
+### 📦 Logiciels nécessaires
+- **Docker**  
+- **Docker Compose** (v2 ou supérieur)
+- **Portainer** (Gestion des containers en WebUI)
 
 ### 🔐 VPN & réseau
+- Un compte **ProtonVPN** (compatible port forwarding)
+- Une clé **WireGuard** valide  
 
-- Compte **ProtonVPN** actif (compatible port forwarding)
-- Clé **WireGuard** valide (ou identifiants OpenVPN)
+### 📁 Arborescence recommandée
+Organise tes dossiers pour stocker les configs des containers sur ton serveur comme ceci :
 
----
+/app/
+  ├── gluetun/config
+  ├── qbittorrent/config
+  ├── prowlarr/config
+  ├── sonarr/config
+  ├── radarr/config
+  ├── lidarr/config
+  ├── cleanuparr/config
+  ├── bazarr/config
+  ├── seerr/config
+  ├── flaresolverr/config
+  ├── plex/config
+  ├── tautulli/config
+  └── portainer/config
 
-## 📁 Structure du projet
+#Récupérer le PUID et le PGID de l'utilisateur
 
-```
-hub_multimedia/
-├── sources/
-│   ├── docker_compose.yml      # Stack Docker principale
-│   └── .env                    # Variables d'environnement (VPN, chemins)
-├── auto_deploy/
-│   ├── autoscript_install_hub_on_debian.sh
-│   └── save_hub.sh
-├── french_docs/
-│   ├── README.md               # Ce fichier
-│   ├── README_SOURCES.md
-│   ├── auto_deploy/
-│   │   └── README_AUTOSCRIPT.md
-│   └── tuto_config/            # Tutoriels de configuration par service
-├── CHANGELOG.md
-└── README.md                   # README racine (français)
-```
-
----
-
-## 🌿 Stratégie Git
-
-Le dépôt est organisé autour d'une branche principale et de branches spécialisées :
-
-- `Project` : branche complète (référence) avec toutes les variantes.
-- `classic` : variante installation manuelle Linux (sans auto-deploy).
-- `auto-deploy` : variante automatisée Debian (script + stack Linux).
-
-Conventions recommandées pour les merges :
-
-1. Ouvrir les PR sur la branche cible métier (pas systématiquement sur `Project`).
-2. Les changements transverses (stack Docker, sécurité, docs globales) partent d'abord sur `Project`.
-3. Reporter ensuite ces commits dans les branches spécialisées par sélection (`cherry-pick`) pour éviter de réintroduire des dossiers supprimés.
-4. Éviter les merges de branches spécialisées vers `Project` sauf cas explicitement validé.
-
-Exemple de synchronisation ciblée :
+Les valeurs **PUID** (User ID) et **PGID** (Group ID) permettent aux containers Docker de s'exécuter avec les mêmes permissions que votre utilisateur sur le système hôte. Pour les récupérer, exécutez la commande `id` dans votre terminal :
 
 ```bash
-git checkout classic
-git cherry-pick <sha_commit_depuis_Project>
-```
-
----
-
-## 📝 Note sur la configuration
-
-Afin de garder ce projet **simple, évolutif et indépendant** des préférences de chacun, la configuration spécifique de chaque service (Sonarr, Radarr, Prowlarr, qBittorrent, etc.) n'est pas détaillée ici.
-
-Chaque utilisateur est libre d'adapter l'écosystème à ses besoins. Des tutoriels dédiés sont disponibles dans le dossier [`tuto_config/`](tuto_config/).
-
----
-
-## ❓ FAQ / Dépannage
-
-
-- 🇫🇷 FAQ générale (FR) : [`../../../README_FAQ.md`](../../../README_FAQ.md)
-
-<details>
-<summary>🔴 Un container ne démarre pas</summary>
-
-```bash
-# Vérifier les logs du container
-docker logs <nom_du_container>
-
-# Vérifier l'état de tous les services
-docker compose ps
-```
-</details>
-
-<details>
-<summary>🔴 Gluetun / VPN ne se connecte pas</summary>
-
-```bash
-# Vérifier les logs Gluetun
-docker logs gluetun
-
-# Vérifier l'IP publique actuelle (doit être celle du VPN)
-docker exec gluetun wget -qO- https://api.ipify.org
-```
-
-Vérifie que ta clé WireGuard et tes identifiants ProtonVPN sont corrects dans le fichier `.env`.
-</details>
-
-<details>
-<summary>🔴 qBittorrent / Prowlarr inaccessibles</summary>
-
-Ces services passent par Gluetun. S'ils sont inaccessibles, vérifie d'abord que **Gluetun est en bonne santé** (`healthy`).
-
-```bash
-docker compose ps gluetun
-```
-</details>
-
-<details>
-<summary>🔴 Problèmes de permissions sur les fichiers</summary>
-
-```bash
-# Vérifier ton PUID/PGID
 id
+```
 
-# Réappliquer les permissions
+Résultat attendu :
+```
+uid=1000(plex) gid=1000(plex)
+groupes=1000(plex),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plu
+gdev),100(users),101(netdev)
+```
+
+- **PUID** = la valeur après `uid=` → ici `1000`
+- **PGID** = la valeur après `gid=` → ici `1000`
+
+> 💡 Reportez ces valeurs dans votre fichier `.env` pour que les containers aient les bons droits sur vos fichiers.
+#Création des répertoires en une ligne de commande :
+```
+sudo mkdir -p \
+  /app/gluetun/config \
+  /app/qbittorrent/config \
+  /app/prowlarr/config \
+  /app/sonarr/config \
+  /app/radarr/config \
+    /app/lidarr/config \
+  /app/cleanuparr/config \
+  /app/bazarr/config \
+  /app/seerr/config \
+  /app/flaresolverr/config \
+  /app/plex/config \
+  /app/tautulli/config \
+  /app/portainer/config \
+
+sudo mkdir /data
+```
+#Attribution des droits sur les répertoires 
+```
 sudo chown -R 1000:1000 /app
 sudo chown -R 1000:1000 /data
 ```
 
-Assure-toi que `PUID` et `PGID` dans le fichier `.env` correspondent à ton utilisateur.
-</details>
+### 📁 Points de montage du NAS par rapport au script 
+Organise tes points de montage sur ton serveur comme ceci :
 
-<details>
-<summary>🔵 Mettre à jour les containers</summary>
+/data/
+  ├── films 
+  ├── series
+  └── qbittorrent/
+        └── downloads/
 
-```bash
-docker compose pull
-docker compose up -d
+### 🔑 Fichier `.env`
+Créer le fichier `.env` à la racine du projet avec les informations de proton VPN récupérables comme suit :
+
+Pour OpenVPN, allez dans la section Compte et copiez votre nom d'utilisateur et votre mot de passe.
+REMARQUE : POUR QUE LE TRANSFERT DE PORT FONCTIONNE, VOUS DEVEZ AJOUTER «
++pmp » À LA FIN DE VOTRE NOM D'UTILISATEUR DANS LE FICHIER .env.
+
+<img width="1055" height="738" alt="image" src="https://github.com/user-attachments/assets/2b364b33-b5cc-4d03-8619-dd9c0b8f0363" />
+
+Pour WireGuard, allez dans la section Téléchargements et créez une nouvelle configuration WireGuard.
+Sélectionnez Router, aucun filtrage, et « NAT‑PMP (Port Forwarding) ». Désélectionnez VPN
+Accelerator. Lorsque vous cliquez sur Create, une fenêtre affichera la configuration. Copiez la
+PrivateKey.
+
+<img width="1040" height="851" alt="image" src="https://github.com/user-attachments/assets/21c5f167-0c1d-4723-88b5-b6bbf737a88a" />
+
+Exemple de fichier avec les informations : 
+
 ```
-</details>
+PUID=1000
+PGID=1000
+TZ=Europe/Paris
 
-<details>
-<summary>🔵 Arrêter proprement la stack</summary>
+MEDIA_DIR=/data
 
-```bash
-docker compose down
+OPENVPN_USER=kokorasta695
+OPENVPN_PASSWORD=rgijo7r8g7r@
+WIREGUARD_PRIVATE_KEY=aeztgéerzoi7894949
+SERVER_COUNTRIES=Spain,Portugal
 ```
-</details>
 
 ---
 
-## 🗂️ Historique des versions
+## 🚀 Installation avec docker
 
-Consulte le fichier [`CHANGELOG.md`](../../../CHANGELOG.md) pour l'historique complet des versions.
+### 1️⃣ Cloner la branche `classic` sur votre linux dans un répertoire de travail et placer vous dedans (ex : /home/$user/docker) 
 
+```bash
+git clone --branch classic --single-branch https://github.com/ghost1337john/hub_multimedia.git
+cd hub_multimedia/sources
+```
 
+### 2️⃣ Configurer le fichier `.env` comme expliquer précédement 
+
+- Renseigne tes identifiants VPN
+- Vérifie les chemins de volumes
+- Ajuste `MEDIA_DIR` selon ton stockage
+
+### 3️⃣ Lancer l'environnement
+
+```bash
+docker compose up -d
+```
+
+### 4️⃣ Vérifier que tout fonctionne
+
+```bash
+docker compose ps
+```
+
+Les services doivent apparaître en **Up**.
+
+---
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+## 🐳 Installation via Portainer (sans ligne de commande)
+Cette méthode permet d'installer tout le hub multimédia directement depuis Portainer, sans utiliser Docker en ligne de commande.
+
+🧭 1. Accéder à Portainer
+Ouvre ton navigateur
+
+Va sur l'adresse de ton Portainer :
+http://IP_DE_TON_SERVEUR:9000
+
+Connecte‑toi avec ton compte administrateur
+
+📁 2. Préparer les dossiers nécessaires
+
+Avant de déployer la stack, crée les dossiers des prérequis sur ton serveur.
+
+🧩 3. Créer la stack dans Portainer
+Dans le menu de gauche, clique sur Stacks
+
+Clique sur Add Stack
+
+Donne un nom à ta stack, par exemple :
+hub_multimedia
+
+Colle ton fichier docker-compose.yml dans le champ Web editor
+
+🔐 4. Ajouter le fichier .env
+Toujours dans la page de création de la stack :
+
+Descends jusqu'à la section Environment variables
+
+Clique sur Add an environment file
+
+Colle le contenu de ton .env
+
+Sauvegarde
+
+🚀 5. Déployer la stack
+Vérifie que ton docker-compose.yml et ton .env sont corrects
+
+Clique sur Deploy the stack
+
+Patiente quelques minutes pendant que Portainer télécharge et configure les conteneurs
+
+🔍 6. Vérifier que tout fonctionne
+Une fois la stack déployée :
+
+Retourne dans Stacks
+
+Clique sur hub_multimedia
+
+Vérifie que tous les conteneurs sont en Running
+
+## 🌐 Accès aux services
+
+| Service       | URL locale                  |
+|---------------|-----------------------------|
+| Plex          | http://ipduserveur:32400/web  |
+| Sonarr        | http://ipduserveur:8989       |
+| Radarr        | http://ipduserveur:7878       |
+| Lidarr        | http://ipduserveur:8686       |
+| Bazarr        | http://ipduserveur:6767       |
+| Seerr         | http://ipduserveur:5055       |
+| Prowlarr      | http://ipduserveur:9696       |
+| qBittorrent   | http://ipduserveur:8080       |
+| FlareSolverr  | http://ipduserveur:8191       |
+| Tautulli      | http://ipduserveur:8181       |
+| Cleanuparr    | http://ipduserveur:11011       |
+| Portainer     | http://ipduserveur:9000        |
+
+> ⚠️ qBittorrent, Prowlarr et FlareSolverr passent par **Gluetun**, donc leurs ports sont exposés via le conteneur VPN.
+
+---
+## 🌐 Configuration des différents services 
+
+Je vais générer d'autres fichiers tutoriels pour la configuration depuis les WebUIs.
+Suivre cette ordre de configuration :
+
+| Service       |
+|---------------|
+| Plex          |
+| Sonarr        | 
+| Radarr        |
+| Lidarr        |
+| Bazarr        |
+| Prowlarr      |
+| FlareSolverr  |
+| qBittorrent   |
+| Seerr         |
+| Tautulli      |
+| Cleanuparr    |
