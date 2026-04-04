@@ -33,7 +33,6 @@ Il ne vise en aucun cas à encourager, faciliter ou contourner des mécanismes d
 
 - [🧩 Présentation](#-présentation)
 - [⚙️ Services inclus](#️-services-inclus)
-- [🏗️ Architecture](#️-architecture)
 - [🔗 Flux de fonctionnement](#-flux-de-fonctionnement)
 - [🚀 Installation rapide](#-installation-rapide)
 - [🛠️ Prérequis](#️-prérequis)
@@ -106,11 +105,45 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ## 🚀 Installation rapide
 
-Cette branche `auto-deploy` est conçue pour un **déploiement entièrement automatisé sur Debian 13**.
+Ce dossier `autodeploy` est conçu pour un **déploiement entièrement automatisé sur Debian 13**.
 
-📖 **Guide d'installation principal : [`french_docs/auto_deploy/README_AUTOSCRIPT.md`](french_docs/auto_deploy/README_AUTOSCRIPT.md)**
+### Étapes rapides (autoscript)
 
-> 💡 Pour une installation **manuelle** (sans script), se référer à la branche [`classic`](https://github.com/ghost1337john/hub_multimedia/tree/classic).
+1. Cloner le dépôt puis se placer dans `branches/autodeploy` :
+
+```bash
+git clone https://github.com/ghost1337john/hub_multimedia.git
+cd hub_multimedia/branches/autodeploy
+```
+
+2. Créer et remplir le fichier `.env` dans `sources/` :
+
+```bash
+nano sources/.env
+```
+
+Exemple minimal :
+
+```env
+PUID=1000
+PGID=1000
+TZ=Europe/Paris
+MEDIA_DIR=/data
+OPENVPN_USER=ton_user+pmp
+OPENVPN_PASSWORD=ton_password
+WIREGUARD_PRIVATE_KEY=ta_cle_privee
+SERVER_COUNTRIES=Spain,Portugal
+```
+
+3. Lancer l'installation automatique :
+
+```bash
+sudo bash auto_deploy/autoscript_install_hub_on_debian.sh
+```
+
+📖 Guide complet autoscript : [`french_docs/auto_deploy/README_AUTOSCRIPT.md`](french_docs/auto_deploy/README_AUTOSCRIPT.md)
+
+> 💡 Pour une installation manuelle (sans script), voir le dossier [`../classic/`](../classic/).
 
 ---
 
