@@ -83,43 +83,37 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    HUB MULTIMÉDIA                       │
-│                                                         │
-│  ┌──────────┐    ┌──────────┐    ┌──────────────────┐   │
-│  │  Seerr   │───▶│  Radarr  │───▶│                  │   │
-│  │ (5055)   │    │  (7878)  │    │   qBittorrent    │   │
-│  └──────────┘    └──────────┘    │     (8080)       │   │
-│       │      ┌──────────┐        │  via Gluetun VPN │   │
-│       ├─────▶│  Sonarr  │───────▶│                  │   │
-│       │      │  (8989)  │        └──────────────────┘   │
-│       │      └──────────┘               │              │
-│       │      ┌──────────┐               ▼              │
-│       └─────▶│  Lidarr  │───────────────┐              │
-│              │  (8686)  │               │              │
-│              └──────────┘               │              │
-│                       │                 │              │
-│              ┌─────────────────┐  ┌──────────────┐     │
-│              │    Prowlarr     │  │  FlareSolverr │     │
-│              │     (9696)      │  │    (8191)     │     │
-│              └─────────────────┘  └──────────────┘     │
-│                       │                                 │
-│              ┌─────────────────┐                        │
-│              │     Bazarr      │                        │
-│              │     (6767)      │                        │
-│              └─────────────────┘                        │
-│                       │                                 │
-│              ┌─────────────────┐  ┌──────────────┐     │
-│              │      Plex       │  │  Cleanuparr  │     │
-│              │    (32400)      │  │   (11011)    │     │
-│              └─────────────────┘  └──────────────┘     │
-│                       │                                 │
-│              ┌─────────────────┐  ┌──────────────┐     │
-│              │    Tautulli     │  │  Portainer   │     │
-│              │     (8181)      │  │   (9000)     │     │
-│              └─────────────────┘  └──────────────┘     │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                      HUB MULTIMÉDIA                         │
+│                                                             │
+│  [ZONE APPS - LAN / HOST]                                   │
+│  Utilisateurs -> Seerr -> Radarr / Sonarr / Lidarr          │
+│  Bazarr -> Sonarr / Radarr                                  │
+│  Tautulli -> Plex (mode host)                               │
+│  Cleanuparr -> qBittorrent + *arr                           │
+│  Portainer -> gestion Docker                                │
+│                                                             │
+│  [ZONE VPN - NAMESPACE PARTAGE service:gluetun]             │
+│  Prowlarr (9696) -> FlareSolverr (8191)                     │
+│  Radarr/Sonarr/Lidarr -> qBittorrent + Prowlarr +           │
+│  FlareSolverr -> Gluetun (VPN + Firewall) -> Internet       │
+│  Ports 8080/9696/8191 publies par Gluetun                   │
+└─────────────────────────────────────────────────────────────┘
 ```
+
+### 🔗 Flux de fonctionnement detaille
+
+1. L'utilisateur fait une demande de film ou de serie dans Seerr, ou une demande de musique via Lidarr.
+2. Seerr transmet ensuite la demande a Sonarr (series) et/ou Radarr (films).
+3. Sonarr, Radarr et Lidarr interrogent Prowlarr pour rechercher les indexers adaptes.
+4. Prowlarr utilise FlareSolverr si necessaire pour interroger certains indexers proteges.
+5. Une fois les releases trouvees, Sonarr, Radarr et Lidarr envoient les taches de telechargement a qBittorrent.
+6. qBittorrent, Prowlarr et FlareSolverr sont encapsules dans le tunnel VPN gere par Gluetun (`network_mode: service:gluetun`).
+7. Lorsque le telechargement est termine, Sonarr, Radarr et Lidarr importent, renomment et deplacent les fichiers vers les bons dossiers medias.
+8. Bazarr s'appuie sur Sonarr et Radarr pour identifier les medias et gerer les sous-titres manquants via ses propres indexers.
+9. Cleanuparr nettoie ensuite les elements termines dans qBittorrent et supprime les traces de telechargement selon ta configuration.
+10. Plex scanne les fichiers finaux et met a jour la bibliotheque.
+11. Tautulli genere ensuite des statistiques sur l'utilisation de Plex par les utilisateurs.
 
 ---
 
