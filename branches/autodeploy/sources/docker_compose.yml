@@ -1,0 +1,324 @@
+networks:
+  network_hub_multimedia:
+    name: network_hub_multimedia
+    ipam:
+      config:
+        - subnet: 172.19.0.0/24
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun:v3
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.3
+    ports:
+      - 8080:8080/tcp # qbittorrent
+      - 6881:6881 # qbittorrent torrent port
+      - 9696:9696 # prowlarr
+      - 8191:8191 # flaresolverr
+    environment:
+      - TZ=Europe/Paris
+      - UPDATER_PERIOD=24h
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=wireguard
+      - BLOCK_MALICIOUS=on
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+      - OPENVPN_CIPHERS=AES-256-GCM
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - PORT_FORWARD_ONLY=on
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
+      - SERVER_COUNTRIES=${SERVER_COUNTRIES}
+    volumes:
+      - /app/gluetun/config:/gluetun
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - WEBUI_PORT=8080
+    volumes:
+      - /app/qbittorrent/config:/config
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    network_mode: service:gluetun
+    restart: unless-stopped
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 20s
+      timeout: 10s
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/prowlarr/config:/config
+    restart: unless-stopped
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
+    healthcheck:
+      test: curl -f http://localhost:9696/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/sonarr/config:/config
+      - /data:/data
+      - /data2:/data2
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    ports:
+      - 8989:8989
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.6
+    healthcheck:
+      test: curl -f http://localhost:8989/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/radarr/config:/config
+      - /data:/data
+      - /data2:/data2
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    ports:
+      - 7878:7878
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.5
+    healthcheck:
+      test: curl -f http://localhost:7878/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/lidarr/config:/config
+      - /data:/data
+      - /data2:/data2
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    ports:
+      - 8686:8686
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.7
+    healthcheck:
+      test: curl -f http://localhost:8686/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+        
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /app/bazarr/config:/config
+      - /data:/data
+      - /data2:/data2
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    ports:
+      - 6767:6767
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.2
+    healthcheck:
+      test: curl -f http://localhost:6767/api || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  seerr:
+    container_name: seerr
+    image: ghcr.io/seerr-team/seerr:latest
+    environment:
+      - LOG_LEVEL=debug
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
+    volumes:
+      - /app/seerr/config:/app/config
+    ports:
+      - 5055:5055
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.4
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=${TZ}
+    volumes:
+      - /app/flaresolverr/config:/config
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
+    restart: unless-stopped
+
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    depends_on:
+      - radarr
+      - sonarr
+      - lidarr
+    restart: unless-stopped
+    ports:
+      - "11011:11011"
+    volumes:
+      - /app/cleanuparr/config:/config
+      # Mount your downloads directory if needed
+      - ${MEDIA_DIR}/qbittorrent/downloads:/downloads
+    environment:
+      - PORT=11011
+      - PUID=1000
+      - GUID=1000
+      - TZ=Europe/Paris
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://192.168.1.2:11011/health"]
+      interval: 30s        # Check every 30 seconds
+      timeout: 10s         # Allow up to 10 seconds for response
+      start_period: 30s    # Wait 30 seconds before first check
+      retries: 3           # Mark unhealthy after 3 consecutive failures
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.14
+
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /app/tautulli/config:/config
+    ports:
+      - 8181:8181
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.15
+    healthcheck:
+      test: curl -f http://localhost:8181/status || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - VERSION=docker
+    volumes:
+      - /app/plex/config:/config
+      - /data:/movies
+      - /data2:/series
+    healthcheck:
+      test: curl -f http://localhost:32400/identity || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /app/portainer/config:/data
+    ports:
+      - 9000:9000
+    networks:
+      network_hub_multimedia:
+        ipv4_address: 172.19.0.16
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:9000/api/system/status || exit 1
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3

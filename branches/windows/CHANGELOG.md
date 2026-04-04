@@ -1,0 +1,134 @@
+# 🗂️ Historique des versions
+
+### **v1.5.5 — 2026‑04‑01**
+- Ajout de **Lidarr** pour l'automatisation de la musique (port 8686)
+- Intégration du service dans le docker-compose avec configuration identique à Radarr/Sonarr
+- Création de la documentation de configuration pour Lidarr (français et anglais)
+- Mise à jour des tableaux des services dans tous les README (Project, french_docs, english_docs)
+- IP réseau attribuée : 172.19.0.7
+
+### **v1.5.4 — 2026‑03‑27**
+- Réorganisation du projet en plusieurs branches Git dédiées (ex : `Project`, `windows`, `docs`, etc.)
+- Séparation claire des environnements et fonctionnalités par branche
+- Mise à jour de la structure du dépôt pour faciliter la contribution et la maintenance
+
+### **v1.5.3 — 2026‑03‑27**
+- Suppression du port 6789 (nzbget) inutilisé dans le docker‑compose et les scripts Windows  
+- Ajout d'une section explicative dans les README sur les avantages de l'architecture VPN (`network_mode: service:gluetun`) : tunnel obligatoire, kill switch automatique, communication localhost et ports exposés via Gluetun  
+
+### **v1.5.2 — 2026‑03‑27**
+- Refonte complète des README.md (racine, `french_docs/`, `english_docs/`) avec un style professionnel GreyWizard-Filter  
+- Ajout de badges (Docker, Plex, VPN, Licence), table des matières, et diagramme d'architecture  
+- Mise en forme améliorée : blocs disclaimer, descriptions enrichies des services, section prérequis et structure du projet  
+- Harmonisation du contenu entre les versions française et anglaise  
+
+### **v1.5.1 — 2026‑03‑26**
+- Déplacement du projet Windows dans le dossier `windows_project_test/` (scripts + docs FR/EN)  
+- Génération de l'exécutable `install_hub_multimedia.exe` via ps2exe  
+- Publication de la Release GitHub v1.5.0 avec le binaire Windows  
+
+### **v1.5.0 — 2026‑03‑26**
+- Ajout du script d'installation automatique pour Windows (PowerShell + .bat)  
+- Ajout du docker-compose adapté Windows (sans `/dev/net/tun`, chemins Windows, Plex en port mapping)  
+- Ajout de la documentation Windows (`french_docs/` et `english_docs/`)  
+- Support de la conversion en `.exe` via ps2exe  
+
+### **v1.4.4 — 2026‑03‑26**
+- Ajout dans la FAQ de la procédure pour vérifier la connexion VPN de Gluetun (logs, IP publique, API)  
+
+### **v1.4.3 — 2026‑03‑26**
+- Ajout des instructions pour récupérer le PUID et PGID dans les guides d'installation et l'autoscript (`french_docs/` et `english_docs/`)  
+
+### **v1.4.2 — 2026‑03‑26**
+- Ajout de la mention de la documentation anglaise en haut du README principal  
+- Ajout des instructions de configuration WireGuard dans les prérequis de l'autoscript (`french_docs/` et `english_docs/`)  
+
+### **v1.4.1 — 2026‑03‑26**
+- Réorganisation de la documentation française dans le dossier `french_docs/`  
+- 18 fichiers Markdown copiés dans la structure miroir `french_docs/`  
+
+### **v1.4.0 — 2026‑03‑26**
+- Ajout de la traduction complète du projet en anglais (dossier `english_docs/`)  
+- 18 fichiers Markdown traduits : README, CHANGELOG, tutoriels, FAQ, scripts, diagramme  
+
+### **v1.3.9 — 2026‑03‑26**
+- Mise à jour des recommandations matérielles dans `README_HOWTOINSTALL.md` : config minimale et recommandée, note sur le transcodage Plex  
+- Mise à jour des prérequis dans `auto_deploy/README_AUTOSCRIPT.md` : ajout des mêmes recommandations  
+
+### **v1.3.8 — 2026‑03‑26**
+- Suppression de l'historique des versions du README principal, redirection vers `CHANGELOG.md`  
+- Ajout du tutoriel de configuration Plex (`tuto_config/README_PLEX_CONFIG.md`)  
+
+### **v1.3.7 — 2026‑03‑26**
+- Extraction de l'historique des versions dans un fichier dédié (`CHANGELOG.md`)  
+
+### **v1.3.6 — 2026‑03‑26**
+- Mise à jour de la FAQ : ajout de la section Portainer  
+- Mise à jour du README `not_check_in_test` : statut d'intégration de Portainer et des healthchecks  
+- Ajout du fichier `README_SOURCES.md` : crédits et processus de contribution humain / IA  
+
+### **v1.3.5 — 2026‑03‑26**
+- Ajout du container **Portainer** dans le docker‑compose avec healthcheck  
+- Ajout de Portainer dans la liste des services du README principal  
+- Mise à jour du `README_HOWTOINSTALL.md` : arborescence, mkdir, tableau des accès  
+- Mise à jour du script de déploiement (`autoscript_install_hub_on_debian.sh`) : ajout de Portainer  
+- Ajout du tutoriel de configuration Portainer (`tuto_config/README_PORTAINER_CONFIG.md`)  
+
+### **v1.3.4 — 2026‑03‑26**
+- Ajout des healthchecks manquants dans le docker‑compose : Prowlarr, Sonarr, Radarr, Bazarr, Tautulli et Plex  
+- Ajout des variables `PUID` et `PGID` dans le fichier `sources/.env`  
+
+### **v1.3.3 — 2026‑03‑26**
+- Ajout du README de la procédure de sauvegarde (`auto_deploy/README_SAVE_HUB.md`)  
+
+### **v1.3.2 — 2026‑03‑26**
+- Ajout du README de l'autoscript (`auto_deploy/README_AUTOSCRIPT.md`)  
+- Ajout d'une mention de l'installation automatique en haut du `README_HOWTOINSTALL.md`  
+
+### **v1.3.1 — 2026‑03‑26**
+- Ajout du volume config pour **FlareSolverr** dans le docker‑compose  
+- Mise à jour du `README_HOWTOINSTALL.md` : ajout de Plex, Tautulli et FlareSolverr dans l'arborescence, le mkdir et le tableau des accès  
+- Suppression du fichier `README_PLEX_INSTALL.md` (redondant)  
+- Renommage du dossier `test/` en `auto_deploy/`  
+- Réécriture complète du script de déploiement (`autoscript_install_hub_on_debian.sh`) pour Debian 13  
+- Réécriture du script de sauvegarde (`save_hub.sh`) : sauvegarde des configs des 11 containers, rotation automatique, vérification root  
+
+### **v1.3.0 — 2026‑03‑26**
+- Ajout du container **Plex** dans le docker‑compose et le README principal  
+- Ajout du container **Tautulli** dans le docker‑compose  
+- Ajout du tutoriel de configuration Tautulli (`tuto_config/README_TAUTULLI_CONFIG.md`)  
+- Intégration de Plex dans la liste des services du README  
+
+### **v1.2.2 — 2026‑03‑26**
+- Ajout du module **Tautulli** dans le README principal  
+- Description du service et rôle dans l'écosystème Plex  
+
+### **v1.2.1 — 2026‑03‑26**
+- Ajout d'une note globale expliquant que les tutoriels sont volontairement simplifiés  
+- Réécriture complète des tutoriels : Sonarr, Radarr, Bazarr, Prowlarr, Seerr et CleanUpArr  
+- Harmonisation du style et de la structure de tous les fichiers du dossier `tuto_config`  
+- Clarification générale du README principal  
+- Amélioration de la cohérence globale du projet
+  
+### **v1.2.0 — 2026‑03‑26**
+- Ajout du disclaimer légal concernant l'usage du projet
+- Mise à jour du README principal (clarification + conformité)
+- Actualisation de la documentation Sonarr (procédure, configuration, cohérence globale) 
+- Amélioration de la cohérence globale du projet
+- Ajustements mineurs sur la présentation des services  
+
+### **v1.1.0 — 2026‑03‑25**
+- Ajout du module **Cleanuparr**  
+- Documentation complète ajoutée (installation + configuration)  
+- Mise à jour du README principal  
+- Amélioration de la cohérence globale du projet  
+
+### **v1.0.0 — 2026‑03-24**
+- Ajout de Seerr  
+- Documentation dédiée + schéma visuel  
+- Intégration complète avec Radarr/Sonarr
+
+### **v0.9.0 — 2026‑03-23**
+- Version initiale du hub multimédia  
+- Radarr, Sonarr, Prowlarr, qBittorrent, Gluetun, Bazarr, FlareSolverr  
+- Documentation d'installation et de configuration
