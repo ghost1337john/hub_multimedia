@@ -99,12 +99,6 @@ Il permet de gérer l'organisation, la récupération, les sous‑titres, les de
 
 ---
 
-## 🔗 Flux de fonctionnement
-
-<img width="1104" height="976" alt="Schéma du flux des services hub_multimedia" src="https://github.com/user-attachments/assets/22c30f5e-73c1-4058-818d-5de3192acc97" />
-
----
-
 ## 🚀 Installation rapide
 
 Ce dépôt utilise maintenant **une seule branche** (`Project`) avec des variantes classées par dossiers.
